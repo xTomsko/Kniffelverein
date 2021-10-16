@@ -1,0 +1,65 @@
+%!TEX root = ../dokumentation.tex
+%custom listings and general listing settings
+
+\usepackage{listings}
+\usepackage{color}
+
+% CUSTOM LISTINGS
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, continue, debugger, default, delete, do, else, false, finally, for, function, if, in, instanceof, new, null, return, switch, this, throw, true, try, typeof, var, void, while, with},
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  sensitive=true
+}
+
+\lstdefinelanguage{AngularTS}{
+  morekeywords=[1]{break, continue, delete, else, for, function, if, in,
+    new, return, this, typeof, var, void, while, with, import, export, const, public, private, from, this, constructor, implements},
+  % Literals, primitive types, and reference types.
+  morekeywords=[2]{false, null, true, boolean, number, string, any, undefined,
+    Array, Boolean, Date, Math, Number, String, Object, class},
+  % Built-ins.
+  morekeywords=[3]{eval, parseInt, parseFloat, escape, unescape, @NgModule, @Component, @Injectable, 
+  ngOnInit, ngOnDestroy, ngOnChanges},
+  sensitive,
+  morecomment=[s]{/*}{*/},
+  morecomment=[l]//,
+  morecomment=[s]{/**}{*/}, % JavaDoc style comments
+  morestring=[b]',
+  morestring=[b]"
+}[keywords, comments, strings]
+
+% CSS
+\lstdefinelanguage{CSS}{
+  keywords={color,background-image:,margin,padding,font,weight,display,position,top,left,right,bottom,list,style,border,size,white,space,min,width, transition:, transform:, transition-property, transition-duration, transition-timing-function},	
+  sensitive=true,
+  morecomment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  morestring=[b]',
+  morestring=[b]",
+  alsoletter={:},
+  alsodigit={-}
+}
+
+\lstdefinelanguage{ASN.1}{
+  morekeywords=[1]{DEFINITIONS, BEGIN, END, EXPLICIT, IMPLICIT, AUTOMATIC, TAGS, UNIVERSAL,
+    APPLICATION, CONTEXT-SPECIFIC, PRIVATE},
+  % Literals, primitive types, and reference types.
+  morekeywords=[2]{FALSE, TRUE, NULL, BOOLEAN, INTEGER, BIT STRING, OCTET STRING, OBJECT IDENTIFIER, 	REAL, ENUMERATED, UTF8String, SEQUENCE, SEQUENCE, OF, SET, OPTIONAL, CHOICE},
+  % Built-ins.
+  sensitive,
+  morecomment=[l]{--},
+  morestring=[b]"
+}[keywords, comments, strings]
+
+
+% Einige häufig verwendete Sprachen
+\lstloadlanguages{PHP,Python,Java,C,C++,bash, HTML, AngularTS, CSS, ASN.1, JavaScript}
+\listingsettings{}
+% Umbennung des Listings
+\renewcommand\lstlistingname{\langlistingname}
+\renewcommand\lstlistlistingname{\langlistlistingname}
+\def\lstlistingautorefname{\langlistingautorefname}
