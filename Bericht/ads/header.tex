@@ -11,9 +11,9 @@
 	oneside,			% Einseitiger Druck.
 	12pt,				% Schriftgroesse
 	parskip=half,		% Halbe Zeile Abstand zwischen Absätzen.
-%	topmargin = 10pt,	% Abstand Seitenrand (Std:1in) zu Kopfzeile [laut log: unused]
+	%	topmargin = 10pt,	% Abstand Seitenrand (Std:1in) zu Kopfzeile [laut log: unused]
 	headheight = 12pt,	% Höhe der Kopfzeile
-%	headsep = 30pt,		% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
+	%	headsep = 30pt,		% Abstand zwischen Kopfzeile und Text Body  [laut log: unused]
 	headsepline,		% Linie nach Kopfzeile.
 	footsepline,		% Linie vor Fusszeile.
 	footheight = 16pt,	% Höhe der Fusszeile
@@ -39,8 +39,8 @@
 \usepackage[T1]{fontenc}
 
 \newcommand{\einstellung}[1]{%
-  \expandafter\newcommand\csname #1\endcsname{}
-  \expandafter\newcommand\csname setze#1\endcsname[1]{\expandafter\renewcommand\csname#1\endcsname{##1}}
+	\expandafter\newcommand\csname #1\endcsname{}
+	\expandafter\newcommand\csname setze#1\endcsname[1]{\expandafter\renewcommand\csname#1\endcsname{##1}}
 }
 \newcommand{\langstr}[1]{\einstellung{lang#1}}
 
@@ -52,7 +52,7 @@
 
 % Einstellung der Sprache des Paketes Babel und der Verzeichnisüberschriften
 \iflang{de}{\usepackage[english, ngerman]{babel}}
-\iflang{en}{\usepackage[ngerman, english]{babel}} 
+\iflang{en}{\usepackage[ngerman, english]{babel}}
 
 
 %%%%%%% Package Includes %%%%%%%
@@ -94,8 +94,8 @@
 
 %	ALGORITHMS
 \iflang{de}{
-\renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
-\floatname{algorithm}{Algorithmus}
+	\renewcommand{\listalgorithmname}{Algorithmenverzeichnis}
+	\floatname{algorithm}{Algorithmus}
 }
 
 %%%%%% Configuration %%%%%
@@ -107,13 +107,13 @@
 
 % Titel, Autor und Datum
 \title{\titel}
-\author{\autor}
+\author{\autora}
 \date{\datum}
 
 % PDF Einstellungen
 \usepackage[%
 	pdftitle={\titel},
-	pdfauthor={\autor},
+	pdfauthor={\autorc},
 	pdfsubject={\arbeit},
 	pdfcreator={pdflatex, LaTeX with KOMA-Script},
 	pdfpagemode=UseOutlines, 		% Beim Oeffnen Inhaltsverzeichnis anzeigen
@@ -174,7 +174,7 @@
 
 % Paragraph-Autor
 \newcommand{\mentionauthor}[1]{%
-  {\begin{flushright}\small\scshape#1\end{flushright}}
+	{\begin{flushright}\small\scshape#1\end{flushright}}
 }
 % % Nur bei authoryear-Zitation zu verwenden.
 % % Hyperlinks in Zitation
