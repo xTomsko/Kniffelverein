@@ -1,5 +1,5 @@
 import os
-from . import app
+from . import app, align_images
 from flask import flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 
