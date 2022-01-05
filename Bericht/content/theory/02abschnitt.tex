@@ -5,5 +5,29 @@ Wir nehmenen die Daten von MNIST
 \subsection{SVM}
 
 \subsection{CNN}
+Die Convolutional Neural Networks (CNN) sind vergleichbar zu den traditionellen Neuronalen
+Netzwerken. Im Aufbau ähneln sie sich darin, dass beide Modelle aus Neuronen mit Gewichten 
+bestehen, die ein Skalarprodukt aus einer Eingabe bilden. Das CNN besitzt ebenfalss eine
+Verlustfunktion. Ein typisches Neuronales Netzwerk erhält als Eingabe einen einzigen Vektor und
+wird in verscheidenen Schichten verarbeitet. 
+Jede Schicht wird aus Gruppen von Neuronen gebildet, die jeweils mit den Neuronen aus der vorherigen
+Schicht verknüpft sind. Die Neuronen, die sich in der selben Schicht befinden, teilen keine Verküpfungen und sind
+unabhängig von den anderen.
+
+Dabei existieren drei Hauptarten von Schichten in einem gewöhnlichen CNN, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) 
+und den vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer). 
+Zusätzlich gibt es eine Eingabeschicht und eine Ausgabeschicht. Die Ausgabeschicht stellt dabei eine vollständig verknüpfte Schicht dar.
+
+\subsubsection{Input Layer}
+In der Eingabeschicht werden die Bilddaten gespeichert und in einer dreidimensionlae Matrix dargestellt.
+
+\subsubsection{Filter-Schicht}
+Die Filterschicht, auch häufig als Feature-Extraction-Layer bezeichnet, extrahiert Eigenschaften aus dem Eingabebild und übt die Hauptanzahl an Berechnungen aus. 
+Es handelt sich hierbei um Faltungsoperationen, die Ähnlichekeiten zur Fourier-Transformation und zur Lapace-Transformation aufweisen, und bilden das Merkmal eines CNNs.
+Ein Neuron einer Filterschicht betrachet ein bestimmten Bereich einer vorherigen Schicht in Form einer Matrix und bildet daraus ein Skalarprodukt, um die den Bereich auf nur eine Zahl zu reduzieren.
+Die Architektur eines CNNs, die aus den verschiednenen Schichten und der Filter-Schichten besteht, ermöglichen, dass weniger Neuronen benötigt werden im Gegensatz zu anderen Mulitlayer Neuronalen Netzwerken.
+
+\subsubsection{Aggregations-Schicht}
+
 
 \subsection{Auswertung des Vergleiches}
