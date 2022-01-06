@@ -1,14 +1,17 @@
 import os
 import cv2
-
-from . import app
-from kniffel_app.align_images import align_images
+from flask import Blueprint
 from flask import flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+from app.align_images import align_images
+from app.extensions import db
 
-@app.route('/', methods=['GET', 'POST'])
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+server_bp = Blueprint('main', __name__)
+
+@server_bp.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -22,13 +25,12 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-
-            # Write uploaded file to disk. 
+            # Write uploaded file to disk.
             filename = secure_filename(file.filename)
             file.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
 
             # Read template image
-            refFilename = os.path.join(basedir, 'static', 'yahtzee_template.jpg')
+            refFilename = os.path.join(basedir, 'app/static', 'yahtzee_template.jpg')
             imReference = cv2.imread(refFilename, cv2.IMREAD_COLOR)
 
             # Read image to be aligned
@@ -48,3 +50,8 @@ def upload_file():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+
+
+@server_bp.route('/')
+def hello():
+    return "hello"
