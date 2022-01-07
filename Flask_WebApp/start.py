@@ -2,4 +2,4 @@
 from app import create_app
 from app import views
 
-app = create_app()
+server = create_app()
