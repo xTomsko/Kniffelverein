@@ -1,6 +1,7 @@
 import dash
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+import dash_bootstrap_components as dbc
 
 
 def create_app():
@@ -26,7 +27,8 @@ def register_dashapps(app):
     dashapp = dash.Dash(__name__,
                         server=app,
                         url_base_pathname='/stats/',
-                        meta_tags=[meta_viewport])
+                        meta_tags=[meta_viewport],
+                        external_stylesheets=[dbc.themes.MINTY])
 
     with app.app_context():
         dashapp.title = 'Dashapp'
