@@ -27,8 +27,7 @@ def register_dashapps(app):
     dashapp = dash.Dash(__name__,
                         server=app,
                         url_base_pathname='/stats/',
-                        meta_tags=[meta_viewport],
-                        external_stylesheets=[dbc.themes.MINTY])
+                        meta_tags=[meta_viewport])
 
     with app.app_context():
         dashapp.title = 'Dashapp'

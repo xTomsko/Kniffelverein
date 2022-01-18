@@ -5,6 +5,8 @@ import plotly.express as px
 import plotly.io as pio
 import pandas as pd
 
+from . import graphs
+
 
 #Dummy vars for display
 df = pd.read_json('/Users/tomsparrow/Development/Projects/Kniffelverein/Flask_WebApp/app/dashapp/testdata.json')
@@ -22,9 +24,12 @@ layout = html.Div(id='main', className='row', children=[
         ],
         color="primary",
         dark=True,
+        links_left=True
     ),
-    dbc.Col(html.Div(className='Two of three columns', children=[
-        html.H1('Statistics'),
+
+    html.H1('Statistics'),
+
+    dbc.Col(html.Div(children=[
         dcc.Dropdown(
             id='my-dropdown',
             options=[
@@ -36,46 +41,50 @@ layout = html.Div(id='main', className='row', children=[
             ],
             value=7
         ),
-        dcc.Graph(figure=figUploads, className='columns')
-        ])),
+        graphs.graph_in_tabs
+        ],),
+    ),
 
     dbc.Col(html.Div(className='One of three columns', children=[
-        html.H1('Column2'),
+        html.H1(''),
         dbc.Row(
             [
-                dbc.Col(dbc.Card([
-                    html.H4('Total sheets uploaded'),
-                    html.H1(f'{totalSheets}')
-                ])),
-                dbc.Col(dbc.Card([
-                    html.H4('earliest uploaded'),
-                    html.H1(f'{earliestUpload}')
-                ])),
-            ]
+                dbc.Col(html.Div(dbc.Card([
+                    html.H4('Total sheets'),
+                    html.H2(f'{totalSheets}')
+                ], className='bg-primary text-white card-layout')), width={"size": 4}),
+
+                dbc.Col(html.Div(dbc.Card([
+                    html.H4('first upload'),
+                    html.H2(f'{earliestUpload}')
+                ], className='bg-primary text-white card-layout'),), width={"size": 4}),
+            ], justify="evenly"
         ),
         dbc.Row(
             [
                 dbc.Col(dbc.Card([
                     html.H4('Total Yahtzees'),
-                    html.H1(f'{Yahtzees}')
-                ])),
+                    html.H2(f'{Yahtzees}')
+                ], className='bg-primary text-white card-layout'), width={"size": 4}),
+
                 dbc.Col(dbc.Card([
                     html.H4('Total score'),
-                    html.H1(f'{score}')
-                ])),
-            ]
+                    html.H2(f'{score}')
+                ], className='bg-primary text-white card-layout'), width={"size": 4}),
+            ], justify="evenly"
         ),
         dbc.Row(
             [
-                dbc.Col(dbc.Card([
+                dbc.Col(html.Div(dbc.Card([
                     html.H4('Days played'),
-                    html.H1(f'{totalSheets}')
-                ])),
-                dbc.Col(dbc.Card([
+                    html.H2(f'{totalSheets}'),
+                ], className='bg-primary text-white card-layout')), width={"size": 4}),
+
+                dbc.Col(html.Div(dbc.Card([
                     html.H4('tbd'),
-                    html.H1(f'{totalSheets}')
-                ])),
-            ]
+                    html.H2(f'{totalSheets}')
+                ], className='bg-primary text-white card-layout')), width={"size": 4}),
+            ], justify="evenly"
         )
     ]))
 ])

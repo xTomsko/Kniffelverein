@@ -11,7 +11,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 server_bp = Blueprint('main', __name__)
 
 
-@server_bp.route('/upload', methods=['GET', 'POST'])
+@server_bp.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -50,8 +50,3 @@ def upload_file():
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in {"png", "jpg", "jpeg"}
-
-
-@server_bp.route('/')
-def hello():
-    return "hello"
