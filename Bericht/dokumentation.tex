@@ -22,107 +22,107 @@
 \begin{document}
 \sffamily
 
-	% Deckblatt
-	\begin{spacing}{1}
-		\input{ads/deckblatt}
-	\end{spacing}
-	\newpage
+% Deckblatt
+\begin{spacing}{1}
+	\input{ads/deckblatt}
+\end{spacing}
+\newpage
 
-	\pagenumbering{Roman}
+\pagenumbering{Roman}
 
-	\RedeclareSectionCommand[beforeskip=\kapitelabstand         ]{chapter} % stellt Abstand vor Kapitelüberschriften ein
+\RedeclareSectionCommand[beforeskip=\kapitelabstand         ]{chapter} % stellt Abstand vor Kapitelüberschriften ein
 
-	% Sperrvermerk
-	\input{ads/sperrvermerk}
-	\newpage
+% Sperrvermerk
+\input{ads/sperrvermerk}
+\newpage
 
-	% Erklärung
-	\input{ads/erklaerung}
-	\newpage
+% Erklärung
+\input{ads/erklaerung}
+\newpage
 
-	% Abstract
-	\input{ads/abstract}
-	\newpage
+% Abstract
+\input{ads/abstract}
+\newpage
 
-		% Danksagung
-		\input{ads/danksagung}
-		\newpage
-		
-	%Vorwort
-	\input{ads/vorwort}
-	\newpage
+% Danksagung
+\input{ads/danksagung}
+\newpage
 
-	\pagestyle{plain}		% nur Seitenzahlen im Fuß
-	
-	% Inhaltsverzeichnis
-	\begin{spacing}{1.1}
-		\begingroup
-		
-			% auskommentieren für Seitenzahlen unter Inhaltsverzeichnis
-			\renewcommand*{\chapterpagestyle}{empty}
-			\pagestyle{empty}
-			
-			
-			\setcounter{tocdepth}{1}
-			%für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
-			%\setcounter{tocdepth}{2}
-			
-			\tableofcontents
-			\clearpage
-		\endgroup
-	\end{spacing}
-	\newpage
+%Vorwort
+\input{ads/vorwort}
+\newpage
 
-	% Abbildungsverzeichnis
-	\cleardoublepage
-	\listoffigures
+\pagestyle{plain}		% nur Seitenzahlen im Fuß
 
-	%Tabellenverzeichnis
-	\cleardoublepage
-	\listoftables
+% Inhaltsverzeichnis
+\begin{spacing}{1.1}
+	\begingroup
 
-	% Algorithmenverzeichnis
-	\cleardoublepage
-	\listofalgorithms
-	
-	% Quellcodeverzeichnis
-	\cleardoublepage
-	\lstlistoflistings
-	
-	% Abkürzungsverzeichnis
-	\cleardoublepage
-	\input{ads/acronyms}
-	
-	% Glossar
-	\cleardoublepage
-	\label{glossary}
-	\printglossary[style=altlist,title=\langglossar]
-	\cleardoublepage
+	% auskommentieren für Seitenzahlen unter Inhaltsverzeichnis
+	\renewcommand*{\chapterpagestyle}{empty}
+	\pagestyle{empty}
 
-	\pagenumbering{arabic}
-	
-	\pagestyle{headings}		% Kolumnentitel im Kopf, Seitenzahlen im Fuß
 
-	% Inhalt
-	\foreach \i in {01,02,03,04,05,06,07,08,09,...,89} {%
+	\setcounter{tocdepth}{2}
+	%für die Anzeige von Unterkapiteln im Inhaltsverzeichnis
+	%\setcounter{tocdepth}{2}
+
+	\tableofcontents
+	\clearpage
+	\endgroup
+\end{spacing}
+\newpage
+
+% Abbildungsverzeichnis
+\cleardoublepage
+\listoffigures
+
+%Tabellenverzeichnis
+\cleardoublepage
+\listoftables
+
+% Algorithmenverzeichnis
+\cleardoublepage
+\listofalgorithms
+
+% Quellcodeverzeichnis
+\cleardoublepage
+\lstlistoflistings
+
+% Abkürzungsverzeichnis
+\cleardoublepage
+\input{ads/acronyms}
+
+% Glossar
+\cleardoublepage
+\label{glossary}
+\printglossary[style=altlist,title=\langglossar]
+\cleardoublepage
+
+\pagenumbering{arabic}
+
+\pagestyle{headings}		% Kolumnentitel im Kopf, Seitenzahlen im Fuß
+
+% Inhalt
+\foreach \i in {01,02,03,04,05,06,07,08,09,...,89} {%
 		\edef\FileName{content/\i kapitel}%
-			\IfFileExists{\FileName}{%
-				\input{\FileName}
-			}
-			{%
-				%file does not exist
-			}
+		\IfFileExists{\FileName}{%
+			\input{\FileName}
+		}
+		{%
+			%file does not exist
+		}
 	}
 
-	\clearpage
+\clearpage
 
-	% Literaturverzeichnis
-	\cleardoublepage
-	\printbibliography
-	
-	% sonstiger Anhang
-	\clearpage
-	\appendix
-	\input{ads/appendix}
-	
+% Literaturverzeichnis
+\cleardoublepage
+\printbibliography
+
+% sonstiger Anhang
+\clearpage
+\appendix
+\input{ads/appendix}
+
 \end{document}
