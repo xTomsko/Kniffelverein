@@ -1,6 +1,6 @@
 <h1 align="center">
   <br />
-  <img src="YAHTZEE.png" alt="Jimmi" width="200"></a>
+  <img src="YAHTZEE.png" alt="YAHTZEE" width="200"></a>
 </h1>
 <div align="center">
     <a href="https://github.com/xTomsko/Kniffelverein/graphs/contributors">
