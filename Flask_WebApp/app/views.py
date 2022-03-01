@@ -1,14 +1,17 @@
 import os
 import cv2
-
-from . import app
-from kniffel_app.align_images import align_images
+from flask import Blueprint
 from flask import flash, request, redirect, url_for, render_template
 from werkzeug.utils import secure_filename
 
-basedir = os.path.abspath(os.path.dirname(__file__))
+from app.align_images import align_images
 
-@app.route('/', methods=['GET', 'POST'])
+
+basedir = os.path.abspath(os.path.dirname(__file__))
+server_bp = Blueprint('main', __name__)
+
+
+@server_bp.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
         # check if the post request has the file part
@@ -22,29 +25,28 @@ def upload_file():
             flash('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-
-            # Write uploaded file to disk. 
+            # Write uploaded file to disk.
             filename = secure_filename(file.filename)
-            file.save(os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename))
+            file.save(os.path.join(basedir, 'static/uploads', filename))
 
             # Read template image
-            refFilename = os.path.join(basedir, 'static', 'yahtzee_template.jpg')
+            refFilename = os.path.join(basedir, 'static/', 'yahtzee_template.jpg')
             imReference = cv2.imread(refFilename, cv2.IMREAD_COLOR)
 
             # Read image to be aligned
-            imFilename = os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename)
+            imFilename = os.path.join(basedir, 'static/uploads', filename)
             im = cv2.imread(imFilename, cv2.IMREAD_COLOR)
 
             # Registered image will be restored in imReg.
             imReg, _ = align_images(im, imReference)
 
             # Write aligned image to disk.
-            outFilename = os.path.join(basedir, app.config['UPLOAD_FOLDER'], filename)
+            outFilename = os.path.join(basedir, 'static/uploads', filename)
             cv2.imwrite(outFilename, imReg)
-            return redirect(url_for('upload_file'))
+            return redirect(url_for('main.upload_file'))
     return render_template('upload.html')
 
 
 def allowed_file(filename):
     return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
+           filename.rsplit('.', 1)[1].lower() in {"png", "jpg", "jpeg"}
