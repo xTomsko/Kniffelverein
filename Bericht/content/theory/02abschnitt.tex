@@ -45,10 +45,9 @@ Sie trennt den Raum in einen blauen Bereich, wo alle Punkte $1 + 6X_1 + 4X_2 > 0
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\imgMed]{images/theory/hyperplane.jpg}
-	\caption{Beispiel-\textit{Hyperplane}} 
+	\caption{Beispiel für eine \textit{Hyperplane}} 
 	\label{fig:Hyperplane}
 \end{figure}
-\todo{Ab hier überarbeiten}
 Wir haben nun eine Matrix der Trainingsdaten $\mathbf{X}$ der Form $n \times p$, 
 die aus $n$ Trainingsobjekten innerhalb eines $p$-dimensionalen Raumes besteht.
 \[x_1 = \left(\begin{array}{c} x_{11} \\ \vdots \\ x_{1p} \end{array}\right) 
@@ -79,8 +78,13 @@ gibt es unendlich viele Möglichkeiten, wie diese liegen kann. Für bestmöglich
 deshalb die optimale \textit{separierende Hyperplane} gefunden werden. Die natürliche Wahl ist es die 'Mittigste' der
 \textit{separierenden Hyperplanes} zu verwenden. Diese wird auch \textit{Maximal Margin Hyperplane} genannt.
 Mit Hilfe der Trainigsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich entfernt von den
-nächsten Traingsobjekten liegt. 
-
+nächsten Traingsobjekten liegt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/separating_hyperplanes.jpg}
+	\caption{Beispiele für \textit{separierende Hyperplanes}} 
+	\label{fig:separating_hyperplanes}
+\end{figure}
 Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächsten Traingsobjekten
 wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} somit am größten ist,
 wird auch \textit{Maximal Margin Hyperplane} genannt. 
@@ -90,7 +94,12 @@ Die Stützvektoren sind demnach die einzigen Traingsobjekte, die die Position de
 Mit Hilfe der \textit{Maximal Margin Hyperplane} kann der 
 \textit{Maximal Margin Classifier} nun neue unbekannte Testdaten klassifizieren, je nach dem auf welcher Seite sie liegen.
 Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.
-
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/maximal_margin.jpg}
+	\caption{Beispiel für eine \textit{Maximal Margin Hyperplane}} 
+	\label{fig:maximal_margin}
+\end{figure}
 Je nach Traingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt
 trennen kann oder die \textit{Hyperplane} liegt nicht optimal um eine effiziente Klassifizierung durchführen zu können, da die
 Stützvektoren ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
