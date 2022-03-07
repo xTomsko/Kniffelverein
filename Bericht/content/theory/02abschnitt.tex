@@ -15,7 +15,7 @@ müssen jedoch klar unterschieden werden.\cite[S. 337]{james_2013}
 
 Die Terminologie im Bereich der \textit{Support Vector Machine} ist nicht ganz klar und kann sich in verschiedenen Veröffentlichungen unterscheiden.
 Eine andere Differenzierung der Vorgängertechnologien ist die Einteilung in Lineare Klassifizierer und Nichtlineare Klassifizierer.
-Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus (LSVM), mit dem iterativ SVMs trainiert werden können.\cite[S.207]{suthaharan_2015}
+Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus (LSVM), mit dem iterativ SVMs trainiert werden können.\cite[S. 207]{suthaharan_2015}
 In dieser Arbeit verwenden wir die zuvor genannte Einteilung in \textit{Maximal Margin Classifier}, \textit{Support Vector Classifier}
 und \textit{Support Vector Machine}. An ihr lässt sich die kontinuierliche Weiterentwicklung der Algorithmen am besten verfolgen und am übersichtlichsten darstellen.
 Außerdem wird die Chronologie der hinzugekommenen Konzepte deutlicher.
@@ -53,9 +53,10 @@ die aus $n$ Trainingsobjekten innerhalb eines $p$-dimensionalen Raumes besteht.
 \[x_1 = \left(\begin{array}{c} x_{11} \\ \vdots \\ x_{1p} \end{array}\right) 
   , \dots, 
   x_n = \left(\begin{array}{c} x_{n1} \\ \vdots \\ x_{np} \end{array}\right) \]
-Diese Trainingsobjekte werden jeweils einer von zwei Klassen zugeordnet $y_1,\dots,y_n \in \{-1,1\}$.
+Diese Trainingsobjekte sind definiert als Vektoren der Länge $p$, die die einzelnen beobachteten \textit{Features} 
+$x^* = (x_1^* \dots x_p^*)^T$ enthalten und werden jeweils einer von zwei Klassen zugeordnet $y_1,\dots,y_n \in \{-1,1\}$.
 Wenn die \textit{Hyperplane} die Trainingsobjekte perfekt anhand ihrer Label trennt,
-dannt sprcht man von einer \textit{separierenden Hyperplane}. 
+dann spricht man von einer \textit{separierenden Hyperplane}. 
 Alle Objekte aus der einen Klassen fallen auf die linke Seite der \textit{Hyperplane}.
 Während die Trainigsobjekte mit dem anderen Label auf der rechten Seite der \textit{Hyperplane} liegen.
 Eine \textit{separierende Hyperplane} lässt sich mathematisch definieren durch folgende zwei Gleichungen:
@@ -70,7 +71,7 @@ Je weiter entfernt das Testobjekt von der \textit{separierenden Hyperplane} lieg
 dass die Klassenzuweisung korrekt ist. Je kleiner der Abstand zur \textit{Hyperplane} wird, desto unsicherer ist,
 ob das Testobjekt der richtigen Klasse zugeordnet worden ist. 
 Der Abstand der einzelnen Testobjekte zur \textit{separierenden Hyperplane} zeigt uns mit welcher Gewissheit das SVM
-die richtige Klassifizierung getroffen hat.
+die richtige Klassifizierung getroffen hat.\cite[S. 339 - 141]{james_2013}
 
 Beim \textit{Maximal Margin Classifier} wird die oben genannte Methode der \textit{separierenden Hyperplane} eingesetzt,
 um Daten klassifizieren zu können. Wenn die Daten durch eine \textit{separierende Hyperplane} getrennt werden können,
@@ -78,57 +79,84 @@ gibt es unendlich viele Möglichkeiten, wie diese liegen kann. Für bestmöglich
 deshalb die optimale \textit{separierende Hyperplane} gefunden werden. Die natürliche Wahl ist es die 'Mittigste' der
 \textit{separierenden Hyperplanes} zu verwenden. Diese wird auch \textit{Maximal Margin Hyperplane} genannt.
 Mit Hilfe der Trainigsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich entfernt von den
-nächsten Traingsobjekten liegt.
+nächsten Traingsobjekten liegt.\cite[S. 1565f.]{noble_2006}
+
+Die Abbildung \ref{fig:separating_hyperplanes} zeigt zehn verschiedene Trainingsobjekte, die alle durch zwei Variablen definiert sind und
+einem der beiden Label $\{blau, rot\}$ zugeordnet sind. Außerdem sind drei unterschiedliche \textit{Hyperplanes} abgebildet, die alle 
+\textit{separierende Hyperplanes} in Bezug auf unsere Trainigsdaten sind. Die Auswahl der 'perfekten' \textit{Hyperplane} für die SVM ist
+damit mathematisches Optimierungsproblem. 
+Weitere Informationen zu dem Trainingsmodell einer SVM sind in dem Werk von \citeauthor{suthaharan_2015} zu finden.\cite[S. 210ff.]{suthaharan_2015}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\imgMed]{images/theory/separating_hyperplanes.jpg}
 	\caption{Beispiele für \textit{separierende Hyperplanes}} 
 	\label{fig:separating_hyperplanes}
 \end{figure}
-Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächsten Traingsobjekten
-wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} somit am größten ist,
-wird auch \textit{Maximal Margin Hyperplane} genannt. 
-Die Traingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und den gleichen Abstand zu dieser haben,
-sind die Stützvektoren. Sie 'stützen' die \textit{Maximal Margin Hyperplane}.
-Die Stützvektoren sind demnach die einzigen Traingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.
+Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächst gelegenen Traingsobjekten beider Labels
+wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} am größten ist,
+wird daraus folgend auch \textit{Maximal Margin Hyperplane} genannt.
+Die Traingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und damit auch den selben Abstand zu dieser haben,
+werden als die Stützvektoren bezeichnet. Sie 'stützen' die \textit{Maximal Margin Hyperplane}.
+Die Stützvektoren sind demnach die einzigen Traingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
 Mit Hilfe der \textit{Maximal Margin Hyperplane} kann der 
 \textit{Maximal Margin Classifier} nun neue unbekannte Testdaten klassifizieren, je nach dem auf welcher Seite sie liegen.
-Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.
+Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.\cite[S. 1566]{noble_2006}
+
+Eine solche \textit{Maximal Margin Hyperplane} ist in \ref{fig:maximal_margin} abgebildet. Die abbgebildeten Trainingsdaten sind die selben
+wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die 'mittigste' \textit{separierende Hyperplane} gefunden, die die Trainigsdaten
+anhand ihrer Label trennen kann. Außerdem zu sehen, sind die am nächsten gelegen Trainigsobjekte auf beiden Seiten der \textit{Hyperplane}, die als
+Stützvektoren dienen. Die \textit{Margin} wird visualisiert, durch die beiden Geraden, die parallel zur \textit{separierenden Hyperplane} liegen und
+durch die beiden Stützvektoren verlaufen. Der Abstand dieser beiden Geraden zu der \textit{Hyperplane} ist die \textit{Margin}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\imgMed]{images/theory/maximal_margin.jpg}
 	\caption{Beispiel für eine \textit{Maximal Margin Hyperplane}} 
 	\label{fig:maximal_margin}
 \end{figure}
-Je nach Traingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt
+Je nach Traingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt anhand ihrer Label
 trennen kann oder die \textit{Hyperplane} liegt nicht optimal um eine effiziente Klassifizierung durchführen zu können, da die
 Stützvektoren ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
-und kann übertrainiert werden. Deswegen müssen um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Traingsobjekte
-zu ermöglichen auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.
+und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainigsobjekte existieren, deren \textit{Features} nicht den Normen einer Klasse entsprechen 
+und damit eine Anomalie darstellen. Das besagte Trainigsobjekt würde dann auf der falschen Seite der zuvor gefundenen \textit{Hyperplane} liegen.
+Deswegen müssen um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Traingsobjekte
+zu gewährleisten auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.\cite[S. 343 - 345]{james_2013}
 
 Dies wird vom \textit{Support Vector Classifier} umgesetzt. Er wird auch als \textit{Soft Margin Classifier} bezeichnet.
 Wie der Name schon sagt, besitzt dieser eine 'weiche' \textit{Margin}. 
 Der \textit{Support Vector Classifier} erweitert den bereits besprochenen \textit{Maximal Margin Classifier}
 um eine eine 'weiche' \textit{Margin}, die von einem nutzerdefinierten Parameter abhängig ist.
 Der Nutzer muss selbst entscheiden, wie durchlässig die \textit{Margin} sein soll und
-wie vielen Traingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen ohne deren Ausrichtung zu beeinflussen.
+wie vielen Traingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen ohne deren finale Ausrichtung zu beeinflussen.
 Wie dieser Parameter gesetzt werden muss hängt von den Trainigsdaten und dem gewünschten Ergebnis ab
-und muss durch ausprobieren ermittelt werden.
-Durch diese 'weiche' \textit{Margin} werden vereinzelt Testobjekte mit anomalen Charakteristiken der falschen Klasse
+und muss durch Ausprobieren ermittelt werden.
+Beim Setzen dieses Parameters muss zwischen Durchlässigkeit der \textit{Hyperplane} und der Breite der \textit{Margin} abgewägt werden.
+Durch diese 'weiche' \textit{Margin} werden vereinzelt Testobjekte mit anormalen Charakteristiken der falschen Klasse
 zugeordnet. Für die meisten Testobjekte steigt jedoch die Genauigkeit der Klassifizierung und aufgrund der 'weichen' \textit{Margin}
-ist es leichter eine \textit{separierende Hyperplane} zu finden.
+ist es leichter eine \textit{separierende Hyperplane} zu finden.\cite[S. 1566]{noble_2006}
 
 Trotzdem gibt es immer noch Szenarien bei denen die Trainingsdaten nicht durch einen \textit{Support Vector Classifier} getrennt
 werden können. In manchen Fällen sind die Trainingsdaten nicht linear zu trennen.
-In diesen Fällen muss der \textit{Feature-Raum} erweitert werden. Hierfür wurde aus dem \textit{Support Vector Classifier}
+In diesen Fällen muss der \textit{Feature}-Raum erweitert werden. Hierfür wurde aus dem \textit{Support Vector Classifier}
 die \textit{Support Vector Machine} entwickelt. Dabei wurden sogenannte \textit{Kernel}-Funktionen hinzugefügt.
-Mit Hilfe von quadratischen, kubischen oder weiteren Polynomfunktionen höherer Grade wird der \textit{Feature-Raum} der
-Traingsobjekte erweitert. Auf Basis der bisherigen \textit{Features} werden so mathematisch neue \textit{Features}, die 
+Mit Hilfe von quadratischen, kubischen oder weiteren Polynomfunktionen höherer Grade wird der \textit{Feature}-Raum der
+Traingsobjekte erweitert. Auf Basis der bisherigen \textit{Features} werden so mathematisch neue \textit{Features} berechnet, die 
 dann womöglich durch eine \textit{Hyperplane} zu trennen sind, jedoch von den ursprünglichen \textit{Features} abhängig sind.
-Der \textit{Feature-Raum} wird sogesehen von den \textit{Kernel}-Funktionen um eine oder mehrere Dimensionen erweitert.
+Der \textit{Feature}-Raum wird sogesehen von den \textit{Kernel}-Funktionen um eine oder mehrere Dimensionen erweitert.
 Auch bei diesen \textit{Kernel}-Funktionen gibt es keine genaue Regel und die für für die Traingsdaten passende 
-\textit{Kernel}-Funktionen muss durch ausprobieren gefunden werden.
+\textit{Kernel}-Funktion muss durch Ausprobieren gefunden werden. So können nun auch nichtlineare Daten klassifiziert werden.
+\cite[S. 1566f.]{noble_2006}\cite[S. 224 - 227]{suthaharan_2015}
 
+Die nachfolgende Abbildung \ref{fig:non_linear_data} zeigt zwei Beispiele hypothetischer Trainingsdaten, die nicht linear zu trennen sind.
+Der \textit{Feature}-Raum wurde dann mit Hilfe einer \textit{Kernel}-Funktion erweitert und es konnte in einem höherdimensionalen Raum eine
+\textit{separierende Hyperplane} gefunden werden, die die Trainigsobjekte anhand ihrer Labels trennen kann. 
+Die zwei Grafiken zeigen nun wie diese höherdimensionale \textit{Hyperplane} in einem $2$-dimensionalen Raum aussehen würde 
+und wie sie die Daten anhand ihrer Klasse aufteilt.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/non_linear_data.jpg}
+	\caption{\textit{Hyperplanes} bei nichtlinearen Daten \cite[S. 353]{james_2013}} 
+	\label{fig:non_linear_data}
+\end{figure}
 Mit Hilfe der \textit{Support Vector Machine} können wir nun einen Großteil an Datensätzen klassifizieren. 
 Eine \textit{separierende Hyperplane} kann die Trainingsdaten jedoch immer nur in zwei Klassen einteilen. 
 Wie können dann handgeschriebene Ziffern und Zahlen durch eine \textit{Support Vector Machine} erkannt werden?
@@ -139,7 +167,8 @@ $K \choose 2$ paarweisen Klassifizierern am häufigsten zugewiesen wurde.
 Die Alternative zu dieser Methode ist die 1-gegen-alle-Klassifizierung. Hier werden $K$ SVMs erstellt.
 Eine SVM für jede Klasse und die $K-1$ restlichen Klassen. Ein unbekanntes Testobjekt wird dann der Klasse zugeordnet,
 bei der die SVM sich am sichersten bei der Zuordnung ist. 
-So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klassen unterscheiden.
+So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klassen unterscheiden.\cite[S. 355f.]{james_2013}\cite[S.1567]{noble_2006}
+
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Testcode, label=lst:beispielcode]
@@ -167,9 +196,6 @@ So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klass
     plt.show()
 	\end{lstlisting}
 \end{minipage}
-
-
-
 
 
 \subsection{CNN}
