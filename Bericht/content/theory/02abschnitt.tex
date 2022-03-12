@@ -1,4 +1,4 @@
-\section{Vergleich verschiedener Machine Learning Algorithmen}
+\section{Vergleich verschiedener Machine Learning-Algorithmen}
 Wir nehmenen die Daten von MNIST
 \subsection{KNN (Dirk)}
 
@@ -169,34 +169,91 @@ Eine SVM für jede Klasse und die $K-1$ restlichen Klassen. Ein unbekanntes Test
 bei der die SVM sich am sichersten bei der Zuordnung ist. 
 So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klassen unterscheiden.\cite[S. 355f.]{james_2013}\cite[S.1567]{noble_2006}
 
+\subsubsection{Bewertung der \textit{Support Vector Machine}}
+Für eine fairen Vergleich zwischen den einzelnen \textit{Machine Learning}-Algorithmen muss die \textit{Support Vector Machine}
+nach den bereits festgelegten Bewertungskriterien: Komplexität, Genauigkeit, Präzision und Einfachheit der Umsetzung beurteilt werden.
+Die mathematische Komplexität des \textit{Support Vector Machine}-Algorithmus lässt sich nachschlagen.
+Das Trainieren einer SVM hat eine Komplexität von $O(n^2 p + n^3)$ mit $n$ als Anzahl der Traingsobjekte und $p$ als Anzahl der \textit{Features}.
+Bei dieser Komplexität wird angenommen, dass die \textit{Support Vector Machine} eine \textit{Kernel}-Funktion $K(x_i, x_j)$ besitzt.
+Davon ausgehend, dass die häufigsten \textit{Kernel}-Funktionen eine Komplexität von $O(p)$ besitzen, können wir auf die obige Komplexität
+für die SVM schließen. Das ist bei Gaußschen, Polynom- und Sigmoidfunktionen der Fall, muss jedoch nicht für jede \textit{Kernel}-Funktion gelten.
+Die Komplexität bei dem Klassifizieren der Testdaten entspricht dann $O(n_{sv} p)$. Hier ist $n_{sv}$ die Anzahl der Stützvektoren.\cite{complexity}
+
+Um die Genauigkeit und Präzision einer \textit{Support Vector Machine} bewerten zu können, soll ein kurzes Testprogramm geschrieben werden.
+Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf{Sklearn} bereits eine Bibliothek für die Anwendung 
+verschiedener \textit{Machine Learning}-Algorithmen besitzt. Das fertige Programm ist in \ref{lst:test_svm} zu sehen.
+Zuerst werden die benötigten Funktionen aus der \textbf{Sklearn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
+geschriebenen Ziffern $0, \dots 9$ enthält und die Daten mit Hilfe eines \textbf{NumPy}-\textit{Arrays} vorbereitet. Danach werden die Daten halbiert und in einen
+Trainigsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{Sklearn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
+mit dem Trainigsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
 
 \begin{minipage}{\textwidth}
-	\begin{lstlisting}[language=Python, caption=Testcode, label=lst:beispielcode]
-    from sklearn import svm
-    svm_classifier = svm.SVC(gamma=0.001)
-    svm_classifier.fit(X_train, y_train)
-    predicted = svm_classifier.predict(X_test)
-    _, axes = plt.subplots(2, 4)
-    images_and_labels = list(zip(digits.images, digits.target))
-    for ax, (image, label) in zip(axes[0, :], images_and_labels[:4]):
-        ax.set_axis_off()
-        ax.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-        ax.set_title('Training: %i' % label)
-        
-    images_and_predictions = list(zip(digits.images[n_samples // 2:], predicted))
-    for ax, (image, prediction) in zip(axes[1, :], images_and_predictions[:4]):
-        ax.set_axis_off()
-        ax.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
-        ax.set_title('Prediction: %i' % prediction)
-    print("\nClassification report for classifier %s:\n%s\n" % (svm_classifier, metrics.classification_report(y_test, predicted)))
-    disp = metrics.plot_confusion_matrix(svm_classifier, X_test, y_test)
-    disp.figure_.suptitle("Confusion Matrix")
-    print("\nConfusion matrix:\n%s" % disp.confusion_matrix)
-    print("\nAccuracy of the Algorithm: ", svm_classifier.score(X_test, y_test))
-    plt.show()
+	\begin{lstlisting}[language=Python, caption=Pythoncode zum Testen der SVM, label=lst:test_svm]
+# Importieren relevanter Bibliotheken
+from sklearn import svm
+from sklearn import metrics
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+
+# Laden des Sklearn-Datensatzes
+digits = load_digits()
+
+# Vorbereiten der Daten
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+
+# Aufteilen der Daten in Trainings- & Testdaten
+X_train, X_test, y_train, y_test = train_test_split(
+    data, digits.target, test_size=0.5, shuffle=False)
+
+# Trainieren der SVM mit den Trainigsdaten
+svm_classifier = svm.SVC(gamma=0.001)
+svm_classifier.fit(X_train, y_train)
+
+# Klassifizieren der Testdaten
+predicted = svm_classifier.predict(X_test)
+
+# Ausgeben der Ergebnisse
+print("\nKlassifizierungsbericht %s:\n%s\n" % (svm_classifier, metrics.classification_report(y_test, predicted)))
+print("\nGenauigkeit: ", svm_classifier.score(X_test, y_test))
 	\end{lstlisting}
 \end{minipage}
 
+Aus dem Klassifizierungsbericht in \ref{lst:testergebnis_svm} kann direkt die Präzision und Genauigkeit dieser \textit{Support Vector Machine} 
+herausgelesen werden. Die \textit{Support Vector Machine} aus unserem Test hat eine durchschnittliche Präzision von $0.97$ sowie eine 
+gerundete Genauigkeit von ebenfalls $0.97$.
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Bash, caption=Testergebnisse der SVM, label=lst:testergebnis_svm]
+Klassifizierungsbericht SVC(gamma=0.001):
+			   precision    recall  f1-score   support
+
+		0         1.00      0.99      0.99        88
+		1         0.99      0.97      0.98        91
+		2         0.99      0.99      0.99        86
+		3         0.98      0.87      0.92        91
+		4         0.99      0.96      0.97        92
+		5         0.95      0.97      0.96        91
+		6         0.99      0.99      0.99        91
+		7         0.96      0.99      0.97        89
+		8         0.94      1.00      0.97        88
+		9         0.93      0.98      0.95        92
+
+accuracy                          0.97       899
+macro avg    	0.97      0.97      0.97       899
+weighted avg 	0.97      0.97      0.97       899
+
+Genauigkeit:  0.9688542825361512
+	\end{lstlisting}
+\end{minipage}
+
+Damit ist schon eine Mehrheit der Kriterien zur Bewertung der SVM abgedeckt. Als Letztes muss nun die Einfachheit der Umsetzung bewertet werden.
+Es spricht für die \textit{Support Vector Machine}, dass uns die komplette Umsetzung des Algorithmus bereits abgenommen wurde und alle benötigten
+Funktionen durch die \textbf{Python}-Bibliothek \textbf{Sklearn} bereitgestellt werden. Die \textit{Support Vector Machine} ist damit sehr einfach
+für unser Projekt zu verwenden.  Wie bereits im obigen Beispielcode \ref{lst:test_svm} zu sehen, braucht es nur drei Zeilen Code um eine SVM zu initialisieren,
+zu trainieren und neue Testdaten zu klassifizieren. Deshalb gebe ich der \textit{Support Vector Machine} eine Punktzahl von 5/5.
+Damit ist die Bewertung der dieses \textit{Machine Learning}-Algorithmus abgeschlossen. 
+Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks} und deren Beurteilung.
 
 \subsection{CNN}
 Die Convolutional Neural Networks (CNN) sind vergleichbar zu den traditionellen Neuronalen
