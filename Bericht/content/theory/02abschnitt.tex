@@ -255,17 +255,52 @@ zu trainieren und neue Testdaten zu klassifizieren. Deshalb gebe ich der \textit
 Damit ist die Bewertung der dieses \textit{Machine Learning}-Algorithmus abgeschlossen. 
 Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks} und deren Beurteilung.
 
-\subsection{CNN}
+\newpage
+
+\subsection{Convolutional Neural Networks}
 Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die der \textit{Convolutional Neural Networks} (CNN).
 
-Die CNN wird ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \url{https://link.springer.com/chapter/10.1007/978-3-319-45378-1_1}
+Die CNN wird ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN jedoch auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \cite*{10.1007/978-3-319-45378-1_1}
 
-Um nun den Aufbau eines CNN zuverstehen, betrachten wir zunächst ein normales \textit{Artificial Neural Network} (ANN) oder \textit{Neural Network}. Beide Terminologien werden in der Literatur kommutativ genutzt, um den Unterschied zu den biologischen neuronalen Netzwerken zu verdeutlichen wird fortlaufend in dieser Arbeit ANN als Terminologie genutzt.
+Um nun den Aufbau eines CNN zu verstehen, betrachten wir zunächst ein normales \textit{Artificial Neural Network} (ANN) oder \textit{Neural Network}. Beide Terminologien werden in der Literatur kommutativ genutzt. Um den Unterschied zu den biologischen neuronalen Netzwerken zu verdeutlichen, wird fortlaufend in dieser Arbeit ANN als Terminologie genutzt.
 
-Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die miteinander verbunden sind und Informationen an den jeweils anderen Knoten weiterleiten.
-In einem ANN sind diese Knoten in verschiedene Schichten eingeordnet und kommunizieren nur Knoten aus der vorherigen und danach kommenden Schicht.
-Die Schichten werden in drei Arten unterschieden, der Eingabeschicht, die verstecken Schichten und die Ausgabeschicht.
-Die Eingabeschicht nimmt einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächste versteckte Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat, weiter und verteilt diese dann wieder an die nächste versteckte Schicht oder an die Ausgabeschicht.https://arxiv.org/pdf/1511.08458.pdf
+\subsubsection{Artificial Neural Network}
+Im Jahr 1943 entwickelte der Neurophysiologe Warren McCulloch und ein junger Mathematiker Walter Pitts das erste Model eines ANN, das in der Studie „The Logical Calculus of the Ideas Immenent in Nverous Activiy“ veröffentlicht wurde. Dieses war in der Lage, einfach logische Operationen durchzuführen.
+Im Laufe der Historie wurde das Konstrukt ANN immer weiterentwickelt und hat in der Informatiker-Community an Ansehen erlangt, bis die Technologie an ihre damaligen Grenzen gestoßen ist und die Technologie zunächst vernachlässigt wurde.
+Heutzutage sind ANN einer der wichtigsten Bestandteile in der Erforschung der Künstlichen Intelligenz und des maschinell Lernens, welches auf die enorme Innovation in der Computerindustrie und der Leistungsverbesserung der Rechner zurückzuführen ist. \cite*{10.1007/978-3-319-45378-1_1}
+
+Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nach dem ihre eingegangende Information verarbeitet wurde.
+In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren tuasenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, der Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
+Die Knoten innerhalb einer Schicht sind nicht miteinander verknüpft, sie sind nur mit Knoten aus der vorherigen und danach kommenden Schicht verbunden. Wenn alle Knoten mit allen Konten aus der vorangegangen und danach kommenden Schicht verbunden sind, bezeichnet man das ANN an diesem Punkt als \textit{fully-connected}. Ein solches \textit{fully-connected ANN} ist in Abbildung \ref{fig:ful_con_ann} zu erkennen. Das Netzwerk verfügt beispielsweise vier Schichten, eine Eingabeschicht, eine Ausgabeschicht und zwei versteckten Schichten. In der Abbildung werden die Knoten als Kreise dargestellt und die Verbindungen als gerichtete-Linien. Die versteckten Schichten haben zum Beispiel vier Knoten.
+\cite*{Keiron2015}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/neural_network.png}
+	\caption{Ein \textit{fully-connected ANN} mit zwei versteckten Schichten \cite{Sewak2018}} 
+	\label{fig:ful_con_ann}
+\end{figure}
+
+Um nun genauer nachzuvollziehen, wie ein Knoten in einem ANN operiert, gehen wir genauer auf die mathematische Definition eines Knotens ein. \\    
+Die Verarbeitung der Eingabevektoren erfolgt durch die Anwendung der sogenannten Aktivierungsfunktion $a$. Die Aktivierungsfunktion ist die Summe der gesamten Eingabevektoren $[x_1,…,x_n]$ multipliziert mit einer Gewichtsmatrix $[w_1,...,w_n]^T$,
+wobei \textit{n} die Anzahl der vorherigen Knoten ist. Mathematisch ist sie wie folgt definiert:
+
+$a = \sum_{i=1}^{n} x_i w_i$
+
+In der Abbildung \ref{fig:activation_function} wird die Aktivierungsfunktion $a$ dargestellt. Es ist erkennbar, wie jeder Eingabevektor $x_i$ mit einem Gewicht $w_i$ multipliziert wird und die Summe gebildet wird. Das Ergebnis der Aktivierungsfunktion $a$ ist die Ausgabe des Knotens und wird anschließend von folgenden Knoten in der nächsten Schicht als Eingabevektor verarbeitet. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/activationfunction.png}
+	\caption{Bildliche Darstellung der \textit{Aktivierungsfunktion} \cite{Sewak2018}} 
+	\label{fig:act_fun}
+\end{figure}
+
+\cite*{Braspenning1995}
+
+Mit dieser Funktion können wir nachvollziehen, wie ein Knoten seine Entscheidung trifft.
+
+\subsubsection*{Von Artificial Neural Network zu Convolutional Neural Network}
 
 Dabei existieren drei Klassen von Schichten in einem CNN, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) 
 und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer). 
