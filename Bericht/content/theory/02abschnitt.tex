@@ -180,11 +180,11 @@ für die SVM schließen. Das ist bei Gaußschen, Polynom- und Sigmoidfunktionen 
 Die Komplexität bei dem Klassifizieren der Testdaten entspricht dann $O(n_{sv} p)$. Hier ist $n_{sv}$ die Anzahl der Stützvektoren.\cite{complexity}
 
 Um die Genauigkeit und Präzision einer \textit{Support Vector Machine} bewerten zu können, soll ein kurzes Testprogramm geschrieben werden.
-Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf{Sklearn} bereits eine Bibliothek für die Anwendung 
+Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf{SciKit-learn} bereits eine Bibliothek für die Anwendung 
 verschiedener \textit{Machine Learning}-Algorithmen besitzt. Das fertige Programm ist in \ref{lst:test_svm} zu sehen.
-Zuerst werden die benötigten Funktionen aus der \textbf{Sklearn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
+Zuerst werden die benötigten Funktionen aus der \textbf{SciKit-learn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
 geschriebenen Ziffern $0, \dots 9$ enthält und die Daten mit Hilfe eines \textbf{NumPy}-\textit{Arrays} vorbereitet. Danach werden die Daten halbiert und in einen
-Trainigsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{Sklearn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
+Trainigsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
 mit dem Trainigsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
 
 \begin{minipage}{\textwidth}
@@ -195,7 +195,7 @@ from sklearn import metrics
 from sklearn.datasets import load_digits
 from sklearn.model_selection import train_test_split
 
-# Laden des Sklearn-Datensatzes
+# Laden des SciKit-learn-Datensatzes
 digits = load_digits()
 
 # Vorbereiten der Daten
@@ -249,7 +249,7 @@ Genauigkeit:  0.9688542825361512
 
 Damit ist schon eine Mehrheit der Kriterien zur Bewertung der SVM abgedeckt. Als Letztes muss nun die Einfachheit der Umsetzung bewertet werden.
 Es spricht für die \textit{Support Vector Machine}, dass uns die komplette Umsetzung des Algorithmus bereits abgenommen wurde und alle benötigten
-Funktionen durch die \textbf{Python}-Bibliothek \textbf{Sklearn} bereitgestellt werden. Die \textit{Support Vector Machine} ist damit sehr einfach
+Funktionen durch die \textbf{Python}-Bibliothek \textbf{SciKit-learn} bereitgestellt werden. Die \textit{Support Vector Machine} ist damit sehr einfach
 für unser Projekt zu verwenden.  Wie bereits im obigen Beispielcode \ref{lst:test_svm} zu sehen, braucht es nur drei Zeilen Code um eine SVM zu initialisieren,
 zu trainieren und neue Testdaten zu klassifizieren. Deshalb gebe ich der \textit{Support Vector Machine} eine Punktzahl von 5/5.
 Damit ist die Bewertung der dieses \textit{Machine Learning}-Algorithmus abgeschlossen. 
