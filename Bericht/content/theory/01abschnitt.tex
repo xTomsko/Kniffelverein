@@ -1,7 +1,44 @@
 %!TEX root = ../../dokumentation.tex
 %Theorie
 \section{Machine Learning}
+In den nachfolgenden Kapiteln werden die nötigen Grundlagen zum Thema \textit{Machine Learning} erläutert, die für das Verständnis dieser Arbeit wichtig sind.
+Zu Beginn wird es eine kurze Einleitung geben, in der \textit{Machine Learning} definiert und erklärt wird. Außerdem wird die MNIST-Datenbank vorgestellt, deren
+Daten als Basis für unsere Algorithmen dienen wird. Daraufhin werden die einzelnen \textit{Machine Learning}-Algorithmen näher beschrieben, die in die engere
+Auswahl für das Projekt gekommen sind. Dazu gehören die Algorithmen \textit{K-Nearest Neighbor}, die \textit{Support Vector Machine} und \textit{Convolutional
+Neural Networks}. Diese werden dann in einem späteren Kapitel miteinander verglichen, um den am besten geeigneten \textit{Machine Learning}-Algorithmus 
+für dieses Projekt zu ermitteln.
 
-\subsection{Grundlegende Theorie zu ML}
+\subsection{Grundlegende Theorie zu \textit{Machine Learning}}
+\textit{Machine Learning} oder auf Deutsch Maschinelles Lernen ist ein Teilgebiet innerhalb der Informatik, das sich aus dem Bereich der Künstlichen Intelligenz
+entwickelt hat. Es handelt sich hierbei um die Entwicklung von Algorithmen, die auf Basis eines Datensatzes trainiert werden und daraufhin Vorhersagen über
+weitere unbekannte Daten treffen kann. Beim Maschinellen Lernen wird im Gegensatz zur traditionallen Programmierung keine Liste an statischen Programmanweisungen
+ausgeführt, sondern es wird anhand von Beispieldaten ein Modell konstruiert, mit dem dann datengesteuerte Vorhersagen oder Entscheidungen getroffen werden
+können.\cite{simon_2015}
+
+Wenn wir zum Beispiel mit Hilfe eines Programmes den Spritverbrauch eines PKWs vorhersagen wollen, müssen zuerst Daten über das Auto gesammelt werden, die womöglich
+in Zusammenhang mit dem Spritverbrauch stehen könnten. Diese Daten des PKWs werden dann mit dem dazugehörigen Spritverbrauch in einen der verschiedenen verfügbaren 
+\textit{Machine Learning}-Algorithmen gegeben, der auf Basis dieser Daten trainiert wird. 
+Nachdem der Prozess des Maschinellen Lernens abgeschlossen ist, können auch Parameter bis dahin unbekannter Autos hineingegeben werden und der Algorithmus kann nun
+anhand der Traingsdaten eine Prognose für den Spritverbrauch des unbekannten Autos abgeben.
+\textit{Machine Learning} kann in vielen unterschiedlichen Situationen eingesetzt werden. Es braucht jedoch immer eine große Anzahl an Traingsdaten, um einen
+solchen Algorithmus sinnvoll trainieren zu können.
+
+Eine einfache Form des \textit{Machine Learning} ist die Lineare Regression. Dabei handelt es sich auch um einen Algorithmus, der auch Vorhersagen treffen kann.
+Die Lineare Regression basiert auf einer mathematischen Gleichung der Form: $h(x) = \theta_0 + \theta_1x $ mit $\theta_0$ und $\theta_1$ als Konstanten.
+Die Trainigsdaten enthalten jeweils einen Input $x$ und einen dazugehörigen Output $y$. Bei dem obigen Beispiel wäre $y$ der Spritverbrauch und $x$ zum Beispiel der
+Hubraum. Beim Trainieren versucht der Algorithmus die beiden Konstanten $\theta_0$ und $\theta_1$ in der Gleichung $h(x)$ so zu wählen, 
+dass der Unterschied zum erwarteten Output $y$ minimiert wird. Nach dem Trainieren ist die Gleichung optimiert und es wurden Werte für die beiden Konstanten ausgewählt.
+Nun kann auch ein unbekanntes $x$ in die Funktion gegeben werden, die dann eine Vorhersage für $y$ berechnet.\cite{simon_2015}
+
+Das wäre nur ein einfaches Beispiel für den Einsatz von Maschinellem Lernen. Es können jedoch auch mathematisch kompliziertere Sachverhalte durch \textit{Machine Learning}
+gelöst werden. Ein Einsatzbereich ist zum Beispiel die Erkennung von handgeschriebenen Ziffern anhand einer Bilddatei. Auch hier kann durch Maschinelles Lernen ein
+Algorithmus mit einer Vielzahl an Bilddateien trainiert werden, damit dieser enthaltene Muster erkennt und eine Vermutung für die abgebildete Ziffer abgibt. 
 
 \subsection{MNIST}
+Für die Erkennung von handgeschriebenen Ziffern trainieren wir den \textit{Machine Learning}-Algorithmus mit den Daten aus der MNIST-Datenbank.
+MNIST steht für Modified National Institute of Standards and Technology Datenbank. 
+Es ist eine öffenltich zugängliche Datenbank, die handgeschriebene Ziffern enthält.
+Sie enthält einen Trainigssatz aus 60.000 Beispielen, sowie einen dazugehörigen Testdatensatz, der 10.000 Testobjekte enthält.
+Dabei ist jede Ziffer als ein Graustufen-Bild der Größe 28 x 28 abgespeichert.
+Mit diesem Datensatz können sehr einfach \textit{Machine Learning}-Algorithmen, wie \textit{Convolutional Neural Networks} oder eine \textit{Support Vector Machine} trainiert
+werden, um dann unbekannte handschriftliche Ziffern zu erkennen.
