@@ -285,9 +285,9 @@ Um nun genauer nachzuvollziehen, wie ein Knoten in einem ANN operiert, gehen wir
 Die Verarbeitung der Eingabevektoren erfolgt durch die Anwendung der sogenannten Aktivierungsfunktion $a$. Die Aktivierungsfunktion ist die Summe der gesamten Eingabevektoren $[x_1,…,x_n]$ multipliziert mit einer Gewichtsmatrix $[w_1,...,w_n]^T$,
 wobei \textit{n} die Anzahl der vorherigen Knoten ist. Mathematisch ist sie wie folgt definiert:
 
-$a = \sum_{i=1}^{n} x_i w_i$
+\[a = \sum_{i=1}^{n} x_i w_i\]
 
-In der Abbildung \ref{fig:activation_function} wird die Aktivierungsfunktion $a$ dargestellt. Es ist erkennbar, wie jeder Eingabevektor $x_i$ mit einem Gewicht $w_i$ multipliziert wird und die Summe gebildet wird. Das Ergebnis der Aktivierungsfunktion $a$ ist die Ausgabe des Knotens und wird anschließend von folgenden Knoten in der nächsten Schicht als Eingabevektor verarbeitet. 
+In der Abbildung \ref{fig:act_fun} wird die Aktivierungsfunktion $a$ dargestellt. Es ist erkennbar, wie jeder Eingabevektor $x_i$ mit einem Gewicht $w_i$ multipliziert wird und anschließend die Summe aller Ergebnisse gebildet wird. Das Ergebnis der Aktivierungsfunktion $a$ ist die Ausgabe eines Knotens und wird anschließend von den folgenden Knoten in der nächsten Schicht als Eingabevektor verarbeitet. 
 
 \begin{figure}[H]
 	\centering
@@ -296,14 +296,41 @@ In der Abbildung \ref{fig:activation_function} wird die Aktivierungsfunktion $a$
 	\label{fig:act_fun}
 \end{figure}
 
-\cite*{Braspenning1995}
+Mit dieser Funktion können wir nachvollziehen, wie jeder einzelne Knoten seine Entscheidung trifft.\cite*{Braspenning1995}
 
-Mit dieser Funktion können wir nachvollziehen, wie ein Knoten seine Entscheidung trifft.
+Zusätzlich können wir eine \textit{Verlustfunktion} für das Netzwerk definieren, um die Genauigkeit der Entscheidungen zu messen. Bei den ANN existieren zwei verschiedene Arten von Verlustfunktion, die Klassifizierung-Verlustfunktion und die Regression-Verlustfunktion. 
+Die Klassifizierung-Verlustfunktion wird genutzt, wenn ein Netzwerk als Klassifizierer eingesetzt wird, wie es in diesem Test der Fall ist. Die Regression-Verlustfunktion wird bei Anwendungen der Vorhersage von bestimmten Werten.
+Unter den zwei Arten der Verlustfunktion für ANN existieren wiederum verschiedene mathematische Funktionen, mit denen sich der Wert je nach Anwendung berechnen lässt.\cite{dwivedi_2020}
+
+Im Folgenden wird die sogenannte \textit{Kreuzentropie} als Verlustfunktion verwendet oder auch log-loss genannt. Diese Verlustfunktion wird bei binärer Klassifikation eingesetzt und berechnet den Verlustwert mithilfe eines booleschen Wertes und dem errechneten Entscheidungswert des ANN. Bei dem booleschen Wert handelt es sich um 0 oder 1, der aussagt, ob das zu klassifizierende Objekt richtig erkannt wurde oder nicht. In der Abbildung \ref*{fig:crossentropy} wird die Kreuzentropie dargestellt. Anhand dieser Darstellung ist zu erkennen, wie der Verlustwert abhängig vom Entescheidungswert des ANN ist. Wenn der Entscheidungswert sich der 1 annähert, verringert sich der wert der Kreuzentropie.
+Für eine Klassifikation von zwei Klassen wird die Kreuzentropie wie folgt berechnet: 
+
+\[-(y\times log(p) + (1 - y) \times log(1-p))\]
+
+\begin{itemize}
+	\item $y$ ist der boolesche Wert, der angibt, ob das zu klassifizierende Objekt richtig erkannt wurde.
+	\item $p$ ist der errechnete Entscheidungswert des ANN.
+\end{itemize}
+
+Im Fall der Zahlenerkennung existiert für jede Zahl eine Klasse. Das Prinzip der Kreuzentropie lässt sich auf eine beliebige Anzahl von Klassen erweitern, in dem für jedes Label pro Beobachtung der Verlustwert berechnet wird und letztendlich summiert wird.
+
+\[ -\sum_{c=1}^{M}y_{o,c} \times log(p_{o,c}) \]
+
+\begin{itemize}
+	\item $c$ ist das Klassenlabel.
+\end{itemize}
+\cite{10.2307/2348828}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/theory/cross_entropy.png}
+	\caption{Graph einer \textit{Kreuzentropie} \cite{fortuna_viana_2019}} 
+	\label{fig:crossentropy}
+\end{figure}
 
 \subsubsection*{Von Artificial Neural Network zu Convolutional Neural Network}
 
-Dabei existieren drei Klassen von Schichten in einem CNN, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) 
-und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer). 
+Dabei existieren drei Klassen von Schichten in einem CNN, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer). 
 Zusätzlich gibt es eine Eingabeschicht und eine Ausgabeschicht. Die Ausgabeschicht stellt dabei eine vollständig verknüpfte Schicht dar.
 
 \subsubsection{Input Layer}
