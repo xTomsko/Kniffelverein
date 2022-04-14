@@ -374,4 +374,115 @@ Für das Skalieren wird am häufigsten die \textit{max pooling} Funktion verwend
 Die vollständig verbunden Schicht ist die einer versteckten Schicht in einem ANN gleich. Diese Schicht ist hauptsächlich für die Klassifizierung und Berechnungen der Wahrscheinlichkeit zuständig. Die Aktivierungsfunktion der Knoten in dieser Schicht ist wie bei der Filter-Schichten die ReLU Funktion.
 Einleitet wurde erwähnt, dass es sich bei der Ausgabeschicht ebenfalls um eine vollständig verbundene Schicht handelt. Diese wird auch als soft-max Schicht bezeichnet und gibt die letztendliche Klassifizierung des Bildes zurück.\cite*{Sewak2018}
 
+\subsubsection{Bewertung der Convolutional Neural Networks}
+
+Damit wir ein CNN mit der SVM und dem KNN vergleichen können, werden dieselben Bewertungskriterien untersucht. Die für die Bewertung relevanten Kriterien waren:
+
+\begin{itemize}
+\item \textit{Komplexität}
+\item \textit{Genauigkeit}
+\item \textit{Präzision}
+\item \textit{Einfachheit der Umsetzung}
+\end{itemize}
+
+Bevor wir genauer auf die Bewertungskriterien eingehen, werden wir uns mit dem für den Test konstruierten CNN beschäftigen.
+Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. Für die Konstruktion und die Ausführung des Tests benötigen wir verschiedene Bibliotheken, die dabei helfen können, die Bewertungskriterien zu ermitteln, sowie den CNN zu modellieren. Bei diesem Test wurde die Bibliothek \textbf{Tensorflow} verwendet, welche wiederum die \textbf{Keras} Bibliothek verwendet. Zusätzlich wurde die Bibliothek \textbf{NumPy} und \textbf{matplotlib} verwendet, um mithilfe von \textit{NumPy} die Daten zu strukturieren und mit \textit{matplotlib} die Ergebnisse darzustellen. 
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Python, caption=Pythoncode zur Testvorbereitung vom CNN, label=lst:test_prep_cnn]
+import tensorflow as tf
+import numpy as np
+import matplotlib.pyplot as plt
+
+mnist = tf.keras.datasets.mnist
+
+(x_train, y_train), (x_test, y_test) = mnist.load_data()
+
+y_train = y_train.astype('float32')
+y_test = y_test.astype('float32')
+
+# Erstellung von Binaerendaten 
+mask = x_train > 127.5
+maskb = x_train <= 127.5
+x_train[mask] = 255
+x_train[maskb] = 0
+
+# Shift to -1 to 1
+x_train, x_test = (x_train - 127.5) / 127.5, (x_test - 127.5) / 127.5
+
+# Datenaufteilung fuer Validierung
+x_val = x_train[-10000:]
+y_val = y_train[-10000:]
+x_train = x_train[:-10000]
+y_train = y_train[:-10000]
+
+	\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Python, caption=Pythoncode zur Konstuktion vom CNNs, label=lst:test_cnn]
+#CNN
+model = tf.keras.models.Sequential([
+		tf.keras.layers.Conv2D(32, kernel_size=(3, 3),
+							activation='relu',
+							input_shape=(28, 28, 1)),
+	tf.keras.layers.Conv2D(32, kernel_size=(3, 3),
+							activation='relu'),
+	tf.keras.layers.Conv2D(32, kernel_size=(3, 3),
+							activation='relu'),
+	tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+	tf.keras.layers.Dropout(0.5),
+	tf.keras.layers.Flatten(),
+	tf.keras.layers.Dense(128, activation='relu'),
+	tf.keras.layers.Dropout(0.25),
+	tf.keras.layers.Dense(10, activation='softmax')
+])
+
+model.summary()
+model.compile(optimizer='adam',
+				loss='sparse_categorical_crossentropy',
+				metrics=['accuracy'])
+
+x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], x_train.shape[2], 1))
+x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], x_test.shape[2], 1))
+x_val = np.reshape(x_val, (x_val.shape[0], x_val.shape[1], x_val.shape[2], 1))
+				
+model_data = model.fit(x_train, y_train, epochs=10, batch_size=128, validation_data=(x_val, y_val))
+model.evaluate(x_test, y_test, verbose=2)
+\end{lstlisting}
+\end{minipage}
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Python, caption=Pythoncode zum Darstellen der Daten, label=lst:test_plot_cnn]
+print(model_data.history)
+plt.subplot(2, 1, 1)
+plt.plot(model_data.history['accuracy'])
+plt.plot(model_data.history['val_accuracy'])
+plt.title('model accuracy')
+plt.ylabel('accuracy')
+plt.xlabel('epoch')
+plt.legend(['train acc', 'val acc'], loc='lower right')
+plt.subplot(2, 1, 2)
+plt.plot(model_data.history['loss'])
+plt.plot(model_data.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train loss', 'val loss'], loc='upper right')
+plt.tight_layout()
+plt.show()
+	\end{lstlisting}
+\end{minipage}
+
+Diese werden im Folgenden genauer Untersucht und erläutert.
+
+\subsubsection{Komplexität}
+Um die Komplexität eines CNN zu berechnen
+
+\subsubsection{Genauigkeit}
+
+\subsubsection{Präzision}
+
+\subsubsection{Einfachheit der Umsetzung}
+
 \subsection{Auswertung des Vergleiches}

@@ -1,10 +1,6 @@
 import tensorflow as tf
 import numpy as np
-import cv2 as cv
 import matplotlib.pyplot as plt
-import requests
-requests.packages.urllib3.disable_warnings()
-import ssl
 
 mnist = tf.keras.datasets.mnist
 
@@ -79,6 +75,5 @@ plt.xlabel('epoch')
 plt.legend(['train loss', 'val loss'], loc='upper right')
 plt.tight_layout()
 plt.show()
-
 
 model.save('./models/model_tensorflow')
