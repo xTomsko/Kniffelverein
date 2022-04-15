@@ -1,6 +1,6 @@
 %!TEX root = ../../dokumentation.tex
 %Umsetzung
-\section{Image Preprocessing / Bildvorverarbeitung (Alex)}
+\section{Image Preprocessing / Bildvorverarbeitung (Alex)} \label{sec:imagepreprocessing}
 Bevor die geschriebenen Spielergebnisse für die Auswertung in die \textit{Support Vector Machine} gegeben werden können, müssen diese zuerst
 für den \textit{Machine Learning}-Algorithmus vorbereitet werden. Dieser Prozess der Bildvorverarbeitung muss wiederum in weitere kleinere
 Schritte aufgeteilt werden. Der Prozess beginnt mit einer Bilddatei, die von einem Nutzer in die Webapplikation hochgeladen wird. 
@@ -67,7 +67,7 @@ abgebildet. Als Vorlage für den Code diente die Implementierung von \citeauthor
 von \textbf{OpenCV} eingelesen werden. Vor dem eigentlichen \textit{Image Alignment} werden die beiden Bilder noch in ein Schwarzweiß-Format konvertiert.
 
 Daraufhin werden mit Hilfe von \textbf{OpenCV} die ORB-\textit{Features} auf den beiden Eingangsbildern erkannt.
-ORB steht hier für \textit{Oriented FAST and Rotated BRIEF}. Die ORB-\textit{Features} bestehen immer aus zwei Elementem: dem sogenannten 
+ORB steht hier für \textit{Oriented FAST and Rotated BRIEF}. Die ORB-\textit{Features} bestehen immer aus zwei Elementen: dem sogenannten 
 \textit{Locator} sowie dem \textit{Descriptor}. Der \textit{Locator} identifiziert die \textit{Features}, die unabhängig von Verschiebung, Rotation und Skalierung
 sind. Im \textit{Locator} werden die Koordinaten dieser Punkte abgespeichert. Der \textit{Descriptor} eines ORB-\textit{Features} codiert die äußeren Merkmale
 des \textit{Features} als ein Array von Zahlen. Idealerweise haben die gleichen Punkte auf zwei verschiedenen Bildern auch denselben \textit{Descriptor}.
