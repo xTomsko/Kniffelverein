@@ -14,17 +14,17 @@ wird dann vom Nutzer abfotografiert und auf die Webseite hochgeladen. Damit die 
 müssen die einzelnen Zellen der Tabelle, die die Spielergebnisse enthalten, aus dem hochgeladenen Bild ausgeschnitten werden. Eine Idee ist
 ein Gitter über das Bild zu legen, das mit der Tabelle übereinstimmt, um so die einzelnen Zellen herauszuschneiden.
 
-Ein Problem hierbei ist, dass das eingehende Bild von dem Nutzer abhängig ist. Die Qualität der Bilddatei und die Ausrichtung der darin abbgebildeten 
+Ein Problem hierbei ist, dass das eingehende Bild von dem Nutzer abhängig ist. Die Qualität der Bilddatei und die Ausrichtung der darin abgebildeten 
 Kniffel-Vorlage kann stark variieren. Es bestehen zwei Möglichkeiten dieses Problem zu lösen. Eine Lösung wäre es die Eckpunkte der Tabelle zu erkennen und 
-dann das daraufzulegende Gitter anzupassen und daran auszurichten. Oder es wird da komplette Bild genommen und so ausgerichtet damit die abbgebildete Tabelle
-immer an der selben Position liegt. So kann immer das selbe Gitter über das Bild gelegt werden und es muss nicht nochmals angepasst werden.
+dann das daraufzulegende Gitter anzupassen und daran auszurichten. Oder es wird da komplette Bild genommen und so ausgerichtet damit die abgebildete Tabelle
+immer an derselben Position liegt. So kann immer dasselbe Gitter über das Bild gelegt werden und es muss nicht nochmals angepasst werden.
 Bei der Umsetzung des Projektes fiel die Wahl auf den zweiten vorgestellten Lösungsansatz. Dieser Vorgang wird als \textit{Image Alignment} bezeichnet.
 
 Der Prozess des \textit{Image Alignments} besteht aus drei verschiedenen Einzelschritten.
-Zuert werden zwei Bilder in den Algorithmus hineingegeben, die beide das selbe Objekt zeigen, jedoch aus verschiedenen Blickwinkel beziehungsweise Perspektiven. 
+Zuerst werden zwei Bilder in den Algorithmus hineingegeben, die beide dasselbe Objekt zeigen, jedoch aus verschiedenen Blickwinkel beziehungsweise Perspektiven. 
 Aus diesen beiden Eingangsbildern wird eine dann eine sogenannte Homografiematrix berechnet. Um diese Homografiematrix berechnen zu können gibt es verschiedene
 Möglichkeiten. Häufig werden hierfür die \textit{Key Points} des Objektes betrachtet und wie die Position dieser Punkte auf den beiden Bildern miteinander korrespondieren. 
-Zur Berechnung einer Homografiematrix können neben der \textit{feature}-basierten \textit{Key Point}-Korrespondez jedoch auch Neuronale Netzwerke eingesetzt werden. 
+Zur Berechnung einer Homografiematrix können neben der \textit{feature}-basierten \textit{Key Point}-Korrespondez jedoch auch neuronale Netzwerke eingesetzt werden. 
 Die Homografiematrix wird dann am Ende des \textit{Image Alignments} auf eines der Eingangsbilder angewandt und die Perspektive des Bildes damit so verzerrt, 
 dass beide Bilder nun das abgebildete Objekt aus derselben Perspektive zeigen.\cite{rosebrock}
 
@@ -35,7 +35,7 @@ dass beide Bilder nun das abgebildete Objekt aus derselben Perspektive zeigen.\c
 	\label{fig:image_alignment}
 \end{figure}
 
-Abbildung \ref{fig:image_alignment} visulisiert das oben beschriebene \textit{Image Alignment}. Links ist die Yahtzee-Vorlage abgebildet, die auf der Webseite 
+Abbildung \ref{fig:image_alignment} visualisiert das oben beschriebene \textit{Image Alignment}. Links ist die Yahtzee-Vorlage abgebildet, die auf der Webseite 
 bereitgestellt wird und dann vom Nutzer heruntergeladen werden kann, der die Spielergebnisse einträgt. Die ausgefüllte Vorlage könnte dann so aussehen, wie das 
 Bild in der Mitte, das das abfotografierte Formular zeigt. Zu guter Letzt sieht man auf der rechten Seite die abfotografierte Vorlage, die mit Hilfe von 
 \textit{Image Alignment} so ausgerichtet wurde wie das linke Bild.
@@ -63,14 +63,14 @@ ist \hyperref{https://docs.opencv.org/4.x/d9/dab/tutorial_homography.html}{}{}{h
 \begin{bmatrix} x \\ y \\ 1 \end{bmatrix}\]
 Viele der benötigten Funktionalitäten für das \textit{Image Alignment} werden bereits durch \textbf{OpenCV} bereitgestellt.
 Die einzelnen Schritte müssen nun in \textbf{Python}-Code überführt werden. Der fertige Code, der in der Webapplikation verwendet wird, ist in \ref{lst:align_images}
-abbgebildet. Als Vorlage für den Code, diente die Implementierung von \citeauthor{rosebrock}. Zuerst müssen das abfotografierte Bild und das Referenzbild
+abgebildet. Als Vorlage für den Code diente die Implementierung von \citeauthor{rosebrock}. Zuerst müssen das abfotografierte Bild und das Referenzbild
 von \textbf{OpenCV} eingelesen werden. Vor dem eigentlichen \textit{Image Alignment} werden die beiden Bilder noch in ein Schwarzweiß-Format konvertiert.
 
 Daraufhin werden mit Hilfe von \textbf{OpenCV} die ORB-\textit{Features} auf den beiden Eingangsbildern erkannt.
 ORB steht hier für \textit{Oriented FAST and Rotated BRIEF}. Die ORB-\textit{Features} bestehen immer aus zwei Elementem: dem sogenannten 
 \textit{Locator} sowie dem \textit{Descriptor}. Der \textit{Locator} identifiziert die \textit{Features}, die unabhängig von Verschiebung, Rotation und Skalierung
 sind. Im \textit{Locator} werden die Koordinaten dieser Punkte abgespeichert. Der \textit{Descriptor} eines ORB-\textit{Features} codiert die äußeren Merkmale
-des \textit{Features} als ein Array von Zahlen. Idealerweise haben die gleichen Punkte auf zwei verschiedenen Bildern auch den selben \textit{Descriptor}.
+des \textit{Features} als ein Array von Zahlen. Idealerweise haben die gleichen Punkte auf zwei verschiedenen Bildern auch denselben \textit{Descriptor}.
 Die maximale Anzahl der zu erkennenden \textit{Features} werden mit dem Parameter \texttt{MAX\_FEATURES} festgelegt.
 
 Danach werden die erkannten \textit{Features} der beiden Bilder einander anhand ihrer \textit{Descriptors} zugeordnet. 
@@ -81,7 +81,7 @@ Matches nach dem Herausfiltern übrig bleiben sollen. In unserem Fall setzen wir
 
 Als Nächstes wird die Positionierung der einzelnen Matches extrahiert und in einen \textbf{NumPy}-Array geschrieben. Mit Hilfe des RANSAC-Algorithmus wird
 aus den Matches eine Homografiematrix berechnet. Diese Homografiematrix wird durch eine perspektivische Verzerrung auf das erste Bild angewendet.
-Das neue Bild sowie die Homografiematrix werden zu guter Letzt von der Funktion zurückgegeben. Bild 1 hat nun die selbe Perspektive auf das abbgebildete Objekt,
+Das neue Bild sowie die Homografiematrix werden zu guter Letzt von der Funktion zurückgegeben. Bild 1 hat nun dieselbe Perspektive auf das abgebildete Objekt,
 wie die Vorlage in Bild 2.
 
 \begin{minipage}{\textwidth}
@@ -132,7 +132,7 @@ def align_images(im1, im2):
 	\end{lstlisting}
 \end{minipage}
 
-Die Eingangsbilder werden nun durch das \textit{Image Alignment} in dasselbe Format gebracht und zeigen danach die abbgebildete Vorlage aus derselben Perspektive.
+Die Eingangsbilder werden nun durch das \textit{Image Alignment} in dasselbe Format gebracht und zeigen danach die abgebildete Vorlage aus derselben Perspektive.
 Da die Zellen der Tabelle aufgrund des \textit{Image Alignments} bis auf wenige Millimeter mit den Zellen der Vorlage übereinstimmen, können die Zellen einfach
 anhand ihrer Koordinaten ausgeschnitten werden. Die minimalen Unterschiede, die das \textit{Image Alignment} nicht ausgleichen kann, können hierfür unberücksichtigt
 bleiben.
@@ -144,4 +144,4 @@ Tabellenzelle, sowie dessen Breite und Höhe. Diese vier Werte werden für den \
 Mit Hilfe dieses Skriptes und \textbf{OpenCV} kann sehr einfach über die benötigten Spalten und Zeilen der Tabelle iteriert werden und die dazugehörige Zelle der 
 Tabelle ausgeschnitten werden. Die ausgeschnittenen Tabellenzellen können jedoch noch nicht in den \textit{Machine Learning}-Algorithmus gegeben werden, da es sich immer
 noch um mehrstellige Zahlen in der Zelle handeln könnte. Diese können noch nicht vom Algorithmus ausgewertet werden, da dieser nur Zahlen erkennen kann.
-Wie mehrstellige Zahlen erfasst werden können wird im darauffolgenden Kapitel zur Zahlenerkennung beantwortet.
+Wie mehrstellige Zahlen erfasst werden können, wird im darauffolgenden Kapitel zur Zahlenerkennung beantwortet.

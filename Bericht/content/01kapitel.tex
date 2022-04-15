@@ -1,8 +1,49 @@
 %!TEX root = ../dokumentation.tex
 \chapter{Einleitung}
-\comment{Die Einleitung soll den Ausgangspunkt der Arbeit umreißen, in kurzer Form zur Problemstellung hinführen
-und das Interesse des Lesers für die Arbeit wecken. Allgemeine Einleitung ins Thema, keine Unternehmensoder
-Produktbeschreibungen, Organigramme u.ä., wenn diese nicht direkt zum Thema führen.
-Ziele und Vorgehensweise nicht vermischen.}
+\section{Motivation}
+Brett- und Gemeinschaftsspiele haben während der Corona-Pandemie einen „Boom“ erlebt. Es war keine Seltenheit, dass auf herkömmlichen Gesellschaftsspiele zurückgegriffen wurde, um die schwere Zeit im Lockdown aufzuheitern. \cite{dw_2021}\\
+Persönlich wurde häufig das Spiel \textit{Kniffel} mit der Familie gespielt, bei dem jeder Spieler seine Spielergebnisse auf ein Blatt Papier niederschreibt. Als Student der Informatik und Interessierter der Statistik sind die Spielergebnisse in analoger Form so nur mühselig auszuwerten. Um zum Beispiel Trends über mehrere Spiele hinweg zu analysieren, müsste eine Digitalisierung der Daten vorgenommen werden. Diese Digitalisierung ist jedoch als manuelle Datenverarbeitung sehr zeitaufwendig.
 
+In den letzten Jahren ist \textit{Machinelles Lernen} und \textit{Künstlichen Intelligenz} im Bereich der Informatik ein stetig wachsendes Forschungsgebiet. 
+Es entstehen zunehmend Lösungen für Probleme unter dem Einsatz von Algorithmen aus der dem Bereich der \textit{Künstlichen Intelligenz}. Die allgemeine Erkennung von Zahlen auf einem Bild ist bereits sehr gut untersucht worden, der Einsatz für die Digitalisierung von Spielergebnissen vom Spiel Kniffel ist jedoch weitestgehend unerforscht. 
+
+\section{Aufgabenstellung (Alex)}
+Im Rahmen der vorliegenden Studienarbeit soll ein entsprechendes System entwickelt werden, mit dessen Hilfe analoge papierbasierte Spielergebnisse des
+Gesellschaftsspieles „Kniffel“ beziehungsweise „Yathzee“ digitalisiert werden können. Für die Erkennung der einzelnen Spielergebnisse und die Überführung in ein digitales Format soll eine automatische \textit{Machine Learning}-gestützte Bilderkennung eingesetzt werden. Nach der Digitalisierung der Daten sollen die Spielergebnisse ausgewertet und visualisiert werden.
+
+Für die Implementierung der Webapplikation können drei große Arbeitspakete identifiziert werden. Zuerst müssen die Daten hochgeladen werden können und das hochgeladene Bild mit den analogen Spielergebnissen für die Bildverarbeitung vorbereitet werden. Nach dem Prozess des Image Processing muss mit Hilfe eines \textit{Machine Learning}-
+Algorithmus die einzelnen Ziffern auf dem Bild erkannt werden.
+Nach der Bilderkennung sollen die Spielergebnisse dann ausgewertet und für den Nutzer visualisiert werden.
+
+Für das Software-Projekt wurden die User Stories in der Tabelle \ref{table:user_stories} definiert.
+\begin{table}[]
+    \begin{tabular}{m{2.5cm}|m{12cm}}
+    \textbf{ID} & \textbf{User Story}                                                                                              \\ \hline
+    01          & Als ein Nutzer SOLL ein Bild hochgeladen werden können                                                           \\
+    02          & Als ein Nutzer SOLLEN die Spielergebnisse auf dem Bild mit einem Machine Learning Algortihmus ausgewertet werden \\
+    03          & Als ein Nutzer SOLLEN die digitalisierten Spielergebnisse überprüfbar und wenn nötig korrigierbar sein           \\
+    04          & Als ein Nutzer SOLLEN die digitalisierten Spielergebnisse in einer Datenbank abgespeichert werden                \\
+    05          & Als ein Nutzer SOLL eine statistische Auswertung aller hochgeladenen Spielergebnisse zur Verfügung stehen        \\
+    06          & Als ein Nutzer KANN man sich registrieren                                                                        \\
+    07          & Als ein Nutzer KANN man sich ein- und ausloggen                                                                  \\
+    08          & Als ein Nutzer KANN man seine eigenen hochgeladenen Spielergebnisse anzeigen lassen                             
+    \end{tabular}
+    \caption{User Stories}
+    \label{table:user_stories}
+\end{table}
+
+\section{Vorgehensweise}
+Bevor die Umsetzung der User Stories für das zu entwickelnde System erfolgt, soll zunächst ein wissenschaftlicher Vergleich verschiedener Algorithmen zur Ziffernerkennung durchgeführt werden. Der Vergleich soll dazu dienen, einen geeigneten Algorithmus für das Projekt auszuwählen. Es wurde im Vorhinein eine Auswahl der zu untersuchenden Algorithmen getroffen. Die drei \textit{Machine Learning}-Algorithmen sind \textit{K-Nearest-Neighbor}, die \textit{Support Vector Machine} und \textit{Convolutional Neural Networks}.
+
+Im Anschluss soll die Umsetzung des Systems erfolgen. Die Umsetzung erfolgt durch den Einsatz der definierten User Stories in \ref{table:user_stories}, welche für den Entwicklungsprozess in weitere kleinere Arbeitspakete unterteilt wurden. Der Entwicklungsprozess wurde agil gestaltet durch die Verwendung von \textit{Kanban}. Die definierten Arbeitspakete wurden auf einem \textit{Kanban}-Board visualisiert und zugeordnet.
+
+\section{Aufbau der Studienarbeit}
+Der Aufbau der Studienarbeit ist so gestaltet, dass am Anfang eine Einführung in das Thema \textit{Machine Learning} stattfindet, um die Grundlagen des Themas zu erläutern. Die Einführung findet in Kapitel \ref{sec:machinelearning} statt und geht dann über in den Vergleich der verschiedenen Algorithmen der Bilderkennung in Kapitel \ref{sec:compare}. Der Vergleich beginnt, in dem jeder Algorithmus zunächst vorgestellt wird und der Ablauf des jeweiligen Tests behandelt wird. Die Tests werden in der folgenden Reihenfolge durchgeführt und diskutiert:
+\begin{itemize}
+    \item \textit{K-Nearest-Neighbor} \ref{ssec:knn}
+    \item \textit{Support Vector Machine} \ref{ssec:svm}
+    \item \textit{Convolutional Neural Networks} \ref{ssec:cnn}
+\end{itemize}
+
+Anschließend wird im Kapitel \ref{ssec:eval} die Evaluierung des Vergleichs vorgenommen und diskutiert, weshalb welcher Algorithmus für die Umsetzung ausgewählt wurde.
 

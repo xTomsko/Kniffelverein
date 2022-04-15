@@ -1,4 +1,4 @@
-\section{Vergleich verschiedener \textit{Machine Learning}-Algorithmen (Alex)}
+\section{Vergleich verschiedener \textit{Machine Learning}-Algorithmen (Alex)} \label{sec:compare}
 In diesem Kapitel sollen unterschiedliche \textit{Machine Learning}-Algorithmen mit Hinblick auf das Projekt miteinander verglichen werden.
 Es wurde bereits eine Vorauswahl getroffen und für den Vergleich wurden die Algorithmen \textit{K-Nearest-Neighbor}, die \textit{Support Vector Machine} und
 \textit{Convolutional Neural Networks} ausgewählt. Für einen fairen Vergleich wird beim Trainieren aller zuvor genannten \textit{Machine Learning}-Algorithmen
@@ -15,9 +15,11 @@ eins bis fünf beurteilt.
 In den folgenden Unterkapiteln werden die drei \textit{Machine Learning}-Algorithmen aus der Vorauswahl näher beschrieben und eine Evaluation nach den genannten 
 Kriterien vorgenommen.
 
-\subsection{KNN (Dirk)}
+\subsection{KNN (Dirk)} \label{ssec:knn}
 
-\subsection{Support Vector Machine (Alex)}
+\newpage
+
+\subsection{Support Vector Machine (Alex)} \label{ssec:svm}
 Die \textit{Support Vector Machine} (SVM) ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
 Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
 SVMs können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
@@ -272,7 +274,7 @@ Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks}
 
 \newpage
 
-\subsection{Convolutional Neural Networks}
+\subsection{Convolutional Neural Networks} \label{ssec:cnn}
 Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die der \textit{Convolutional Neural Networks} (CNN).
 
 Die CNN wird ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN jedoch auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \cite*{10.1007/978-3-319-45378-1_1}
@@ -374,6 +376,8 @@ Für das Skalieren wird am häufigsten die \textit{max pooling} Funktion verwend
 Die vollständig verbunden Schicht ist die einer versteckten Schicht in einem ANN gleich. Diese Schicht ist hauptsächlich für die Klassifizierung und Berechnungen der Wahrscheinlichkeit zuständig. Die Aktivierungsfunktion der Knoten in dieser Schicht ist wie bei der Filter-Schichten die ReLU Funktion.
 Einleitet wurde erwähnt, dass es sich bei der Ausgabeschicht ebenfalls um eine vollständig verbundene Schicht handelt. Diese wird auch als soft-max Schicht bezeichnet und gibt die letztendliche Klassifizierung des Bildes zurück.\cite*{Sewak2018}
 
+\newpage
+
 \subsubsection{Bewertung der Convolutional Neural Networks}
 
 Damit wir ein CNN mit der SVM und dem KNN vergleichen können, werden dieselben Bewertungskriterien untersucht. Die für die Bewertung relevanten Kriterien waren:
@@ -386,7 +390,7 @@ Damit wir ein CNN mit der SVM und dem KNN vergleichen können, werden dieselben 
 \end{itemize}
 
 Bevor wir genauer auf die Bewertungskriterien eingehen, werden wir uns mit dem für den Test konstruierten CNN beschäftigen.
-Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. Für die Konstruktion und die Ausführung des Tests benötigen wir verschiedene Bibliotheken, die dabei helfen können, die Bewertungskriterien zu ermitteln, sowie den CNN zu modellieren. Bei diesem Test wurde die Bibliothek \textbf{Tensorflow} verwendet, welche wiederum die \textbf{Keras} Bibliothek verwendet. Zusätzlich wurde die Bibliothek \textbf{NumPy} und \textbf{matplotlib} verwendet, um mit Hilfe von \textit{NumPy} die Daten zu strukturieren und mit \textit{matplotlib} die Ergebnisse darzustellen.
+Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. Für die Konstruktion und die Ausführung des Tests benötigen wir verschiedene Bibliotheken, die dabei helfen können, die Bewertungskriterien zu ermitteln, sowie den CNN zu modellieren. Bei diesem Test wurde die Bibliothek \textbf{Tensorflow} verwendet, welche wiederum die \textbf{Keras} Bibliothek verwendet. Zusätzlich wurde die Bibliothek \textbf{NumPy} und \textbf{matplotlib} verwendet, um mit Hilfe von \textit{NumPy} die Daten zu strukturieren und mit \textit{matplotlib} die Ergebnisse darzustellen. Den Programmcode zum Importieren der notwendigen Bibliotheken, sowie die Vorbereitung für den CNN ist in Codeabschnitt \ref{lst:test_prep_cnn} zu finden. In diesem Abschnitt werden zunächst die Bibliotheken importiert und die MNIST-Datenbank wird geladen. Beim Laden der Daten werden die Daten bereits in Trainingsobjekte und Testobjekte unterteilt.
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Pythoncode zur Testvorbereitung vom CNN, label=lst:test_prep_cnn]
@@ -418,6 +422,19 @@ y_train = y_train[:-10000]
 
 	\end{lstlisting}
 \end{minipage}
+
+Im Folgenden Codeabschnitt wird das CNN-Model definiert. Das Model wurde mit folgenden Schichten definiert:
+
+\begin{itemize}
+	\item Filter-Schicht (Eingabeschicht)
+	\item Filter-Schicht
+	\item Filter-Schicht
+	\item Aggregations-Schicht
+	\item Vollständig-verbundene-Schicht
+	\item Vollständig-verbundene-Schicht (Ausgabeschicht)
+\end{itemize}
+
+Die zusätzlich zu sehenden Schichten \textit{Dropout} und \textit{Flatten} wurden definiert, um die Komplexität des Models zu reduzieren. Dieser Effekt ist nur während des Trainierens sichtbar. Bei der \textit{Dropout}-Schicht handelt es sich um eine Schicht, die mit einer gewählten Wahrscheinlichkeit von \textit{0,25} einen Knoten aus der Schicht ausschaltet, um \textit{overfitting} zu verhindern. Die \textit{Flatten}-Schicht formt die mehrdimensionalen Daten in eine einzelne Dimension um, damit diese von der vollständig-verbunden-Schicht verarbeitet werden können.
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Pythoncode zur Konstuktion vom CNN, label=lst:test_cnn]
@@ -485,4 +502,4 @@ Um die Komplexität eines CNN zu berechnen.
 
 \subsubsection{Einfachheit der Umsetzung}
 
-\subsection{Auswertung des Vergleiches}
+\subsection{Auswertung des Vergleiches} \label{ssec:eval}
