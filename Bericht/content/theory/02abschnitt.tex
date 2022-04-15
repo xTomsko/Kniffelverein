@@ -12,7 +12,7 @@ Trainingsobjekte, während die \textbf{Präzision} durch folgende Gleichung best
 Danach wird die \textbf{Einfachheit der Umsetzung} der zu bewertenden \textit{Machine Learning}-Algorithmen von der testenden Person auf Basis einer Skala von
 eins bis fünf beurteilt.
 
-In den folgenden Unterkapiteln werden die drei \textit{Machine Learning}-Algorithmen aus der Vorauwahl näher beschrieben und eine Evaluation nach den genannten 
+In den folgenden Unterkapiteln werden die drei \textit{Machine Learning}-Algorithmen aus der Vorauswahl näher beschrieben und eine Evaluation nach den genannten 
 Kriterien vorgenommen.
 
 \subsection{KNN (Dirk)}
@@ -21,15 +21,15 @@ Kriterien vorgenommen.
 Die \textit{Support Vector Machine} (SVM) ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
 Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
 SVMs können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
-Bevor die SVM entwickelt wurde gab es verschiedene Vorgängertechnologien aus denen am Ende die heutige \textit{Support Vector Machine} hervorgegangen ist. 
+Bevor die SVM entwickelt wurde, gab es verschiedene Vorgängertechnologien aus denen am Ende die heutige \textit{Support Vector Machine} hervorgegangen ist. 
 Diese Algorithmen sind einmal der \textit{Maximal Margin Classifier} und der \textit{Support Vector Classifier}, 
-der eine Weiterentwicklung des Zuvorgenannten darstellt.
+der eine Weiterentwicklung des zuvor genannten darstellt.
 Die \textit{Support Vector Machine} ist wiederum eine Erweiterung des \textit{Support Vector Classifier}.
 Alle diese Klassifizierer werden meist lose unter dem Begriff \textit{Support Vector Machine} zusammengefasst,
 müssen jedoch klar unterschieden werden.\cite[S. 337]{james_2013}
 
 Die Terminologie im Bereich der \textit{Support Vector Machine} ist nicht ganz klar und kann sich in verschiedenen Veröffentlichungen unterscheiden.
-Eine andere Differenzierung der Vorgängertechnologien ist die Einteilung in Lineare Klassifizierer und Nichtlineare Klassifizierer.
+Eine andere Differenzierung der Vorgängertechnologien ist die Einteilung in Lineare Klassifizierer und nicht-lineare Klassifizierer.
 Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus (LSVM), mit dem iterativ SVMs trainiert werden können.\cite[S. 207]{suthaharan_2015}
 In dieser Arbeit verwenden wir die zuvor genannte Einteilung in \textit{Maximal Margin Classifier}, \textit{Support Vector Classifier}
 und \textit{Support Vector Machine}. An ihr lässt sich die kontinuierliche Weiterentwicklung der Algorithmen am besten verfolgen und am übersichtlichsten darstellen.
@@ -70,10 +70,10 @@ die aus $n$ Trainingsobjekten innerhalb eines $p$-dimensionalen Raumes besteht.
   x_n = \left(\begin{array}{c} x_{n1} \\ \vdots \\ x_{np} \end{array}\right) \]
 Diese Trainingsobjekte sind definiert als Vektoren der Länge $p$, die die einzelnen beobachteten \textit{Features} 
 $x^* = (x_1^* \dots x_p^*)^T$ enthalten und werden jeweils einer von zwei Klassen zugeordnet $y_1,\dots,y_n \in \{-1,1\}$.
-Wenn die \textit{Hyperplane} die Trainingsobjekte perfekt anhand ihrer Label trennt,
+Wenn die \textit{Hyperplane} die Trainingsobjekte perfekt anhand ihrer Labels trennt,
 dann spricht man von einer \textit{separierenden Hyperplane}. 
 Alle Objekte aus der einen Klassen fallen auf die linke Seite der \textit{Hyperplane}.
-Während die Trainigsobjekte mit dem anderen Label auf der rechten Seite der \textit{Hyperplane} liegen.
+Während die Trainingsobjekte mit dem anderen Label auf der rechten Seite der \textit{Hyperplane} liegen.
 Eine \textit{separierende Hyperplane} lässt sich mathematisch definieren durch folgende zwei Gleichungen:
 \[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p> 0 \text{ if } y_i = 1\]
 \[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p< 0 \text{ if } y_i = -1\]
@@ -93,12 +93,12 @@ um Daten klassifizieren zu können. Wenn die Daten durch eine \textit{separieren
 gibt es unendlich viele Möglichkeiten, wie diese liegen kann. Für bestmögliche Ergebnisse beim Klassifizieren muss
 deshalb die optimale \textit{separierende Hyperplane} gefunden werden. Die natürliche Wahl ist es die 'Mittigste' der
 \textit{separierenden Hyperplanes} zu verwenden. Diese wird auch \textit{Maximal Margin Hyperplane} genannt.
-Mit Hilfe der Trainigsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich entfernt von den
-nächsten Traingsobjekten liegt.\cite[S. 1565f.]{noble_2006}
+Mit Hilfe der Trainingsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich entfernt von den
+nächsten Trainingsobjekten liegt.\cite[S. 1565f.]{noble_2006}
 
 Die Abbildung \ref{fig:separating_hyperplanes} zeigt zehn verschiedene Trainingsobjekte, die alle durch zwei Variablen definiert sind und
 einem der beiden Label $\{blau, rot\}$ zugeordnet sind. Außerdem sind drei unterschiedliche \textit{Hyperplanes} abgebildet, die alle 
-\textit{separierende Hyperplanes} in Bezug auf unsere Trainigsdaten sind. Die Auswahl der 'perfekten' \textit{Hyperplane} für die SVM ist
+\textit{separierende Hyperplanes} in Bezug auf unsere Trainingsdaten sind. Die Auswahl der „perfekten“ \textit{Hyperplane} für die SVM ist
 damit mathematisches Optimierungsproblem. 
 Weitere Informationen zu dem Trainingsmodell einer SVM sind in dem Werk von \citeauthor{suthaharan_2015} zu finden.\cite[S. 210ff.]{suthaharan_2015}
 \begin{figure}[H]
@@ -107,19 +107,19 @@ Weitere Informationen zu dem Trainingsmodell einer SVM sind in dem Werk von \cit
 	\caption{Beispiele für \textit{separierende Hyperplanes}} 
 	\label{fig:separating_hyperplanes}
 \end{figure}
-Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächst gelegenen Traingsobjekten beider Labels
+Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächstgelegenen Trainingsobjekten beider Labels
 wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} am größten ist,
 wird daraus folgend auch \textit{Maximal Margin Hyperplane} genannt.
-Die Traingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und damit auch den selben Abstand zu dieser haben,
-werden als die Stützvektoren bezeichnet. Sie 'stützen' die \textit{Maximal Margin Hyperplane}.
-Die Stützvektoren sind demnach die einzigen Traingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
+Die Trainingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und damit auch denselben Abstand zu dieser haben,
+werden als die Stützvektoren bezeichnet. Sie „stützen“ die \textit{Maximal Margin Hyperplane}.
+Die Stützvektoren sind demnach die einzigen Trainingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
 Mit Hilfe der \textit{Maximal Margin Hyperplane} kann der 
 \textit{Maximal Margin Classifier} nun neue unbekannte Testdaten klassifizieren, je nach dem auf welcher Seite sie liegen.
 Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.\cite[S. 1566]{noble_2006}
 
-Eine solche \textit{Maximal Margin Hyperplane} ist in \ref{fig:maximal_margin} abgebildet. Die abbgebildeten Trainingsdaten sind die selben
-wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die 'mittigste' \textit{separierende Hyperplane} gefunden, die die Trainigsdaten
-anhand ihrer Label trennen kann. Außerdem zu sehen, sind die am nächsten gelegen Trainigsobjekte auf beiden Seiten der \textit{Hyperplane}, die als
+Eine solche \textit{Maximal Margin Hyperplane} ist in \ref{fig:maximal_margin} abgebildet. Die abgebildeten Trainingsdaten sind dieselben
+wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die "mittigste" \textit{separierende Hyperplane} gefunden, die die Trainingsdaten
+anhand ihrer Labels trennen kann. Außerdem zu sehen, sind die am nächsten gelegen Trainingsobjekte auf beiden Seiten der \textit{Hyperplane}, die als
 Stützvektoren dienen. Die \textit{Margin} wird visualisiert, durch die beiden Geraden, die parallel zur \textit{separierenden Hyperplane} liegen und
 durch die beiden Stützvektoren verlaufen. Der Abstand dieser beiden Geraden zu der \textit{Hyperplane} ist die \textit{Margin}.
 \begin{figure}[H]
@@ -128,21 +128,21 @@ durch die beiden Stützvektoren verlaufen. Der Abstand dieser beiden Geraden zu 
 	\caption{Beispiel für eine \textit{Maximal Margin Hyperplane}} 
 	\label{fig:maximal_margin}
 \end{figure}
-Je nach Traingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt anhand ihrer Label
+Je nach Trainingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt anhand ihrer Labels
 trennen kann oder die \textit{Hyperplane} liegt nicht optimal um eine effiziente Klassifizierung durchführen zu können, da die
 Stützvektoren ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
-und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainigsobjekte existieren, deren \textit{Features} nicht den Normen einer Klasse entsprechen 
-und damit eine Anomalie darstellen. Das besagte Trainigsobjekt würde dann auf der falschen Seite der zuvor gefundenen \textit{Hyperplane} liegen.
-Deswegen müssen um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Traingsobjekte
+und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainingsobjekte existieren, deren \textit{Features} nicht den Normen einer Klasse entsprechen 
+und damit eine Anomalie darstellen. Das besagte Trainingsobjekt würde dann auf der falschen Seite der zuvor gefundenen \textit{Hyperplane} liegen.
+Deswegen müssen um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Trainingsobjekte
 zu gewährleisten auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.\cite[S. 343 - 345]{james_2013}
 
 Dies wird vom \textit{Support Vector Classifier} umgesetzt. Er wird auch als \textit{Soft Margin Classifier} bezeichnet.
 Wie der Name schon sagt, besitzt dieser eine 'weiche' \textit{Margin}. 
 Der \textit{Support Vector Classifier} erweitert den bereits besprochenen \textit{Maximal Margin Classifier}
-um eine eine 'weiche' \textit{Margin}, die von einem nutzerdefinierten Parameter abhängig ist.
+um eine 'weiche' \textit{Margin}, die von einem Nutzer-definierten Parameter abhängig ist.
 Der Nutzer muss selbst entscheiden, wie durchlässig die \textit{Margin} sein soll und
-wie vielen Traingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen ohne deren finale Ausrichtung zu beeinflussen.
-Wie dieser Parameter gesetzt werden muss hängt von den Trainigsdaten und dem gewünschten Ergebnis ab
+wie vielen Trainingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen, ohne deren finale Ausrichtung zu beeinflussen.
+Wie dieser Parameter gesetzt werden, muss hängt von den Trainingsdaten und dem gewünschten Ergebnis ab
 und muss durch Ausprobieren ermittelt werden.
 Beim Setzen dieses Parameters muss zwischen Durchlässigkeit der \textit{Hyperplane} und der Breite der \textit{Margin} abgewägt werden.
 Durch diese 'weiche' \textit{Margin} werden vereinzelt Testobjekte mit anormalen Charakteristiken der falschen Klasse
@@ -154,22 +154,22 @@ werden können. In manchen Fällen sind die Trainingsdaten nicht linear zu trenn
 In diesen Fällen muss der \textit{Feature}-Raum erweitert werden. Hierfür wurde aus dem \textit{Support Vector Classifier}
 die \textit{Support Vector Machine} entwickelt. Dabei wurden sogenannte \textit{Kernel}-Funktionen hinzugefügt.
 Mit Hilfe von quadratischen, kubischen oder weiteren Polynomfunktionen höherer Grade wird der \textit{Feature}-Raum der
-Traingsobjekte erweitert. Auf Basis der bisherigen \textit{Features} werden so mathematisch neue \textit{Features} berechnet, die 
+Trainingsobjekte erweitert. Auf Basis der bisherigen \textit{Features} werden so mathematisch neue \textit{Features} berechnet, die 
 dann womöglich durch eine \textit{Hyperplane} zu trennen sind, jedoch von den ursprünglichen \textit{Features} abhängig sind.
-Der \textit{Feature}-Raum wird sogesehen von den \textit{Kernel}-Funktionen um eine oder mehrere Dimensionen erweitert.
-Auch bei diesen \textit{Kernel}-Funktionen gibt es keine genaue Regel und die für für die Traingsdaten passende 
-\textit{Kernel}-Funktion muss durch Ausprobieren gefunden werden. So können nun auch nichtlineare Daten klassifiziert werden.
+Der \textit{Feature}-Raum wird so gesehen von den \textit{Kernel}-Funktionen um eine oder mehrere Dimensionen erweitert.
+Auch bei diesen \textit{Kernel}-Funktionen gibt es keine genaue Regel und die für die Trainingsdaten passende 
+\textit{Kernel}-Funktion muss durch Ausprobieren gefunden werden. So können nun auch nicht-lineare Daten klassifiziert werden.
 \cite[S. 1566f.]{noble_2006}\cite[S. 224 - 227]{suthaharan_2015}
 
 Die nachfolgende Abbildung \ref{fig:non_linear_data} zeigt zwei Beispiele hypothetischer Trainingsdaten, die nicht linear zu trennen sind.
 Der \textit{Feature}-Raum wurde dann mit Hilfe einer \textit{Kernel}-Funktion erweitert und es konnte in einem höherdimensionalen Raum eine
-\textit{separierende Hyperplane} gefunden werden, die die Trainigsobjekte anhand ihrer Labels trennen kann. 
+\textit{separierende Hyperplane} gefunden werden, die die Trainingsobjekte anhand ihrer Labels trennen kann. 
 Die zwei Grafiken zeigen nun wie diese höherdimensionale \textit{Hyperplane} in einem $2$-dimensionalen Raum aussehen würde 
 und wie sie die Daten anhand ihrer Klasse aufteilt.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\imgMed]{images/theory/non_linear_data.jpg}
-	\caption{\textit{Hyperplanes} bei nichtlinearen Daten \cite[S. 353]{james_2013}} 
+	\caption{\textit{Hyperplanes} bei nicht-linearen Daten \cite[S. 353]{james_2013}} 
 	\label{fig:non_linear_data}
 \end{figure}
 Mit Hilfe der \textit{Support Vector Machine} können wir nun einen Großteil an Datensätzen klassifizieren. 
@@ -199,8 +199,8 @@ Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf
 verschiedener \textit{Machine Learning}-Algorithmen besitzt. Das fertige Programm ist in \ref{lst:test_svm} zu sehen.
 Zuerst werden die benötigten Funktionen aus der \textbf{SciKit-learn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
 geschriebenen Ziffern $0, \dots 9$ enthält und die Daten mit Hilfe eines \textbf{NumPy}-\textit{Arrays} vorbereitet. Danach werden die Daten halbiert und in einen
-Trainigsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
-mit dem Trainigsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
+Trainingsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
+mit dem Trainingsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Pythoncode zum Testen der SVM, label=lst:test_svm]
@@ -284,8 +284,8 @@ Im Jahr 1943 entwickelte der Neurophysiologe Warren McCulloch und ein junger Mat
 Im Laufe der Historie wurde das Konstrukt ANN immer weiterentwickelt und hat in der Informatiker-Community an Ansehen erlangt, bis die Technologie an ihre damaligen Grenzen gestoßen ist und die Technologie zunächst vernachlässigt wurde.
 Heutzutage sind ANN einer der wichtigsten Bestandteile in der Erforschung der Künstlichen Intelligenz und des maschinell Lernens, welches auf die enorme Innovation in der Computerindustrie und der Leistungsverbesserung der Rechner zurückzuführen ist. \cite*{10.1007/978-3-319-45378-1_1}
 
-Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nach dem ihre eingegangende Information verarbeitet wurde.
-In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren tuasenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, der Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
+Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nach dem ihre eingegangene Information verarbeitet wurde.
+In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren tausenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, der Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
 Die Knoten innerhalb einer Schicht sind nicht miteinander verknüpft, sie sind nur mit Knoten aus der vorherigen und danach kommenden Schicht verbunden. Wenn alle Knoten mit allen Konten aus der vorangegangen und danach kommenden Schicht verbunden sind, bezeichnet man das ANN an diesem Punkt als \textit{fully-connected}. Ein solches \textit{fully-connected ANN} ist in Abbildung \ref{fig:ful_con_ann} zu erkennen. Das Netzwerk verfügt beispielsweise vier Schichten, eine Eingabeschicht, eine Ausgabeschicht und zwei versteckten Schichten. In der Abbildung werden die Knoten als Kreise dargestellt und die Verbindungen als gerichtete-Linien. Die versteckten Schichten haben zum Beispiel vier Knoten.
 \cite*{Keiron2015}
 
@@ -317,7 +317,7 @@ Zusätzlich können wir eine \textit{Verlustfunktion} für das Netzwerk definier
 Die Klassifizierung-Verlustfunktion wird genutzt, wenn ein Netzwerk als Klassifizierer eingesetzt wird, wie es in diesem Test der Fall ist. Die Regression-Verlustfunktion wird bei Anwendungen der Vorhersage von bestimmten Werten.
 Unter den zwei Arten der Verlustfunktion für ANN existieren wiederum verschiedene mathematische Funktionen, mit denen sich der Wert je nach Anwendung berechnen lässt.\cite{dwivedi_2020}
 
-Im Folgenden wird die sogenannte \textit{Kreuzentropie} als Verlustfunktion verwendet oder auch log-loss genannt. Diese Verlustfunktion wird bei binärer Klassifikation eingesetzt und berechnet den Verlustwert mithilfe eines booleschen Wertes und dem errechneten Entscheidungswert des ANN. Bei dem booleschen Wert handelt es sich um 0 oder 1, der aussagt, ob das zu klassifizierende Objekt richtig erkannt wurde oder nicht. In der Abbildung \ref*{fig:crossentropy} wird die Kreuzentropie dargestellt. Anhand dieser Darstellung ist zu erkennen, wie der Verlustwert abhängig vom Entescheidungswert des ANN ist. Wenn der Entscheidungswert sich der 1 annähert, verringert sich der wert der Kreuzentropie.
+Im Folgenden wird die sogenannte \textit{Kreuzentropie} als Verlustfunktion verwendet oder auch log-loss genannt. Diese Verlustfunktion wird bei binärer Klassifikation eingesetzt und berechnet den Verlustwert mit Hilfe eines booleschen Wertes und dem errechneten Entscheidungswert des ANN. Bei dem booleschen Wert handelt es sich um 0 oder 1, der aussagt, ob das zu klassifizierende Objekt richtig erkannt wurde oder nicht. In der Abbildung \ref*{fig:crossentropy} wird die Kreuzentropie dargestellt. Anhand dieser Darstellung ist zu erkennen, wie der Verlustwert abhängig vom Entscheidungswert des ANN ist. Wenn der Entscheidungswert sich der 1 annähert, verringert sich der Wert der Kreuzentropie.
 Für eine Klassifikation von zwei Klassen wird die Kreuzentropie wie folgt berechnet: 
 
 \[-(y\times log(p) + (1 - y) \times log(1-p))\]
@@ -351,22 +351,22 @@ Da wir das CNN für die Klassifikation von Bildinhalten verwenden, muss die Eing
 Die Architektur der CNN erweitert das Prinzip der Ein/Ausgabeschicht und den versteckten Schichten insoweit, als  die versteckten Schichten in weitere Kategorien eingeteilt werden können. Bei einem CNN gibt es zusätzlich zu der Ein/Ausgabeschicht, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer).
 Bei der Ausgabeschicht handelt es ebenfalls um eine vollständig verbundene Schicht. \cite*{Keiron2015}
 
-Die einzelnen Aufgaben und Eigenarten der verschiedenen Schichten werden im folgenden behandelt.
+Die einzelnen Aufgaben und Eigenarten der verschiedenen Schichten werden im Folgenden behandelt.
 
 \subsubsection{Input Layer}
-In der Eingabeschicht werden die Bilddaten gespeichert und in einer dreidimensionlae Matrix dargestellt.\cite*{Sewak2018}
+In der Eingabeschicht werden die Bilddaten gespeichert und in einer dreidimensionale Matrix dargestellt.\cite*{Sewak2018}
 
 \subsubsection{Filter-Schicht}
-Die Filterschicht, auch häufig als Feature-Extraction-Layer bezeichnet, extrahiert Eigenschaften aus dem Eingabebild und übt die Hauptanzahl an Berechnungen aus. 
-Es handelt sich hierbei um Faltungsoperationen, die Ähnlichekeiten zur Fourier-Transformation und zur Lapace-Transformation aufweisen, und bilden das Merkmal eines CNNs.
-Ein Neuron einer Filterschicht betrachet ein bestimmten Bereich einer vorherigen Schicht in Form einer Matrix und bildet daraus ein Skalarprodukt, um die den Bereich auf nur eine Zahl zu reduzieren.
+Die Filter-Schicht, auch häufig als Feature-Extraction-Layer bezeichnet, extrahiert Eigenschaften aus dem Eingabebild und übt die Hauptanzahl an Berechnungen aus. 
+Es handelt sich hierbei um Faltungsoperationen, die Ähnlichkeiten zur Fourier-Transformation und zur Lapace-Transformation aufweisen, und bilden das Merkmal eines CNNs.
+Ein Neuron einer Filter-Schicht betrachtet einen bestimmten Bereich einer vorherigen Schicht in Form einer Matrix und bildet daraus ein Skalarprodukt, um die den Bereich auf nur eine Zahl zu reduzieren.
 Die Architektur eines CNNs, die aus den verschiedenen Schichten und der Filter-Schichten besteht, ermöglichen, dass weniger Neuronen benötigt werden im Gegensatz zu anderen vielschichtigen neuronalen Netzwerken.\cite*{Sewak2018}
 Die Knoten in der Filter-Schicht nutzen die sogenannte \textit{rectified linear unit (ReLU)} Funktion als Aktivierungsfunktion. Diese ist, wie der Name bereits beschreibt, eine lineare Funktion, welche leicht modifiziert ist, sodass der Rückgabewert der Funktion gleich null ist, wenn der Eingabewert kleiner gleich null ist. Das bringt diverse Vorteile bei der Optimierung von CNNs und ANNs. Lineare Funktionen sind leichter zu optimieren und zu trainieren. Die ReLU Funktion lässt sich mathematisch als das Maximum einer Menge definieren, welche zwei Elemente besitzt, den Wert $0$ und den Wert $x$.
 
 \[ReLU(x) = max\{0, x\}\] \cite*{goodfellow2016}
 
 \subsubsection{Aggregations-Schicht}
-Die Aggregations-Schicht ist für das Herunter tasten der Dimensionen zuständig, um die Parameter der Aktivierungsfunktion zu reduzieren. Die Anwendung der zuvor liegenden Filter-Schichten erhöhen nämlich die räumlichen Dimensionen und damit einhergehend die Anzahl der Parameter der darauf folgenden Schicht. Dies hat zur Folge, dass die Komplexität des Models erhöht wird. Diese Überanpassung wird mit den Aggregations-Schichten entgegengewirkt.\cite*{Sewak2018}
+Die Aggregations-Schicht ist für das Herunter tasten der Dimensionen zuständig, um die Parameter der Aktivierungsfunktion zu reduzieren. Durch die Anwendung der zuvor liegenden Filter-Schichten erhöhen nämlich die räumlichen Dimensionen und damit einhergehend die Anzahl der Parameter der darauf folgenden Schicht. Dies hat zur Folge, dass die Komplexität des Models erhöht wird. Diese Überanpassung wird mit den Aggregations-Schichten entgegengewirkt.\cite*{Sewak2018}
 Für das Skalieren wird am häufigsten die \textit{max pooling} Funktion verwendet. Diese Funktion reduziert die Dimensionen ausgenommen der Tiefe auf eine Größe von etwa 25\% der Originalgröße.\cite*{Keiron2015}
 
 \subsubsection{Vollständig-Verbundene-Schicht}
@@ -386,7 +386,7 @@ Damit wir ein CNN mit der SVM und dem KNN vergleichen können, werden dieselben 
 \end{itemize}
 
 Bevor wir genauer auf die Bewertungskriterien eingehen, werden wir uns mit dem für den Test konstruierten CNN beschäftigen.
-Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. Für die Konstruktion und die Ausführung des Tests benötigen wir verschiedene Bibliotheken, die dabei helfen können, die Bewertungskriterien zu ermitteln, sowie den CNN zu modellieren. Bei diesem Test wurde die Bibliothek \textbf{Tensorflow} verwendet, welche wiederum die \textbf{Keras} Bibliothek verwendet. Zusätzlich wurde die Bibliothek \textbf{NumPy} und \textbf{matplotlib} verwendet, um mithilfe von \textit{NumPy} die Daten zu strukturieren und mit \textit{matplotlib} die Ergebnisse darzustellen. 
+Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. Für die Konstruktion und die Ausführung des Tests benötigen wir verschiedene Bibliotheken, die dabei helfen können, die Bewertungskriterien zu ermitteln, sowie den CNN zu modellieren. Bei diesem Test wurde die Bibliothek \textbf{Tensorflow} verwendet, welche wiederum die \textbf{Keras} Bibliothek verwendet. Zusätzlich wurde die Bibliothek \textbf{NumPy} und \textbf{matplotlib} verwendet, um mit Hilfe von \textit{NumPy} die Daten zu strukturieren und mit \textit{matplotlib} die Ergebnisse darzustellen.
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Pythoncode zur Testvorbereitung vom CNN, label=lst:test_prep_cnn]
@@ -420,7 +420,7 @@ y_train = y_train[:-10000]
 \end{minipage}
 
 \begin{minipage}{\textwidth}
-	\begin{lstlisting}[language=Python, caption=Pythoncode zur Konstuktion vom CNNs, label=lst:test_cnn]
+	\begin{lstlisting}[language=Python, caption=Pythoncode zur Konstuktion vom CNN, label=lst:test_cnn]
 #CNN
 model = tf.keras.models.Sequential([
 		tf.keras.layers.Conv2D(32, kernel_size=(3, 3),
@@ -477,7 +477,7 @@ plt.show()
 Diese werden im Folgenden genauer Untersucht und erläutert.
 
 \subsubsection{Komplexität}
-Um die Komplexität eines CNN zu berechnen
+Um die Komplexität eines CNN zu berechnen.
 
 \subsubsection{Genauigkeit}
 
