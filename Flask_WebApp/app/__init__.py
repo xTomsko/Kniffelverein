@@ -36,11 +36,12 @@ def register_dashapps(app):
 
 
 def register_extensions(server):
-    from app.extensions import db
-    from app.extensions import migrate
-
-    db.init_app(server)
-    migrate.init_app(server, db)
+    pass
+    # from app.extensions import db
+    # from app.extensions import migrate
+    #
+    # db.init_app(server)
+    # migrate.init_app(server, db)
 
 
 def register_blueprints(server):

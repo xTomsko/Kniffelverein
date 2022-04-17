@@ -9,9 +9,9 @@ from . import graphs
 
 
 #Dummy vars for display
-df = pd.read_json('/Users/tomsparrow/Development/Projects/Kniffelverein/Flask_WebApp/app/dashapp/testdata.json')
+df = pd.read_json('app/dashapp/testdata.json')
 figUploads = px.line(df.sort_values(by='Date'), x='Date', y='Sheets', markers=True, line_shape='spline', template='ggplot2')
-totalSheets = len('/Users/tomsparrow/Development/Projects/Kniffelverein/Flask_WebApp/app/dashapp/testdata.json')
+totalSheets = len('app/dashapp/testdata.json')
 earliestUpload = "2020-01-18"
 Yahtzees = 123432
 score = 304
@@ -50,12 +50,12 @@ layout = html.Div(id='main', className='row', children=[
         dbc.Row(
             [
                 dbc.Col(html.Div(dbc.Card([
-                    html.H4('Total sheets'),
+                    html.H4('Total Sheets'),
                     html.H2(f'{totalSheets}')
                 ], className='bg-primary text-white card-layout')), width={"size": 4}),
 
                 dbc.Col(html.Div(dbc.Card([
-                    html.H4('first upload'),
+                    html.H4('First Upload'),
                     html.H2(f'{earliestUpload}')
                 ], className='bg-primary text-white card-layout'),), width={"size": 4}),
             ], justify="evenly"
@@ -68,21 +68,21 @@ layout = html.Div(id='main', className='row', children=[
                 ], className='bg-primary text-white card-layout'), width={"size": 4}),
 
                 dbc.Col(dbc.Card([
-                    html.H4('Total score'),
-                    html.H2(f'{score}')
+                    html.H4('Total Score'),
+                    html.H2(f'{3425234}')
                 ], className='bg-primary text-white card-layout'), width={"size": 4}),
             ], justify="evenly"
         ),
         dbc.Row(
             [
                 dbc.Col(html.Div(dbc.Card([
-                    html.H4('Days played'),
-                    html.H2(f'{totalSheets}'),
+                    html.H4('Highest Score'),
+                    html.H2(f'{345}'),
                 ], className='bg-primary text-white card-layout')), width={"size": 4}),
 
                 dbc.Col(html.Div(dbc.Card([
-                    html.H4('tbd'),
-                    html.H2(f'{totalSheets}')
+                    html.H4('Averaga Score'),
+                    html.H2(f'{260}')
                 ], className='bg-primary text-white card-layout')), width={"size": 4}),
             ], justify="evenly"
         )

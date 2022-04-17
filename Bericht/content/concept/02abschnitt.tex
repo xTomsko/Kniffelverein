@@ -4,7 +4,7 @@ Für die Auswertung der Daten und die daraus resultierenden Visualisierung muss 
 \subsection{Auswertung}
 Ein Dashboard ist eine Darstellungsoption, mit dem es einem Benutzer gelingen soll, einen Gesamtüberblick über die für ihn wichtigen Daten zu erhalten. Um diesen Gesamtüberblick erstellen zu können, muss eine Analyse des Benutzers vorgenommen werden, um zu ermitteln, welche Daten für ihn von Bedeutung sind. \cite{few_2013}
 
-Da vorab festgelegt wurde, dass die Webapplikation ohne Benutzerregistrierung auskommen soll, können die Daten nicht direkt auf den Benutzer zugeschnitten werden, der seine Spielergebnisse hochlädt. Die Herausforderung besteht nun darin, Werte zu ermitteln, die für den Benutzer von Bedeutung sind, ohne einen persönlichen Bezug herstellen zu können. Dieser Aspekt resultiert darin, dass das Dashboard von mehreren Benutzergruppen genutzt wird. Es muss also so konzeptioniert werden, dass Benutzer, die ihre Spielergebnisse hochladen, ihre wichtigen Daten erhalten, aber auch die Benutzer wichtige Informationen erhalten, die ihre Spielergebnisse nicht hochladen. Die daraus resultierenden für wichtig erachteten Werte werden im Folgenden aufgelistet und diskutiert.
+Da vorab festgelegt wurde, dass die Webapplikation ohne Benutzerregistrierung auskommen soll, können die Daten nicht direkt auf den Benutzer zugeschnitten werden, der seine Spielergebnisse hochlädt. Die Herausforderung besteht nun darin, Werte zu ermitteln, die für den Benutzer von Bedeutung sind, ohne einen persönlichen Bezug herstellen zu können. Dieser Aspekt resultiert darin, dass das Dashboard von mehreren Benutzergruppen genutzt wird. Es muss also so konzeptioniert werden, dass Benutzer, die ihre Spielergebnisse hochladen, ihre wichtigen Daten erhalten, aber auch die Benutzer wichtige Informationen erhalten, die ihre Spielergebnisse nicht hochladen. Die daraus resultierenden, für wichtig erachteten Werte, werden im Folgenden aufgelistet und diskutiert.
 
 \subsubsection{Total Sheets}
 Der erste Wert, der für relevant erachtet wird, ist die Summe der hochgeladenen handgeschriebenen Zettel. Da bei einem Kniffelspiel nicht immer alle sechs Spiele auf einem Zettel gespielt werden, kann dieser Wert die Anzahl der gespielten Sitzungen darlegen. Dieser Wert bietet darüber hinaus einen guten Indikator für die Nutzung der Webapplikation, da dieser Wert gleich ist mit der Anzahl der erfolgreichen Nutzung der Hochladenfunktion. Mit dieser Angabe können die Nutzer einen Überblick über die gespielten Sitzungen erhalten und die Entwickler der App einen Überblick über die Nutzung der App.
@@ -19,11 +19,20 @@ Dieser Wert gibt Auskunft über die Summe der Yahtzees, die über alle Spiele hi
 Der vierte Wert gibt die Summe der erreichten Punkte für alle Spiele. Anhand von diesem Wert ist notwendigerweise keine weitere Analyse möglich. Es soll lediglich als ein Wert dargestellt werden, der die Nutzer begeistert.
 
 \subsubsection{Highest Score}
-Der \textit{Highest Score}-Wert soll die höchste erreichte Punktzahl eines Spielers die mit einem Blatt erreicht wurde darstellen. Da es verschiedenen Spielweisen des Spiels gibt, kann dieser Wert mehr aussagen, als wenn der höchste Wert eines Spiels eines Blattes genommen werden würde. Ein Nutzer kann so einen Überblick über die höchst Punktzahl erhalten, die ein Spieler erreicht hat.
+Der \textit{Highest Score}-Wert soll die höchste erreichte Punktzahl eines Spielers, die mit einem Blatt erreicht wurde, darstellen. Da es verschiedenen Spielweisen des Spiels gibt, kann dieser Wert mehr aussagen, als wenn der höchste Wert eines Spiels eines Blattes genommen werden würde. Ein Nutzer kann so einen Überblick über die höchst Punktzahl erhalten, die ein Spieler erreicht hat.
 
 \subsubsection{Average Score}
-Der letzte Wert soll die durschnittliche Punktzahl angeben, die in einer Sitzung erreicht wird. ähnlich wie beim \textit{Highest Score}-Wert, wird dieser Wert nicht auf Basis der einzelnen Spiele auf einem Blatt ermittelt, sonder auf Basis der gesamten Sitzung. Es wird der also das arithmetische Mittel über die Anzahl der \textit{Total Sheets} und der \textit{Total Score} errechnet.
+Der letzte Wert soll die durchschnittliche Punktzahl angeben, die in einer Sitzung erreicht wird. Ähnlich wie beim \textit{Highest Score}-Wert, wird dieser Wert nicht auf Basis der einzelnen Spiele auf einem Blatt ermittelt, sondern auf Basis der gesamten Sitzung. Es wird der also das arithmetische Mittel über die Anzahl der \textit{Total Sheets} und der \textit{Total Score} errechnet.
 
-\subsection{Visualisierung}
-Bei der Visualisierung kommt es darauf an, dass die Gesamtheit der Daten so präsentiert wird, dass diese einfach und zugänglich sind. Das schließt zum einen die optische Darstellung ein, aber auch die Navigation und Interaktion mit den Daten. Hierbei ist wiederum zu beachten, zu welcher Benutzergruppe eine Person gehöhrt, da sich daraus die womögliche Medienkompetenz eines Nutzers ableiten lässt. \cite{few_2013}
-Das Ziel des Dashboard soll es sein, die Daten möglichst zugänglich für jede Benutzergruppe zu machen. Aufgrunddessen wird die Visulaisierung auf 
+\subsection{Visualisierung} \label{sec:visualisation}
+Bei der Visualisierung kommt es darauf an, dass die Gesamtheit der Daten so präsentiert wird, dass diese einfach und zugänglich sind. Das schließt zum einen die optische Darstellung ein, aber auch die Navigation und Interaktion mit den Daten. Hierbei ist wiederum zu beachten, zu welcher Benutzergruppe eine Person gehört, da sich daraus die womögliche Medienkompetenz eines Nutzers ableiten lässt. \cite{few_2013}
+Das Ziel vom Dashboard soll es sein, die Daten möglichst zugänglich für jede Benutzergruppe zu machen. Aufgrund dessen sollen alle Daten, auf einem Blick erkennbar sein, sodass keine umfangreiche Navigation erforderlich ist, wie zum Beispiel eine Scroll-Bewegung.
+Die Abbildung \ref{fig:mockup} soll ein \textit{MockUp} darstellen, wie die Darstellung der definierten wichtigen Werte aussehen könnte.
+Zusätzlich zu der einfachen Darstellung der Daten werden die Daten auch in einer grafischen Darstellung dargestellt. In dem Graphen sollen die Daten in Zusammenhang mit der Zeit dargestellt, um so genauer Trends in den hochgeladenen Spielen erkennen zu können.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\imgMed]{images/practice/dashboard_mockup.png}
+	\caption{MockUp für die Visualisierung der Daten}
+	\label{fig:mockup}
+\end{figure}
