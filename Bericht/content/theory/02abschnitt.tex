@@ -397,6 +397,7 @@ Dieser wurde in der Programmiersprache \textbf{Python} Version 3.9 geschrieben. 
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+from keras import backend as K
 
 mnist = tf.keras.datasets.mnist
 
@@ -434,7 +435,7 @@ Im Folgenden Codeabschnitt wird das CNN-Model definiert. Das Model wurde mit fol
 	\item Vollständig-verbundene-Schicht (Ausgabeschicht)
 \end{itemize}
 
-Die zusätzlich zu sehenden Schichten \textit{Dropout} und \textit{Flatten} wurden definiert, um die Komplexität des Models zu reduzieren. Dieser Effekt ist nur während des Trainierens sichtbar. Bei der \textit{Dropout}-Schicht handelt es sich um eine Schicht, die mit einer gewählten Wahrscheinlichkeit von \textit{0,25} einen Knoten aus der Schicht ausschaltet, um \textit{overfitting} zu verhindern. Die \textit{Flatten}-Schicht formt die mehrdimensionalen Daten in eine einzelne Dimension um, damit diese von der vollständig-verbunden-Schicht verarbeitet werden können.
+Die zusätzlich zu sehenden Schichten \textit{Dropout} und \textit{Flatten} wurden definiert, um die Komplexität des Models zu reduzieren. Dieser Effekt ist nur während des Trainierens sichtbar. Bei der \textit{Dropout}-Schicht handelt es sich um eine Schicht, die mit einer gewählten Wahrscheinlichkeit von \textit{0,25} einen Knoten aus der Schicht ausschaltet, um \textit{overfitting} zu verhindern. Die \textit{Flatten}-Schicht formt die mehrdimensionalen Daten in eine einzelne Dimension um, damit diese von der vollständig-verbunden-Schicht verarbeitet werden kann.
 
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=Python, caption=Pythoncode zur Konstuktion vom CNN, label=lst:test_cnn]
@@ -457,8 +458,8 @@ model = tf.keras.models.Sequential([
 
 model.summary()
 model.compile(optimizer='adam',
-				loss='sparse_categorical_crossentropy',
-				metrics=['accuracy'])
+              loss='sparse_categorical_crossentropy',
+              metrics=['accuracy', precision_m])
 
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], x_train.shape[2], 1))
 x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], x_test.shape[2], 1))
@@ -480,26 +481,65 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train acc', 'val acc'], loc='lower right')
 plt.subplot(2, 1, 2)
-plt.plot(model_data.history['loss'])
-plt.plot(model_data.history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
+plt.plot(model_data.history['precision_m'])
+plt.plot(model_data.history['val_precision_m'])
+plt.title('model precision')
+plt.ylabel('precision')
 plt.xlabel('epoch')
-plt.legend(['train loss', 'val loss'], loc='upper right')
+plt.legend(['train precision', 'val precision'], loc='upper right')
 plt.tight_layout()
 plt.show()
 	\end{lstlisting}
 \end{minipage}
 
-Diese werden im Folgenden genauer Untersucht und erläutert.
-
 \subsubsection{Komplexität}
-Um die Komplexität eines CNN zu berechnen.
+Die \textit{Zeit}-Komplexität von einem CNN-Modell ist die Summe der \textit{Zeit}-Komplexitäten der einzelnen Schichten. Die genaue Berechnung als auch die genaue \textit{Zeit}-Komplexität des oben erstellten Modells übertrifft den Rahmen dieser Arbeit. Für einen ausreichenden Vergleich zwischen den vorgestellten Klassifizierern wird lediglich die Komplexität der Filter-Schicht betrachtet. Die O-Notation der Filter-Schicht lautet wie folgt:
 
-\subsubsection{Genauigkeit}
+\[\sum^{d}_{l=1}n_{l-1} * s^2_l * n_l * m^2_l \]
 
-\subsubsection{Präzision}
+\begin{itemize}
+	\item $l$ ist der Index von einer Filter-Schicht
+	\item $d$ ist die Anzahl der Filter-Schichten in einem Netzwerk
+	\item $n_l$ ist die Anzahl der Knoten in der $l$-ten Filter-Schicht
+	\item $n_{l-1}$ ist die Anzahl der Eingabeparameter
+	\item $s_l$ ist die dritte Dimension der Filter-Schicht
+	\item $m_l$ ist die Anzahl der Features die in der $l$-ten Filter-Schicht ausgegeben werden
+\end{itemize}
+\cite{Kaiming_2014}
+
+\subsubsection{Genauigkeit \& Präzision}
+
+Um die Präzision vom CNN zu berechnen, muss zuerst eine Hilfsfunktion definiert werden, damit dieser Wert verfolgt wird. Die Metrik der Präzision wurde aus der Keras-Bibliothek 2.0 entfernt. Eine Lösung des Problems hat der Benutzer \textit{Tasos} auf \textit{StackExchange} veröffentlicht. \cite{stackexchange_2020}
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Python, caption=Hilfsfunktion für Präzision \cite{stackexchange_2020}, label=lst:func_precision]
+def precision_m(y_true, y_pred):
+	true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+	predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+	precision = true_positives / (predicted_positives + K.epsilon())
+	return precision	
+	\end{lstlisting}
+\end{minipage}
+
+
+Die Genauigkeit und die Präzision des CNN-Modells kann aus den Ausgaben der Epochenmetriken gelesen werden. Das Ergebnis der letzten Epoche wird in \ref{lst:test_cnn_results} dargestellt. Es ist zusehen, dass das CNN-Modell eine Genauigkeit von \textbf{99\%} und eine Präzision von \textbf{92\%} erreicht. 
+
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=Bash, caption=Testergebnisse vom CNN, label=lst:test_cnn_results]
+...
+Epoch 10/10
+391/391 [==============================] - 76s 195ms/step - loss: 0.0273 - accuracy: 0.9909 - precision_m: 0.9264 - val_loss: 0.0374 - val_accuracy: 0.9891 - val_precision_m: 0.9191
+313/313 - 2s - loss: 0.0253 - accuracy: 0.9916 - precision_m: 0.9209 - 2s/epoch - 5ms/step
+	\end{lstlisting}
+\end{minipage}
+
+
 
 \subsubsection{Einfachheit der Umsetzung}
+In der Bewertung von diesem Kriterium wird von einem subjektiven Standpunkt ausgegangen. Es soll bewertet werden, wie einfach die Umsetzung des CNN-Modells in diesem Projekt ist.
+Das CNN-Modell wird mit \textbf{3/5} Punkten.
+Auch wenn das Forschungsgebiet der CNN in Bezug der Handschrifterkennung sehr gut beleuchtet ist, ist die vor allem die Optimierung und Umsetzung eines CNNs komplex.
+Der CNN wird ähnlich wie die anderen Algorithmen bereits durch eine Bibliothek bereitgestellt, aber die Funktionen benötigen viele Parameter, wie zum Beispiel die Anordnung und die Definition der verschiedenen Schichten.
+\newpage
 
 \subsection{Auswertung des Vergleiches} \label{ssec:eval}

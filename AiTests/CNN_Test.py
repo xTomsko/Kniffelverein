@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import matplotlib.pyplot as plt
+from keras import backend as K
 
 mnist = tf.keras.datasets.mnist
 
@@ -23,6 +24,13 @@ x_val = x_train[-10000:]
 y_val = y_train[-10000:]
 x_train = x_train[:-10000]
 y_train = y_train[:-10000]
+
+#Credit: Tasos on Stackexchange
+def precision_m(y_true, y_pred):
+    true_positives = K.sum(K.round(K.clip(y_true * y_pred, 0, 1)))
+    predicted_positives = K.sum(K.round(K.clip(y_pred, 0, 1)))
+    precision = true_positives / (predicted_positives + K.epsilon())
+    return precision
 
 
 #CNN
@@ -48,7 +56,7 @@ model = tf.keras.models.Sequential([
 model.summary()
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
-              metrics=['accuracy'])
+              metrics=['accuracy', precision_m])
 
 x_train = np.reshape(x_train, (x_train.shape[0], x_train.shape[1], x_train.shape[2], 1))
 x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], x_test.shape[2], 1))
@@ -67,13 +75,11 @@ plt.ylabel('accuracy')
 plt.xlabel('epoch')
 plt.legend(['train acc', 'val acc'], loc='lower right')
 plt.subplot(2, 1, 2)
-plt.plot(model_data.history['loss'])
-plt.plot(model_data.history['val_loss'])
-plt.title('model loss')
-plt.ylabel('loss')
+plt.plot(model_data.history['precision_m'])
+plt.plot(model_data.history['val_precision_m'])
+plt.title('model precision')
+plt.ylabel('precision')
 plt.xlabel('epoch')
-plt.legend(['train loss', 'val loss'], loc='upper right')
+plt.legend(['train precision', 'val precision'], loc='upper right')
 plt.tight_layout()
 plt.show()
-
-model.save('./models/model_tensorflow')
