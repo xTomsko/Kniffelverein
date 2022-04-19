@@ -1,17 +1,17 @@
 %!TEX root = ../dokumentation.tex
 \chapter{Einleitung}
 \section{Motivation}
-Brett- und Gemeinschaftsspiele haben während der Corona-Pandemie einen „Boom“ erlebt. Es war keine Seltenheit, dass auf herkömmlichen Gesellschaftsspiele zurückgegriffen wurde, um die schwere Zeit im Lockdown aufzuheitern. \cite{dw_2021}\\
+Brett- und Gemeinschaftsspiele haben während der Corona-Pandemie einen „Boom“ erlebt. Es war keine Seltenheit, dass auf herkömmliche Gesellschaftsspiele zurückgegriffen wurde, um die Zeit im Lockdown zu überbrücken. \cite{dw_2021}\\
 Persönlich wurde häufig das Spiel \textit{Kniffel} mit der Familie gespielt, bei dem jeder Spieler seine Spielergebnisse auf ein Blatt Papier niederschreibt. Als Studenten der Informatik und Interessierte der Statistik sind die Spielergebnisse in analoger Form so nur mühselig auszuwerten. Um zum Beispiel Trends über mehrere Spiele hinweg zu analysieren, müsste eine Digitalisierung der Daten vorgenommen werden. Diese Digitalisierung ist jedoch als manuelle Datenverarbeitung sehr zeitaufwendig.
 
 In den letzten Jahren ist \textit{Machine Learning} und \textit{Artificial Intelligence} im Bereich der Informatik ein stetig wachsendes Forschungsgebiet. 
-Es entstehen zunehmend Lösungen für Probleme unter dem Einsatz von Algorithmen aus der dem Bereich der \textit{Künstlichen Intelligenz}. Die allgemeine Erkennung von Zahlen auf einem Bild ist bereits ein sehr gut untersuchtes Forschungsgebiet. Der Einsatz für die Digitalisierung von Spielergebnissen vom Spiel Kniffel ist jedoch weitestgehend unerforscht. 
+Es entstehen zunehmend Lösungen für Probleme unter dem Einsatz von Algorithmen aus dem Bereich der \textit{Künstlichen Intelligenz}. Die allgemeine Erkennung von Zahlen auf einem Bild ist bereits ein ausgiebig untersuchtes Forschungsgebiet. Der Einsatz für die Digitalisierung von Spielergebnissen vom Spiel Kniffel ist jedoch weitestgehend unerforscht. 
 
 \section{Aufgabenstellung (Alex)}
 Im Rahmen der vorliegenden Studienarbeit soll ein entsprechendes System entwickelt werden, mit dessen Hilfe analoge papierbasierte Spielergebnisse des
 Gesellschaftsspieles „Kniffel“ beziehungsweise „Yathzee“ digitalisiert werden können. Für die Erkennung der einzelnen Spielergebnisse und die Überführung in ein digitales Format soll eine automatische \textit{Machine Learning}-gestützte Bilderkennung eingesetzt werden. Nach der Digitalisierung der Daten sollen die Spielergebnisse ausgewertet und visualisiert werden.
 
-Für die Implementierung der Webapplikation können drei große Arbeitspakete identifiziert werden. Zuerst müssen die Daten hochgeladen werden können und das hochgeladene Bild mit den analogen Spielergebnissen für die Bildverarbeitung vorbereitet werden. Nach dem Prozess des Image Processing muss mit Hilfe eines \textit{Machine Learning}-
+Für die Implementierung der Webapplikation können drei große Arbeitspakete identifiziert werden. Zuerst müssen die Daten hochgeladen werden können und das hochgeladene Bild mit den analogen Spielergebnissen für die Bildverarbeitung vorbereitet werden. Nach dem Prozess des Image Processing müssen mit Hilfe eines \textit{Machine Learning}-
 Algorithmus die einzelnen Ziffern auf dem Bild erkannt werden.
 Nach der Bilderkennung sollen die Spielergebnisse dann ausgewertet und für den Nutzer visualisiert werden.
 
@@ -20,7 +20,7 @@ Für das Software-Projekt wurden die User Stories in der Tabelle \ref{table:user
     \begin{tabular}{m{2.5cm}|m{12cm}}
     \textbf{ID} & \textbf{User Story}                                                                                              \\ \hline
     01          & Als ein Nutzer SOLL ein Bild hochgeladen werden können                                                           \\
-    02          & Als ein Nutzer SOLLEN die Spielergebnisse auf dem Bild mit einem Machine Learning Algortihmus ausgewertet werden \\
+    02          & Als ein Nutzer SOLLEN die Spielergebnisse auf dem Bild mit einem Machine Learning Algorithmus ausgewertet werden \\
     03          & Als ein Nutzer SOLLEN die digitalisierten Spielergebnisse überprüfbar und wenn nötig korrigierbar sein           \\
     04          & Als ein Nutzer SOLLEN die digitalisierten Spielergebnisse in einer Datenbank abgespeichert werden                \\
     05          & Als ein Nutzer SOLL eine statistische Auswertung aller hochgeladenen Spielergebnisse zur Verfügung stehen        \\
@@ -38,7 +38,7 @@ Bevor die Umsetzung der User Stories für das zu entwickelnde System erfolgt, so
 Nach der Auswertung des Vergleichs soll die Umsetzung des Systems erfolgen. Die Umsetzung erfolgt durch den Einsatz der definierten User Stories in \ref{table:user_stories}, welche für den Entwicklungsprozess in weitere kleinere Arbeitspakete unterteilt wurden. Der Entwicklungsprozess wurde agil gestaltet durch die Verwendung von \textit{Kanban}. Die definierten Arbeitspakete wurden auf einem \textit{Kanban}-Board visualisiert und zugeordnet.
 
 \section{Aufbau der Studienarbeit}
-Der Aufbau der Studienarbeit ist so gestaltet, dass am Anfang eine Einführung in das Thema \textit{Machine Learning} stattfindet, um die Grundlagen des Themas zu erläutern. Die Einführung findet in Kapitel \ref{sec:machinelearning} statt und geht dann über in den Vergleich der verschiedenen Algorithmen der Bilderkennung in Kapitel \ref{sec:compare}. Der Vergleich beginnt, in dem jeder Algorithmus zunächst vorgestellt wird und der Ablauf des jeweiligen Tests behandelt wird. Die Tests werden in der folgenden Reihenfolge durchgeführt und diskutiert:
+Der Aufbau der Studienarbeit ist so gestaltet, dass am Anfang eine Einführung in das Thema \textit{Machine Learning} stattfindet, um die Grundlagen des Themas zu erläutern. Die Einführung beginnt in Kapitel \ref{sec:machinelearning} und geht dann über in den Vergleich der verschiedenen Algorithmen der Bilderkennung in Kapitel \ref{sec:compare}. Der Vergleich beginnt, indem jeder Algorithmus zunächst vorgestellt und der Ablauf des jeweiligen Tests behandelt wird. Die Tests werden in der folgenden Reihenfolge durchgeführt und diskutiert:
 \begin{itemize}
     \item \textit{K-Nearest-Neighbor} \ref{ssec:knn}
     \item \textit{Support Vector Machine} \ref{ssec:svm}
@@ -47,8 +47,8 @@ Der Aufbau der Studienarbeit ist so gestaltet, dass am Anfang eine Einführung i
 
 Anschließend wird im Kapitel \ref{ssec:eval} die Evaluierung des Vergleichs vorgenommen und diskutiert, weshalb welcher Algorithmus für die Umsetzung ausgewählt wurde.
 
-In dem Kapitel \ref{cha:conzept} wird auf die Technologien eingegangen, welche für die Umsetzung des Systems verwendet werden. Das Kapitel beschäftigt sich ebenfalls mit der Konzeptionierung der Datenvisualisierung und der welche statistischen Werte von Relevanz sind.
+In Kapitel \ref{cha:conzept} wird auf die Technologien eingegangen, welche für die Umsetzung des Systems verwendet werden. Das Kapitel beschäftigt sich ebenfalls mit der Konzeptionierung der Datenvisualisierung.
 
-Die Umsetzung des Systems wird in dem Kapitel \ref{cha:implement} dargelegt. Dabei wird besonders auf darauf eingegangen, welche Herausforderungen während der Entwicklung des Systems aufkamen und wie diese gelöst wurden. Für die Umsetzung kristallisierten sich drei größere, umfassende Arbeitsschritte heraus. In jedem der Kapitel \ref{sec:imagepreprocessing}, \ref{sec:digit_rec}, \ref{sec:dashboard} wird auf das jeweilige Thema eingegangen und die dazugehörigen Arbeitsschritte diskutiert.
+Die Umsetzung des Systems wird in Kapitel \ref{cha:implement} dargelegt. Dabei wird besonders darauf eingegangen, welche Herausforderungen während der Entwicklung des Systems aufkamen und wie diese gelöst wurden. Für die Umsetzung kristallisierten sich drei größere, umfassende Arbeitsschritte heraus. In jedem Unterkapitel \ref{sec:imagepreprocessing}, \ref{sec:digit_rec}, \ref{sec:dashboard} wird auf das jeweilige Thema eingegangen und die dazugehörigen Arbeitsschritte diskutiert.
 
 Abschließend werden im Kapitel \ref{cha:results} die Ergebnisse der Studienarbeit diskutiert und ein Ausblick gegeben über womögliche Forschungen und Erweiterungen im Themenfeld.

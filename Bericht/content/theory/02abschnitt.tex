@@ -1,5 +1,5 @@
 \section{Vergleich verschiedener \textit{Machine Learning}-Algorithmen (Alex)} \label{sec:compare}
-In diesem Kapitel sollen unterschiedliche \textit{Machine Learning}-Algorithmen mit Hinblick auf das Projekt miteinander verglichen werden.
+In diesem Kapitel sollen unterschiedliche \textit{Machine Learning}-Algorithmen im Hinblick auf das Projekt miteinander verglichen werden.
 Es wurde bereits eine Vorauswahl getroffen und für den Vergleich wurden die Algorithmen \textit{K-Nearest-Neighbor}, die \textit{Support Vector Machine} und
 \textit{Convolutional Neural Networks} ausgewählt. Für einen fairen Vergleich wird beim Trainieren aller zuvor genannten \textit{Machine Learning}-Algorithmen
 die bereits vorgestellte MNIST-Datenbank verwendet, die Datensätze zu handschriftlichen Ziffern enthält.
@@ -24,10 +24,10 @@ Die \textit{Support Vector Machine} (SVM) ist ein Algorithmus zur Klassifizierun
 Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
 SVMs können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
 Bevor die SVM entwickelt wurde, gab es verschiedene Vorgängertechnologien aus denen am Ende die heutige \textit{Support Vector Machine} hervorgegangen ist. 
-Diese Algorithmen sind einmal der \textit{Maximal Margin Classifier} und der \textit{Support Vector Classifier}, 
-der eine Weiterentwicklung des zuvor genannten darstellt.
+Diese Algorithmen sind zum Einen der \textit{Maximal Margin Classifier} und der \textit{Support Vector Classifier}, 
+der eine Weiterentwicklung des zuvor Genannten darstellt.
 Die \textit{Support Vector Machine} ist wiederum eine Erweiterung des \textit{Support Vector Classifier}.
-Alle diese Klassifizierer werden meist lose unter dem Begriff \textit{Support Vector Machine} zusammengefasst,
+Jeder dieser Klassifizierer wird meist lose unter dem Begriff \textit{Support Vector Machine} zusammengefasst,
 müssen jedoch klar unterschieden werden.\cite[S. 337]{james_2013}
 
 Die Terminologie im Bereich der \textit{Support Vector Machine} ist nicht ganz klar und kann sich in verschiedenen Veröffentlichungen unterscheiden.
@@ -95,13 +95,13 @@ um Daten klassifizieren zu können. Wenn die Daten durch eine \textit{separieren
 gibt es unendlich viele Möglichkeiten, wie diese liegen kann. Für bestmögliche Ergebnisse beim Klassifizieren muss
 deshalb die optimale \textit{separierende Hyperplane} gefunden werden. Die natürliche Wahl ist es die 'Mittigste' der
 \textit{separierenden Hyperplanes} zu verwenden. Diese wird auch \textit{Maximal Margin Hyperplane} genannt.
-Mit Hilfe der Trainingsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich entfernt von den
-nächsten Trainingsobjekten liegt.\cite[S. 1565f.]{noble_2006}
+Mit Hilfe der Trainingsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich von den
+nächsten Trainingsobjekten entfernt liegt.\cite[S. 1565f.]{noble_2006}
 
 Die Abbildung \ref{fig:separating_hyperplanes} zeigt zehn verschiedene Trainingsobjekte, die alle durch zwei Variablen definiert sind und
 einem der beiden Label $\{blau, rot\}$ zugeordnet sind. Außerdem sind drei unterschiedliche \textit{Hyperplanes} abgebildet, die alle 
-\textit{separierende Hyperplanes} in Bezug auf unsere Trainingsdaten sind. Die Auswahl der „perfekten“ \textit{Hyperplane} für die SVM ist
-damit mathematisches Optimierungsproblem. 
+\textit{separierende Hyperplanes} im Bezug auf unsere Trainingsdaten sind. Die Auswahl der „perfekten“ \textit{Hyperplane} für die SVM ist
+damit ein mathematisches Optimierungsproblem. 
 Weitere Informationen zu dem Trainingsmodell einer SVM sind in dem Werk von \citeauthor{suthaharan_2015} zu finden.\cite[S. 210ff.]{suthaharan_2015}
 \begin{figure}[H]
 	\centering
@@ -113,17 +113,17 @@ Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächstgelege
 wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} am größten ist,
 wird daraus folgend auch \textit{Maximal Margin Hyperplane} genannt.
 Die Trainingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und damit auch denselben Abstand zu dieser haben,
-werden als die Stützvektoren bezeichnet. Sie „stützen“ die \textit{Maximal Margin Hyperplane}.
-Die Stützvektoren sind demnach die einzigen Trainingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
+werden als die \textit{Stützvektoren} bezeichnet. Sie „stützen“ die \textit{Maximal Margin Hyperplane}.
+Die \textit{Stützvektoren} sind demnach die einzigen Trainingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
 Mit Hilfe der \textit{Maximal Margin Hyperplane} kann der 
 \textit{Maximal Margin Classifier} nun neue unbekannte Testdaten klassifizieren, je nach dem auf welcher Seite sie liegen.
 Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.\cite[S. 1566]{noble_2006}
 
 Eine solche \textit{Maximal Margin Hyperplane} ist in \ref{fig:maximal_margin} abgebildet. Die abgebildeten Trainingsdaten sind dieselben
-wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die "mittigste" \textit{separierende Hyperplane} gefunden, die die Trainingsdaten
+wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die „mittigste“ \textit{separierende Hyperplane} gefunden, die die Trainingsdaten
 anhand ihrer Labels trennen kann. Außerdem zu sehen, sind die am nächsten gelegen Trainingsobjekte auf beiden Seiten der \textit{Hyperplane}, die als
 Stützvektoren dienen. Die \textit{Margin} wird visualisiert, durch die beiden Geraden, die parallel zur \textit{separierenden Hyperplane} liegen und
-durch die beiden Stützvektoren verlaufen. Der Abstand dieser beiden Geraden zu der \textit{Hyperplane} ist die \textit{Margin}.
+durch die beiden \textit{Stützvektoren} verlaufen. Der Abstand dieser beiden Geraden zu der \textit{Hyperplane} ist die \textit{Margin}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\imgMed]{images/theory/maximal_margin.jpg}
@@ -131,12 +131,12 @@ durch die beiden Stützvektoren verlaufen. Der Abstand dieser beiden Geraden zu 
 	\label{fig:maximal_margin}
 \end{figure}
 Je nach Trainingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt anhand ihrer Labels
-trennen kann oder die \textit{Hyperplane} liegt nicht optimal um eine effiziente Klassifizierung durchführen zu können, da die
-Stützvektoren ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
-und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainingsobjekte existieren, deren \textit{Features} nicht den Normen einer Klasse entsprechen 
+trennen kann oder die \textit{Hyperplane} liegt nicht optimal, um eine effiziente Klassifizierung durchführen zu können, da die
+textit{Stützvektoren} ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
+und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainingsobjekte existieren deren \textit{Features} nicht den Normen einer Klasse entsprechen 
 und damit eine Anomalie darstellen. Das besagte Trainingsobjekt würde dann auf der falschen Seite der zuvor gefundenen \textit{Hyperplane} liegen.
-Deswegen müssen um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Trainingsobjekte
-zu gewährleisten auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.\cite[S. 343 - 345]{james_2013}
+Deswegen müssen, um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Trainingsobjekte
+zu gewährleisten, auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.\cite[S. 343 - 345]{james_2013}
 
 Dies wird vom \textit{Support Vector Classifier} umgesetzt. Er wird auch als \textit{Soft Margin Classifier} bezeichnet.
 Wie der Name schon sagt, besitzt dieser eine 'weiche' \textit{Margin}. 
@@ -144,7 +144,7 @@ Der \textit{Support Vector Classifier} erweitert den bereits besprochenen \texti
 um eine 'weiche' \textit{Margin}, die von einem Nutzer-definierten Parameter abhängig ist.
 Der Nutzer muss selbst entscheiden, wie durchlässig die \textit{Margin} sein soll und
 wie vielen Trainingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen, ohne deren finale Ausrichtung zu beeinflussen.
-Wie dieser Parameter gesetzt werden, muss hängt von den Trainingsdaten und dem gewünschten Ergebnis ab
+Wie dieser Parameter gesetzt werden muss, hängt von den Trainingsdaten und dem gewünschten Ergebnis ab
 und muss durch Ausprobieren ermittelt werden.
 Beim Setzen dieses Parameters muss zwischen Durchlässigkeit der \textit{Hyperplane} und der Breite der \textit{Margin} abgewägt werden.
 Durch diese 'weiche' \textit{Margin} werden vereinzelt Testobjekte mit anormalen Charakteristiken der falschen Klasse
@@ -164,7 +164,7 @@ Auch bei diesen \textit{Kernel}-Funktionen gibt es keine genaue Regel und die f�
 \cite[S. 1566f.]{noble_2006}\cite[S. 224 - 227]{suthaharan_2015}
 
 Die nachfolgende Abbildung \ref{fig:non_linear_data} zeigt zwei Beispiele hypothetischer Trainingsdaten, die nicht linear zu trennen sind.
-Der \textit{Feature}-Raum wurde dann mit Hilfe einer \textit{Kernel}-Funktion erweitert und es konnte in einem höherdimensionalen Raum eine
+Der \textit{Feature}-Raum wurde mit Hilfe einer \textit{Kernel}-Funktion erweitert und es konnte in einem höherdimensionalen Raum eine
 \textit{separierende Hyperplane} gefunden werden, die die Trainingsobjekte anhand ihrer Labels trennen kann. 
 Die zwei Grafiken zeigen nun wie diese höherdimensionale \textit{Hyperplane} in einem $2$-dimensionalen Raum aussehen würde 
 und wie sie die Daten anhand ihrer Klasse aufteilt.
@@ -178,8 +178,7 @@ Mit Hilfe der \textit{Support Vector Machine} können wir nun einen Großteil an
 Eine \textit{separierende Hyperplane} kann die Trainingsdaten jedoch immer nur in zwei Klassen einteilen. 
 Wie können dann handgeschriebene Ziffern und Zahlen durch eine \textit{Support Vector Machine} erkannt werden?
 Es gibt zwei Möglichkeiten dies zu bewerkstelligen, wenn $K > 2$ Klassen existieren.
-Die erste Methode ist die 1-gegen-1-Klassifizierung. Hier wird für jede Paarung der Klassen $K \choose 2$
-wird eine SVM erzeugt. Bei einer Klassifizierung eines neuen Testobjektes wird die Klasse ausgewählt, zu der das Objekt bei den
+Die erste Methode ist die 1-gegen-1-Klassifizierung. Hier wird für jede Paarung der Klassen $K \choose 2$ eine SVM erzeugt. Bei einer Klassifizierung eines neuen Testobjektes wird die Klasse ausgewählt, zu der das Objekt bei den
 $K \choose 2$ paarweisen Klassifizierern am häufigsten zugewiesen wurde.
 Die Alternative zu dieser Methode ist die 1-gegen-alle-Klassifizierung. Hier werden $K$ SVMs erstellt.
 Eine SVM für jede Klasse und die $K-1$ restlichen Klassen. Ein unbekanntes Testobjekt wird dann der Klasse zugeordnet,
@@ -187,7 +186,7 @@ bei der die SVM sich am sichersten bei der Zuordnung ist.
 So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klassen unterscheiden.\cite[S. 355f.]{james_2013}\cite[S.1567]{noble_2006}
 
 \subsubsection{Bewertung der \textit{Support Vector Machine}}
-Für eine fairen Vergleich zwischen den einzelnen \textit{Machine Learning}-Algorithmen muss die \textit{Support Vector Machine}
+Für einen fairen Vergleich zwischen den einzelnen \textit{Machine Learning}-Algorithmen muss die \textit{Support Vector Machine}
 nach den bereits festgelegten Bewertungskriterien: Komplexität, Genauigkeit, Präzision und Einfachheit der Umsetzung beurteilt werden.
 Die mathematische Komplexität des \textit{Support Vector Machine}-Algorithmus lässt sich nachschlagen.
 Das Trainieren einer SVM hat eine Komplexität von $O(n^2 p + n^3)$ mit $n$ als Anzahl der Traingsobjekte und $p$ als Anzahl der \textit{Features}.
@@ -201,7 +200,7 @@ Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf
 verschiedener \textit{Machine Learning}-Algorithmen besitzt. Das fertige Programm ist in \ref{lst:test_svm} zu sehen.
 Zuerst werden die benötigten Funktionen aus der \textbf{SciKit-learn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
 geschriebenen Ziffern $0, \dots 9$ enthält und die Daten mit Hilfe eines \textbf{NumPy}-\textit{Arrays} vorbereitet. Danach werden die Daten halbiert und in einen
-Trainingsdatensatz sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
+Trainingsdatensatz, sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
 mit dem Trainingsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
 
 \begin{minipage}{\textwidth}
@@ -237,7 +236,7 @@ print("\nGenauigkeit: ", svm_classifier.score(X_test, y_test))
 \end{minipage}
 
 Aus dem Klassifizierungsbericht in \ref{lst:testergebnis_svm} kann direkt die Präzision und Genauigkeit dieser \textit{Support Vector Machine} 
-herausgelesen werden. Die \textit{Support Vector Machine} aus unserem Test hat eine durchschnittliche Präzision von $0.97$ sowie eine 
+herausgelesen werden. Die \textit{Support Vector Machine} aus unserem Test hat eine durchschnittliche Präzision von $0.97$, sowie eine 
 gerundete Genauigkeit von ebenfalls $0.97$.
 
 \begin{minipage}{\textwidth}
@@ -264,9 +263,9 @@ Genauigkeit:  0.9688542825361512
 	\end{lstlisting}
 \end{minipage}
 
-Damit ist schon eine Mehrheit der Kriterien zur Bewertung der SVM abgedeckt. Als Letztes muss nun die Einfachheit der Umsetzung bewertet werden.
-Es spricht für die \textit{Support Vector Machine}, dass uns die komplette Umsetzung des Algorithmus bereits abgenommen wurde und alle benötigten
-Funktionen durch die \textbf{Python}-Bibliothek \textbf{SciKit-learn} bereitgestellt werden. Die \textit{Support Vector Machine} ist damit sehr einfach
+Damit ist bereits eine Mehrheit der Kriterien zur Bewertung der SVM abgedeckt. Als Letztes muss nun die Einfachheit der Umsetzung bewertet werden.
+Es spricht für die \textit{Support Vector Machine}, dass uns die gesamte Umsetzung des Algorithmus bereits abgenommen wurde und alle benötigten
+Funktionen durch die \textbf{Python}-Bibliothek \textbf{SciKit-learn} bereitgestellt wurden. Die \textit{Support Vector Machine} ist damit sehr einfach
 für unser Projekt zu verwenden.  Wie bereits im obigen Beispielcode \ref{lst:test_svm} zu sehen, braucht es nur drei Zeilen Code um eine SVM zu initialisieren,
 zu trainieren und neue Testdaten zu klassifizieren. Deshalb gebe ich der \textit{Support Vector Machine} eine Punktzahl von 5/5.
 Damit ist die Bewertung der dieses \textit{Machine Learning}-Algorithmus abgeschlossen. 
