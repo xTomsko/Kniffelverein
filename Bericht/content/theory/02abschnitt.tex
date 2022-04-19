@@ -22,9 +22,9 @@ Kriterien vorgenommen.
 \newpage
 
 \subsection{Support Vector Machine} \label{ssec:svm}
-Die \textit{Support Vector Machine} (SVM) ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
+Die \textit{Support Vector Machine} ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
 Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
-SVMs können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
+\acp{SVM} können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
 Bevor die SVM entwickelt wurde, gab es verschiedene Vorgängertechnologien aus denen am Ende die heutige \textit{Support Vector Machine} hervorgegangen ist. 
 Diese Algorithmen sind zum Einen der \textit{Maximal Margin Classifier} und der \textit{Support Vector Classifier}, 
 der eine Weiterentwicklung des zuvor Genannten darstellt.
@@ -34,7 +34,7 @@ müssen jedoch klar unterschieden werden.\cite[S. 337]{james_2013}
 
 Die Terminologie im Bereich der \textit{Support Vector Machine} ist nicht ganz klar und kann sich in verschiedenen Veröffentlichungen unterscheiden.
 Eine andere Differenzierung der Vorgängertechnologien ist die Einteilung in Lineare Klassifizierer und nicht-lineare Klassifizierer.
-Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus (LSVM), mit dem iterativ SVMs trainiert werden können.\cite[S. 207]{suthaharan_2015}
+Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus, mit dem iterativ SVMs trainiert werden können.\cite[S. 207]{suthaharan_2015}
 In dieser Arbeit verwenden wir die zuvor genannte Einteilung in \textit{Maximal Margin Classifier}, \textit{Support Vector Classifier}
 und \textit{Support Vector Machine}. An ihr lässt sich die kontinuierliche Weiterentwicklung der Algorithmen am besten verfolgen und am übersichtlichsten darstellen.
 Außerdem wird die Chronologie der hinzugekommenen Konzepte deutlicher.
@@ -276,11 +276,11 @@ Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks}
 \newpage
 
 \subsection{Convolutional Neural Networks} \label{ssec:cnn}
-Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die des \textit{Convolutional Neural Networks} (CNN).
+Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die des \acp{CNN}.
 
 Die CNN wird, ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN jedoch auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \cite*{10.1007/978-3-319-45378-1_1}
 
-Um nun den Aufbau eines CNN zu verstehen, betrachten wir zunächst ein normales \textit{Artificial Neural Network} (ANN) oder \textit{Neural Network}. Beide Terminologien werden in der Literatur kommutativ genutzt. Um den Unterschied zu den biologischen neuronalen Netzwerken zu verdeutlichen, wird fortlaufend in dieser Arbeit ANN als Terminologie genutzt.
+Um nun den Aufbau eines CNN zu verstehen, betrachten wir zunächst ein normales \ac{ANN} oder \textit{Neural Network}. Beide Terminologien werden in der Literatur kommutativ genutzt. Um den Unterschied zu den biologischen neuronalen Netzwerken zu verdeutlichen, wird fortlaufend in dieser Arbeit ANN als Terminologie genutzt.
 
 \subsubsection{Artificial Neural Network}
 Im Jahr 1943 entwickelte der Neurophysiologe Warren McCulloch und ein junger Mathematiker Walter Pitts das erste Model eines ANN, das in der Studie „The Logical Calculus of the Ideas Immenent in Neverous Activiy“ veröffentlicht wurde. Dieses war in der Lage, einfache logische Operationen durchzuführen.
@@ -364,7 +364,7 @@ Die Filter-Schicht, auch häufig als Feature-Extraction-Layer bezeichnet, extrah
 Es handelt sich hierbei um Faltungsoperationen, die Ähnlichkeiten zur Fourier-Transformation und zur Lapace-Transformation aufweisen, und bilden das Merkmal eines CNNs.
 Ein Neuron einer Filter-Schicht betrachtet einen bestimmten Bereich einer vorherigen Schicht in Form einer Matrix und bildet daraus ein Skalarprodukt, um die den Bereich auf nur eine Zahl zu reduzieren.
 Die Architektur eines CNNs, die aus den verschiedenen Schichten und der Filter-Schichten besteht, ermöglichen, dass weniger Neuronen benötigt werden im Gegensatz zu anderen vielschichtigen neuronalen Netzwerken.\cite*{Sewak2018}
-Die Knoten in der Filter-Schicht nutzen die sogenannte \textit{rectified linear unit (ReLU)} Funktion als Aktivierungsfunktion. Diese ist, wie der Name bereits beschreibt, eine lineare Funktion, welche leicht modifiziert ist, sodass der Rückgabewert der Funktion gleich null ist, wenn der Eingabewert kleiner gleich null ist. Das bringt diverse Vorteile bei der Optimierung von CNNs und ANNs. Lineare Funktionen sind leichter zu optimieren und zu trainieren. Die ReLU Funktion lässt sich mathematisch als das Maximum einer Menge definieren, welche zwei Elemente besitzt, den Wert $0$ und den Wert $x$.
+Die Knoten in der Filter-Schicht nutzen die sogenannte \ac{ReLU}-Funktion als Aktivierungsfunktion. Diese ist, wie der Name bereits beschreibt, eine lineare Funktion, welche leicht modifiziert ist, sodass der Rückgabewert der Funktion gleich null ist, wenn der Eingabewert kleiner gleich null ist. Das bringt diverse Vorteile bei der Optimierung von CNNs und ANNs. Lineare Funktionen sind leichter zu optimieren und zu trainieren. Die ReLU Funktion lässt sich mathematisch als das Maximum einer Menge definieren, welche zwei Elemente besitzt, den Wert $0$ und den Wert $x$.
 
 \[ReLU(x) = max\{0, x\}\] \cite*{goodfellow2016}
 
