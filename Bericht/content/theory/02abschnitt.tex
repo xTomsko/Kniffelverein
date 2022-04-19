@@ -288,8 +288,8 @@ Im Laufe der Historie wurde das Konstrukt ANN immer weiterentwickelt und hat in 
 Heutzutage sind ANN einer der wichtigsten Bestandteile in der Erforschung der Künstlichen Intelligenz und des maschinellen Lernens, welches auf die enorme Innovation in der Computerindustrie und der Leistungsverbesserung der Rechner zurückzuführen ist. \cite*{10.1007/978-3-319-45378-1_1}
 
 Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nachdem ihre eingegangene Information verarbeitet wurde.
-In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren Tausenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, in die Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
-Die Knoten innerhalb einer Schicht sind nicht miteinander verknüpft, sie sind nur mit Knoten aus der vorherigen und danach kommenden Schicht verbunden. Wenn alle Knoten mit allen Konten aus der vorangegangen und danach kommenden Schicht verbunden sind, bezeichnet man das ANN an diesem Punkt als \textit{fully-connected}. Ein solches \textit{fully-connected ANN} ist in Abbildung \ref{fig:ful_con_ann} zu erkennen. Das Netzwerk verfügt beispielsweise vier Schichten, eine Eingabeschicht, eine Ausgabeschicht und zwei versteckten Schichten. In der Abbildung werden die Knoten als Kreise dargestellt und die Verbindungen als gerichtete-Linien. Die versteckten Schichten haben zum Beispiel vier Knoten.
+In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren Tausenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, in die Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, wenn keine weitere verdeckte Schicht folgt.
+Die Knoten innerhalb einer Schicht sind nicht miteinander verknüpft, sie sind nur mit Knoten aus der vorherigen und danach kommenden Schicht verbunden. Wenn alle Knoten mit allen Konten aus der vorangegangen und danach kommenden Schicht verbunden sind, bezeichnet man das ANN an diesem Punkt als \textit{fully-connected}. Ein solches \textit{fully-connected ANN} ist in Abbildung \ref{fig:ful_con_ann} zu erkennen. Das Netzwerk verfügt beispielsweise über vier Schichten, eine Eingabeschicht, eine Ausgabeschicht und zwei versteckten Schichten. In der Abbildung werden die Knoten als Kreise dargestellt und die Verbindungen als gerichtete Linien. Die versteckten Schichten haben zum Beispiel vier Knoten.
 \cite*{Keiron2015}
 
 \begin{figure}[H]
@@ -316,11 +316,11 @@ In der Abbildung \ref{fig:act_fun} wird die Aktivierungsfunktion $a$ dargestellt
 
 Mit dieser Funktion können wir nachvollziehen, wie jeder einzelne Knoten seine Entscheidung trifft.\cite*{Braspenning1995}
 
-Zusätzlich können wir eine \textit{Verlustfunktion} für das Netzwerk definieren, um die Genauigkeit der Entscheidungen zu messen. Bei den ANN existieren zwei verschiedene Arten von Verlustfunktion, die Klassifizierung-Verlustfunktion und die Regression-Verlustfunktion. 
-Die Klassifizierung-Verlustfunktion wird genutzt, wenn ein Netzwerk als Klassifizierer eingesetzt wird, wie es in diesem Test der Fall ist. Die Regression-Verlustfunktion wird bei Anwendungen der Vorhersage von bestimmten Werten.
+Zusätzlich können wir eine \textit{Verlustfunktion} für das Netzwerk definieren, um die Genauigkeit der Entscheidungen zu messen. Bei den ANN existieren zwei verschiedene Arten von Verlustfunktionen, die Klassifizierungs-Verlustfunktion und die Regression-Verlustfunktion. 
+Die Klassifizierung-Verlustfunktion wird genutzt, wenn ein Netzwerk als Klassifizierer eingesetzt wird, wie es in diesem Test der Fall ist. Die Regression-Verlustfunktion wird bei Anwendungen der Vorhersage von bestimmten Werten verwendet.
 Unter den zwei Arten der Verlustfunktion für ANN existieren wiederum verschiedene mathematische Funktionen, mit denen sich der Wert je nach Anwendung berechnen lässt.\cite{dwivedi_2020}
 
-Im Folgenden wird die sogenannte \textit{Kreuzentropie} als Verlustfunktion verwendet oder auch log-loss genannt. Diese Verlustfunktion wird bei binärer Klassifikation eingesetzt und berechnet den Verlustwert mit Hilfe eines booleschen Wertes und dem errechneten Entscheidungswert des ANN. Bei dem booleschen Wert handelt es sich um 0 oder 1, der aussagt, ob das zu klassifizierende Objekt richtig erkannt wurde oder nicht. In der Abbildung \ref*{fig:crossentropy} wird die Kreuzentropie dargestellt. Anhand dieser Darstellung ist zu erkennen, wie der Verlustwert abhängig vom Entscheidungswert des ANN ist. Wenn der Entscheidungswert sich der 1 annähert, verringert sich der Wert der Kreuzentropie.
+Im Folgenden wird die sogenannte \textit{Kreuzentropie} oder auch \textit{log-loss} genannt als Verlustfunktion verwendet. Diese Verlustfunktion wird bei binärer Klassifikation eingesetzt und berechnet den Verlustwert mit Hilfe eines booleschen Wertes und dem errechneten Entscheidungswert des ANN. Der boolesche Wert wird durch 0 oder 1 ausgedrückt, dieser sagt aus, ob das zu klassifizierende Objekt richtig erkannt wurde oder nicht. In der Abbildung \ref*{fig:crossentropy} wird die Kreuzentropie dargestellt. Anhand dieser Darstellung ist zu erkennen, wie der Verlustwert abhängig vom Entscheidungswert des ANN ist. Wenn der Entscheidungswert sich der 1 annähert, verringert sich der Wert der Kreuzentropie.
 Für eine Klassifikation von zwei Klassen wird die Kreuzentropie wie folgt berechnet: 
 
 \[-(y\times log(p) + (1 - y) \times log(1-p))\]
@@ -351,13 +351,13 @@ Wie im Vorfeld angeführt, handelt es sich bei den CNN um eine Spezialisierung e
 
 Da wir das CNN für die Klassifikation von Bildinhalten verwenden, muss die Eingabeschicht für diesen Datentypen vorbereitet werden. Die Besonderheit hierbei liegt darin, dass die Knoten zusätzlich zu den Schichten in drei Dimensionen aufgeteilt werden. Diese Aufteilung bezieht sich jedoch nur auf die Verknüpfungen zu den Knoten in der nächsten Schicht. Die Dimensionen sind für ein Bild die Höhe und Breite. Eine zusätzliche dritte Dimension ist die sogenannte Tiefe, welche Auskunft über die Anzahl der folgenden verknüpften Knoten bietet.
 
-Die Architektur der CNN erweitert das Prinzip der Ein/Ausgabeschicht und den versteckten Schichten insoweit, als  die versteckten Schichten in weitere Kategorien eingeteilt werden können. Bei einem CNN gibt es zusätzlich zu der Ein/Ausgabeschicht, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer).
-Bei der Ausgabeschicht handelt es ebenfalls um eine vollständig verbundene Schicht. \cite*{Keiron2015}
+Die Architektur der CNN erweitert das Prinzip der Ein/Ausgabeschicht und den versteckten Schichten insoweit, als dass die versteckten Schichten in weitere Kategorien eingeteilt werden können. Bei einem CNN gibt es zusätzlich zu der Ein/Ausgabeschicht, die Filter-Schichten (engl. Convolutional Layer), Aggregations-Schichten (Pooling Layer) und die vollständig verbundenen Schichten (engl. Fully Connected Layer, Dense Layer).
+Bei der Ausgabeschicht handelt es sich ebenfalls um eine vollständig verbundene Schicht. \cite*{Keiron2015}
 
 Die einzelnen Aufgaben und Eigenarten der verschiedenen Schichten werden im Folgenden behandelt.
 
 \subsubsection{Input Layer}
-In der Eingabeschicht werden die Bilddaten gespeichert und in einer dreidimensionale Matrix dargestellt.\cite*{Sewak2018}
+In der Eingabeschicht werden die Bilddaten gespeichert und in einer dreidimensionalen Matrix dargestellt.\cite*{Sewak2018}
 
 \subsubsection{Filter-Schicht}
 Die Filter-Schicht, auch häufig als Feature-Extraction-Layer bezeichnet, extrahiert Eigenschaften aus dem Eingabebild und übt die Hauptanzahl an Berechnungen aus. 
@@ -369,25 +369,25 @@ Die Knoten in der Filter-Schicht nutzen die sogenannte \ac{ReLU}-Funktion als Ak
 \[ReLU(x) = max\{0, x\}\] \cite*{goodfellow2016}
 
 \subsubsection{Aggregations-Schicht}
-Die Aggregations-Schicht ist für das Herunter tasten der Dimensionen zuständig, um die Parameter der Aktivierungsfunktion zu reduzieren. Durch die Anwendung der zuvor liegenden Filter-Schichten erhöhen nämlich die räumlichen Dimensionen und damit einhergehend die Anzahl der Parameter der darauf folgenden Schicht. Dies hat zur Folge, dass die Komplexität des Models erhöht wird. Diese Überanpassung wird mit den Aggregations-Schichten entgegengewirkt.\cite*{Sewak2018}
-Für das Skalieren wird am häufigsten die \textit{max pooling} Funktion verwendet. Diese Funktion reduziert die Dimensionen ausgenommen der Tiefe auf eine Größe von etwa 25\% der Originalgröße.\cite*{Keiron2015}
+Die Aggregations-Schicht ist für das Heruntertasten der Dimensionen zuständig, um die Parameter der Aktivierungsfunktion zu reduzieren. Durch die Anwendung der zuvor liegenden Filter-Schichten wird die räumlichen Dimension erhöht und die damit einhergehend Anzahl der Parameter der darauf folgenden Schicht. Dies hat zur Folge, dass die Komplexität des Models erhöht wird. Diese Überanpassung wird mit den Aggregations-Schichten entgegengewirkt.\cite*{Sewak2018}
+Für das Skalieren wird am häufigsten die \textit{max pooling} Funktion verwendet. Diese Funktion reduziert die Dimensionen, ausgenommen der Tiefe, auf eine Größe von etwa 25\% der Originalgröße.\cite*{Keiron2015}
 
 \subsubsection{Vollständig-Verbundene-Schicht}
 
-Die vollständig verbunden Schicht ist die einer versteckten Schicht in einem ANN gleich. Diese Schicht ist hauptsächlich für die Klassifizierung und Berechnungen der Wahrscheinlichkeit zuständig. Die Aktivierungsfunktion der Knoten in dieser Schicht ist wie bei der Filter-Schichten die ReLU Funktion.
-Einleitet wurde erwähnt, dass es sich bei der Ausgabeschicht ebenfalls um eine vollständig verbundene Schicht handelt. Diese wird auch als soft-max Schicht bezeichnet und gibt die letztendliche Klassifizierung des Bildes zurück.\cite*{Sewak2018}
+Die vollständig verbundene Schicht ist die einer versteckten Schicht in einem ANN gleich. Diese Schicht ist hauptsächlich für die Klassifizierung und Berechnungen der Wahrscheinlichkeit zuständig. Die Aktivierungsfunktion der Knoten in dieser Schicht ist wie bei der Filter-Schichten die ReLU Funktion.
+Einleitet wurde erwähnt, dass es sich bei der Ausgabeschicht ebenfalls um eine vollständig verbundene Schicht handelt. Diese wird auch als \textit{soft-max} Schicht bezeichnet und gibt die letztendliche Klassifizierung des Bildes zurück.\cite*{Sewak2018}
 
 \newpage
 
-\subsubsection{Bewertung der Convolutional Neural Networks}
+\subsubsection{Bewertung ded Convolutional Neural Networks}
 
 Damit wir ein CNN mit der SVM und dem KNN vergleichen können, werden dieselben Bewertungskriterien untersucht. Die für die Bewertung relevanten Kriterien waren:
 
 \begin{itemize}
-\item \textit{Komplexität}
-\item \textit{Genauigkeit}
-\item \textit{Präzision}
-\item \textit{Einfachheit der Umsetzung}
+\item Komplexität
+\item Genauigkeit
+\item Präzision
+\item Einfachheit der Umsetzung
 \end{itemize}
 
 Bevor wir genauer auf die Bewertungskriterien eingehen, werden wir uns mit dem für den Test konstruierten CNN beschäftigen.
@@ -425,7 +425,7 @@ y_train = y_train[:-10000]
 	\end{lstlisting}
 \end{minipage}
 
-Im Folgenden Codeabschnitt wird das CNN-Model definiert. Das Model wurde mit folgenden Schichten definiert:
+Im folgenden Codeabschnitt wird das CNN-Model definiert. Das Model wurde mit folgenden Schichten definiert:
 
 \begin{itemize}
 	\item Filter-Schicht (Eingabeschicht)
@@ -536,9 +536,9 @@ Epoch 10/10
 
 \subsubsection{Einfachheit der Umsetzung}
 In der Bewertung von diesem Kriterium wird von einem subjektiven Standpunkt ausgegangen. Es soll bewertet werden, wie einfach die Umsetzung des CNN-Modells in diesem Projekt ist.
-Das CNN-Modell wird mit \textbf{3/5} Punkten.
-Auch wenn das Forschungsgebiet der CNN in Bezug der Handschrifterkennung sehr gut beleuchtet ist, ist die vor allem die Optimierung und Umsetzung eines CNNs komplex.
-Der CNN wird ähnlich wie die anderen Algorithmen bereits durch eine Bibliothek bereitgestellt, aber die Funktionen benötigen viele Parameter, wie zum Beispiel die Anordnung und die Definition der verschiedenen Schichten.
+Das CNN-Modell wird mit \textbf{3/5} Punkten bewertet.
+Auch wenn das Forschungsgebiet der CNN in Bezug der Handschrifterkennung sehr gut beleuchtet ist, ist vor allem die Optimierung und Umsetzung eines CNNs komplex.
+Der CNN wird, ähnlich wie die anderen Algorithmen, bereits durch eine Bibliothek bereitgestellt, aber die Funktionen benötigen viele Parameter, wie zum Beispiel die Anordnung und die Definition der verschiedenen Schichten.
 \newpage
 
 \subsection{Auswertung des Vergleiches} \label{ssec:eval}
