@@ -1,4 +1,4 @@
-\section{Vergleich verschiedener \textit{Machine Learning}-Algorithmen (Alex)} \label{sec:compare}
+\section{Vergleich verschiedener \textit{Machine Learning}-Algorithmen} \label{sec:compare}
 In diesem Kapitel sollen unterschiedliche \textit{Machine Learning}-Algorithmen im Hinblick auf das Projekt miteinander verglichen werden.
 Es wurde bereits eine Vorauswahl getroffen und für den Vergleich wurden die Algorithmen \textit{K-Nearest-Neighbor}, die \textit{Support Vector Machine} und
 \textit{Convolutional Neural Networks} ausgewählt. Für einen fairen Vergleich wird beim Trainieren aller zuvor genannten \textit{Machine Learning}-Algorithmen
@@ -15,11 +15,13 @@ eins bis fünf beurteilt.
 In den folgenden Unterkapiteln werden die drei \textit{Machine Learning}-Algorithmen aus der Vorauswahl näher beschrieben und eine Evaluation nach den genannten 
 Kriterien vorgenommen.
 
-\subsection{KNN (Dirk)} \label{ssec:knn}
+\subsection{K-Nearest-Neighbor} \label{ssec:knn}
+\textit{[In Bearbeitung durch Dirk Kremer]}
+
 
 \newpage
 
-\subsection{Support Vector Machine (Alex)} \label{ssec:svm}
+\subsection{Support Vector Machine} \label{ssec:svm}
 Die \textit{Support Vector Machine} (SVM) ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
 Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
 SVMs können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
@@ -274,19 +276,19 @@ Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks}
 \newpage
 
 \subsection{Convolutional Neural Networks} \label{ssec:cnn}
-Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die der \textit{Convolutional Neural Networks} (CNN).
+Die letzte künstliche Intelligenz, die es in diesem Vergleich zu untersuchen gilt, ist die des \textit{Convolutional Neural Networks} (CNN).
 
-Die CNN wird ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN jedoch auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \cite*{10.1007/978-3-319-45378-1_1}
+Die CNN wird, ähnlich wie die SVM als ein Konstrukt zum Klassifizieren von Bildern genutzt, jedoch unterscheiden sie sich in der Herangehensweise das Problem zu lösen. Anders als die SVM handelt es sich bei der CNN um keine algorithmische Umsetzung, sondern um eine vordefinierte Menge an Anweisungen, die zur Lösung eines spezifischen Problems führen. Aufgrund der vordefinierten Menge an Anweisungen ist ein CNN jedoch auf Probleme beschränkt, welche wir verstehen und lösen können. Dies hat zur Folge, dass kein Ansatz dem anderen überzuordnen ist, sondern die Art des Problems definiert, ob konventionelle Algorithmen oder neuronale Netzwerke besser geeignet sind. \cite*{10.1007/978-3-319-45378-1_1}
 
 Um nun den Aufbau eines CNN zu verstehen, betrachten wir zunächst ein normales \textit{Artificial Neural Network} (ANN) oder \textit{Neural Network}. Beide Terminologien werden in der Literatur kommutativ genutzt. Um den Unterschied zu den biologischen neuronalen Netzwerken zu verdeutlichen, wird fortlaufend in dieser Arbeit ANN als Terminologie genutzt.
 
 \subsubsection{Artificial Neural Network}
-Im Jahr 1943 entwickelte der Neurophysiologe Warren McCulloch und ein junger Mathematiker Walter Pitts das erste Model eines ANN, das in der Studie „The Logical Calculus of the Ideas Immenent in Nverous Activiy“ veröffentlicht wurde. Dieses war in der Lage, einfach logische Operationen durchzuführen.
+Im Jahr 1943 entwickelte der Neurophysiologe Warren McCulloch und ein junger Mathematiker Walter Pitts das erste Model eines ANN, das in der Studie „The Logical Calculus of the Ideas Immenent in Neverous Activiy“ veröffentlicht wurde. Dieses war in der Lage, einfache logische Operationen durchzuführen.
 Im Laufe der Historie wurde das Konstrukt ANN immer weiterentwickelt und hat in der Informatiker-Community an Ansehen erlangt, bis die Technologie an ihre damaligen Grenzen gestoßen ist und die Technologie zunächst vernachlässigt wurde.
-Heutzutage sind ANN einer der wichtigsten Bestandteile in der Erforschung der Künstlichen Intelligenz und des maschinell Lernens, welches auf die enorme Innovation in der Computerindustrie und der Leistungsverbesserung der Rechner zurückzuführen ist. \cite*{10.1007/978-3-319-45378-1_1}
+Heutzutage sind ANN einer der wichtigsten Bestandteile in der Erforschung der Künstlichen Intelligenz und des maschinellen Lernens, welches auf die enorme Innovation in der Computerindustrie und der Leistungsverbesserung der Rechner zurückzuführen ist. \cite*{10.1007/978-3-319-45378-1_1}
 
-Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nach dem ihre eingegangene Information verarbeitet wurde.
-In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren tausenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, der Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
+Ein ANN ist im Aufbau ähnlich zu einem primitiven biologischen Nervensystem. Es besteht aus einer gewissen Anzahl an Knoten, die Neuronen repräsentieren und miteinander verbunden sind. Die miteinander verbunden Knoten geben Informationen an den jeweils nächsten Knoten weiter, nachdem ihre eingegangene Information verarbeitet wurde.
+In einem ANN sind die Knoten in verschiedene Schichten aufgeteilt, wobei die Anzahl der Knoten nicht festgelegt ist. Es können Schichten mit einem Knoten erstellt werden oder mit mehreren Tausenden. Jede dieser Schichten dient einem genau definierten Zweck im Netzwerk. Um den Zweck genauer zu definieren, werden die Schichten in drei Gattungen unterteilt, in die Eingabeschicht, die versteckten Schichten und die Ausgabeschicht. Die Eingabeschicht nimmt in der Regel einen mehrdimensionalen Eingabevektor entgegen. Dieser wird in der Eingabeschicht verarbeitet und das Ergebnis wird an die Knoten der nächsten Schicht verteilt. Die danach kommende Schicht verarbeitet die Informationen, die sie bekommen hat und verteilt diese dann wieder an die nächsten Knoten in der folgenden versteckten Schicht oder an die Ausgabeschicht, falls keine weitere verdeckte Schicht folgt.
 Die Knoten innerhalb einer Schicht sind nicht miteinander verknüpft, sie sind nur mit Knoten aus der vorherigen und danach kommenden Schicht verbunden. Wenn alle Knoten mit allen Konten aus der vorangegangen und danach kommenden Schicht verbunden sind, bezeichnet man das ANN an diesem Punkt als \textit{fully-connected}. Ein solches \textit{fully-connected ANN} ist in Abbildung \ref{fig:ful_con_ann} zu erkennen. Das Netzwerk verfügt beispielsweise vier Schichten, eine Eingabeschicht, eine Ausgabeschicht und zwei versteckten Schichten. In der Abbildung werden die Knoten als Kreise dargestellt und die Verbindungen als gerichtete-Linien. Die versteckten Schichten haben zum Beispiel vier Knoten.
 \cite*{Keiron2015}
 
@@ -540,3 +542,4 @@ Der CNN wird ähnlich wie die anderen Algorithmen bereits durch eine Bibliothek 
 \newpage
 
 \subsection{Auswertung des Vergleiches} \label{ssec:eval}
+\textit{[In Bearbeitung durch Dirk Kremer]}
