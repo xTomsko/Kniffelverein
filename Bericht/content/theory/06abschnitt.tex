@@ -1,0 +1,50 @@
+\subsection{Auswertung des Vergleiches} \label{ssec:eval}
+Nachdem nun die drei Tests durchgeführt wurden muss ermittelt werden welcher Algorithmus für diese Arbeit verwendet wird. Hierfür werden die vier am Anfang genannten Kriterien miteinander verglichen.
+\begin{itemize}
+    \item Komplexität
+          \begin{itemize}
+              \item \textit{KNN}: $O(np)$
+              \item \textit{SVM}: $O(n_{sv}p)$
+              \item \textit{CNN}: $\sum^{d}_{l=1}n_{l-1} * s^2_1 * n_1 * m^2_1$
+          \end{itemize}
+    \item Präzision
+          \begin{itemize}
+              \item \textit{KNN}: 95,7\%
+              \item \textit{SVM}: 97,2\%
+              \item \textit{CNN}: 92,1\%
+          \end{itemize}
+    \item Genauigkeit
+          \begin{itemize}
+              \item \textit{KNN}: 95,5\%
+              \item \textit{SVM}: 96,9\%
+              \item \textit{CNN}: 99,2\%
+          \end{itemize}
+    \item Einfachheit der Umsetzung
+          \begin{itemize}
+              \item \textit{KNN}: 5/5
+              \item \textit{SVM}: 5/5
+              \item \textit{CNN}: 3/5
+          \end{itemize}
+\end{itemize}
+Mit einer hohen durchschnittliche Präzision und einer überschaubaren Komplexität kann der \textit{\textbf{SVM}} diesen Vergleich für sich gewinnen. Allerdings ist es fragwürdig, ob es sinnvoll ist nicht einen Algorithmus zu wählen, der eine besseren Genauigkeit zu wählen, um möglichst immer die richtigen Zahlen zu erkennen.\par
+
+Um dieses Problem zu lösen ist es möglich, die Test- und Trainingsdaten für \textit{KNN} und \textit{SVM} noch etwas besser vorzubereiten und damit ein besseres Ergebnis zu erzielen. Dafür müssen die Daten lediglich gemischt werden. Mit diesem Schritt können die beiden Algorithmen ihre Leistung nochmal signifikant steigern.
+
+\begin{itemize}
+    \item Präzision
+          \begin{itemize}
+              \item \textit{KNN}: 99\%
+              \item \textit{SVM}: 99\%
+              \item \textit{CNN}: 92,1\%
+          \end{itemize}
+    \item Genauigkeit
+          \begin{itemize}
+              \item \textit{KNN}: 99,1\%
+              \item \textit{SVM}: 99,7\%
+              \item \textit{CNN}: 92,2\%
+          \end{itemize}
+\end{itemize}
+Die anderen beiden Kriterien sowie der \textit{CNN} ändern sich dabei nicht, da es keinen Einfluss auf sie hat.\\\hfill
+Durch das Mischen gibt es nun einen eindeutigeren Gewinner, ohne Probleme bei der Genauigkeit: \textit{\textbf{SVM}}.\\\par
+
+In dem später folgenden Kapitel \ref{sec:problem_number_detection} wird erneut eine neue Einschätzung des besten Algorithmus unter neuen Erkenntnissen vorgenommen.
