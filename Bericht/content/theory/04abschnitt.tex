@@ -1,0 +1,254 @@
+\subsection{Support Vector Machine} \label{ssec:svm}
+Die \textit{Support Vector Machine} ist ein Algorithmus zur Klassifizierung von Daten in verschiedene Klassen.
+Sie wurde in den 1990er Jahren innerhalb der Informatiker-Community entwickelt und gewinnt seitdem immer weiter an Popularität.
+\acp{SVM} können in vielen verschiedenen Szenarien eingesetzt werden und werden zu den besten Klassifizierern gezählt.
+Bevor die SVM entwickelt wurde, gab es verschiedene Vorgängertechnologien aus denen am Ende die heutige \textit{Support Vector Machine} hervorgegangen ist.
+Diese Algorithmen sind zum Einen der \textit{Maximal Margin Classifier} und der \textit{Support Vector Classifier},
+der eine Weiterentwicklung des zuvor Genannten darstellt.
+Die \textit{Support Vector Machine} ist wiederum eine Erweiterung des \textit{Support Vector Classifier}.
+Jeder dieser Klassifizierer wird meist lose unter dem Begriff \textit{Support Vector Machine} zusammengefasst,
+müssen jedoch klar unterschieden werden.\cite[S. 337]{james_2013}
+
+Die Terminologie im Bereich der \textit{Support Vector Machine} ist nicht ganz klar und kann sich in verschiedenen Veröffentlichungen unterscheiden.
+Eine andere Differenzierung der Vorgängertechnologien ist die Einteilung in Lineare Klassifizierer und nicht-lineare Klassifizierer.
+Auch zu erwähnen ist der Lagrangische \textit{Support Vector Machine} Algorithmus, mit dem iterativ SVMs trainiert werden können.\cite[S. 207]{suthaharan_2015}
+In dieser Arbeit verwenden wir die zuvor genannte Einteilung in \textit{Maximal Margin Classifier}, \textit{Support Vector Classifier}
+und \textit{Support Vector Machine}. An ihr lässt sich die kontinuierliche Weiterentwicklung der Algorithmen am besten verfolgen und am übersichtlichsten darstellen.
+Außerdem wird die Chronologie der hinzugekommenen Konzepte deutlicher.
+
+Beginnen wir mit der einfachsten Form dieser Klassifizierer, dem \textit{Maximal Margin Classifier}.
+Dieser wird durch eine sogenannte \textit{Hyperplane} definiert. In einem $p$-dimensionalen Raum ist eine \textit{Hyperplane}
+ein flacher affiner Subraum der Dimension $p - 1$.
+Bei zwei Dimensionen wäre eine \textit{Hyperplane} ein flacher $1$-dimensionaler Subraum oder in anderen Worten eine Gerade.
+In einem $3$-dimensionalen Raum ist die \textit{Hyperplane} demnach eine Ebene.
+\textit{Hyperplanes} in höherdimensionalen Räumen sind schwer für den Menschen vorstellbar, folgen jedoch ebenfalls der Definition.
+Die mathematische Definition einer \textit{Hyperplane} im $2$-dimensionalen Raum lautet:
+\[\beta_0 + \beta_1X_1 + \beta_2X_2 = 0\]
+mit den Parametern $\beta_0$, $\beta_1$ und $\beta_2$.
+Es lässt sich erkennen, dass die Definition mit der einer Geraden übereinstimmt und damit unserer oben beschriebenen
+Definition einer \textit{Hyperplane} folgt.
+In einem $p$-dimensionalen Raum wird die Gleichung einer \textit{Hyperplane} wie folgt erweitert:
+\[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p= 0\]
+Eine \textit{Hyperplane} teilt den $p$-dimensionalen Raum in zwei Hälften.
+Erfüllt ein Punkt $X = (X_1, X_2, \dots, X_p)$ des $p$-dimensionalen Raumes nicht die obige Gleichung,
+liegt er entweder auf der einen Seite
+\[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p> 0\]
+oder auf der anderen Seite der \textit{Hyperplane}
+\[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p< 0\]
+Abbildung \ref{fig:Hyperplane} zeigt beispielhaft eine solche \textit{Hyperplane}, die durch die Gleichung $1 + 6X_1 + 4X_2 = 0$ definiert ist.
+Sie trennt den Raum in einen blauen Bereich, wo alle Punkte $1 + 6X_1 + 4X_2 > 0$ erfüllen und eine rote Seite, auf der für alle Punkte $1 + 6X_1 + 4X_2 < 0$ gilt.
+\cite[S. 338]{james_2013}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\imgMed]{images/theory/hyperplane.jpg}
+    \caption{Beispiel für eine \textit{Hyperplane}}
+    \label{fig:Hyperplane}
+\end{figure}
+Wir haben nun eine Matrix der Trainingsdaten $\mathbf{X}$ der Form $n \times p$,
+die aus $n$ Trainingsobjekten innerhalb eines $p$-dimensionalen Raumes besteht.
+\[x_1 = \left(\begin{array}{c} x_{11} \\ \vdots \\ x_{1p} \end{array}\right)
+    , \dots,
+    x_n = \left(\begin{array}{c} x_{n1} \\ \vdots \\ x_{np} \end{array}\right) \]
+Diese Trainingsobjekte sind definiert als Vektoren der Länge $p$, die die einzelnen beobachteten \textit{Features}
+$x^* = (x_1^* \dots x_p^*)^T$ enthalten und werden jeweils einer von zwei Klassen zugeordnet $y_1,\dots,y_n \in \{-1,1\}$.
+Wenn die \textit{Hyperplane} die Trainingsobjekte perfekt anhand ihrer Labels trennt,
+dann spricht man von einer \textit{separierenden Hyperplane}.
+Alle Objekte aus der einen Klassen fallen auf die linke Seite der \textit{Hyperplane}.
+Während die Trainingsobjekte mit dem anderen Label auf der rechten Seite der \textit{Hyperplane} liegen.
+Eine \textit{separierende Hyperplane} lässt sich mathematisch definieren durch folgende zwei Gleichungen:
+\[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p> 0 \text{ if } y_i = 1\]
+\[\beta_0 + \beta_1X_1 + \beta_2X_2  + \dots + \beta_pX_p< 0 \text{ if } y_i = -1\]
+für alle $i = 1 , \dots, n$.
+Diese \textit{separierende Hyperplane} kann nun als Klassifizierer eingesetzt werden.
+Um ein unbekanntes Testobjekt nun zu klassifizieren, muss nur geschaut werden auf welcher Seite der \textit{Hyperplane} das Objekt liegt.
+Liegt das Testobjekt auf der positiven Seite der \textit{Hyperplane} wird ihm das Label $1$ zugewiesen.
+Wenn es auf der negativen Seite liegt, wird das Testobjekt der Klasse $-1$ zugeordnet.
+Je weiter entfernt das Testobjekt von der \textit{separierenden Hyperplane} liegt, desto sicherer können wir uns sein,
+dass die Klassenzuweisung korrekt ist. Je kleiner der Abstand zur \textit{Hyperplane} wird, desto unsicherer ist,
+ob das Testobjekt der richtigen Klasse zugeordnet worden ist.
+Der Abstand der einzelnen Testobjekte zur \textit{separierenden Hyperplane} zeigt uns mit welcher Gewissheit das SVM
+die richtige Klassifizierung getroffen hat.\cite[S. 339 - 141]{james_2013}
+
+Beim \textit{Maximal Margin Classifier} wird die oben genannte Methode der \textit{separierenden Hyperplane} eingesetzt,
+um Daten klassifizieren zu können. Wenn die Daten durch eine \textit{separierende Hyperplane} getrennt werden können,
+gibt es unendlich viele Möglichkeiten, wie diese liegen kann. Für bestmögliche Ergebnisse beim Klassifizieren muss
+deshalb die optimale \textit{separierende Hyperplane} gefunden werden. Die natürliche Wahl ist es die 'Mittigste' der
+\textit{separierenden Hyperplanes} zu verwenden. Diese wird auch \textit{Maximal Margin Hyperplane} genannt.
+Mit Hilfe der Trainingsdaten muss eine \textit{separierende Hyperplane} gefunden werden, die so weit wie möglich von den
+nächsten Trainingsobjekten entfernt liegt.\cite[S. 1565f.]{noble_2006}
+
+Die Abbildung \ref{fig:separating_hyperplanes} zeigt zehn verschiedene Trainingsobjekte, die alle durch zwei Variablen definiert sind und
+einem der beiden Label $\{blau, rot\}$ zugeordnet sind. Außerdem sind drei unterschiedliche \textit{Hyperplanes} abgebildet, die alle
+\textit{separierende Hyperplanes} im Bezug auf unsere Trainingsdaten sind. Die Auswahl der „perfekten“ \textit{Hyperplane} für die SVM ist
+damit ein mathematisches Optimierungsproblem.
+Weitere Informationen zu dem Trainingsmodell einer SVM sind in dem Werk von \citeauthor{suthaharan_2015} zu finden.\cite[S. 210ff.]{suthaharan_2015}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\imgMed]{images/theory/separating_hyperplanes.jpg}
+    \caption{Beispiele für \textit{separierende Hyperplanes}}
+    \label{fig:separating_hyperplanes}
+\end{figure}
+Der Abstand zwischen der \textit{separierenden Hyperplane} und den nächstgelegenen Trainingsobjekten beider Labels
+wird als \textit{Margin} bezeichnet. Die \textit{Hyperplane}, deren \textit{Margin} am größten ist,
+wird daraus folgend auch \textit{Maximal Margin Hyperplane} genannt.
+Die Trainingsobjekte, die am nächsten zu der \textit{Hyperplane} liegen und damit auch denselben Abstand zu dieser haben,
+werden als die \textit{Stützvektoren} bezeichnet. Sie „stützen“ die \textit{Maximal Margin Hyperplane}.
+Die \textit{Stützvektoren} sind demnach die einzigen Trainingsobjekte, die die Position der \textit{Hyperplane} überhaupt beeinflussen.\cite[S. 341]{james_2013}
+Mit Hilfe der \textit{Maximal Margin Hyperplane} kann der
+\textit{Maximal Margin Classifier} nun neue unbekannte Testdaten klassifizieren, je nach dem auf welcher Seite sie liegen.
+Je größer dabei die \textit{Margin} der zugrunde liegenden \textit{Hyperplane}, desto erfolgreicher der Klassifizierer.\cite[S. 1566]{noble_2006}
+
+Eine solche \textit{Maximal Margin Hyperplane} ist in \ref{fig:maximal_margin} abgebildet. Die abgebildeten Trainingsdaten sind dieselben
+wie auch in Abbildung \ref{fig:separating_hyperplanes}. Es wurde die „mittigste“ \textit{separierende Hyperplane} gefunden, die die Trainingsdaten
+anhand ihrer Labels trennen kann. Außerdem zu sehen, sind die am nächsten gelegen Trainingsobjekte auf beiden Seiten der \textit{Hyperplane}, die als
+Stützvektoren dienen. Die \textit{Margin} wird visualisiert, durch die beiden Geraden, die parallel zur \textit{separierenden Hyperplane} liegen und
+durch die beiden \textit{Stützvektoren} verlaufen. Der Abstand dieser beiden Geraden zu der \textit{Hyperplane} ist die \textit{Margin}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\imgMed]{images/theory/maximal_margin.jpg}
+    \caption{Beispiel für eine \textit{Maximal Margin Hyperplane}}
+    \label{fig:maximal_margin}
+\end{figure}
+Je nach Trainingsdaten gibt es Szenarien in denen keine \textit{separierende Hyperplane} existiert, die die Daten perfekt anhand ihrer Labels
+trennen kann oder die \textit{Hyperplane} liegt nicht optimal, um eine effiziente Klassifizierung durchführen zu können, da die
+textit{Stützvektoren} ungünstig liegen. Der \textit{Maximal Margin Classifier} hat eine hohe Sensibilität für einzelne Trainingsobjekte
+und kann demnach leicht übertrainiert werden. Es können zum Beispiel Trainingsobjekte existieren deren \textit{Features} nicht den Normen einer Klasse entsprechen
+und damit eine Anomalie darstellen. Das besagte Trainingsobjekt würde dann auf der falschen Seite der zuvor gefundenen \textit{Hyperplane} liegen.
+Deswegen müssen, um eine bessere Klassifizierung und eine höhere Robustheit für einzelne Trainingsobjekte
+zu gewährleisten, auch nicht perfekt \textit{separierende Hyperplanes} in Betracht gezogen werden.\cite[S. 343 - 345]{james_2013}
+
+Dies wird vom \textit{Support Vector Classifier} umgesetzt. Er wird auch als \textit{Soft Margin Classifier} bezeichnet.
+Wie der Name schon sagt, besitzt dieser eine 'weiche' \textit{Margin}.
+Der \textit{Support Vector Classifier} erweitert den bereits besprochenen \textit{Maximal Margin Classifier}
+um eine 'weiche' \textit{Margin}, die von einem Nutzer-definierten Parameter abhängig ist.
+Der Nutzer muss selbst entscheiden, wie durchlässig die \textit{Margin} sein soll und
+wie vielen Trainingsobjekten erlaubt werden soll die \textit{Margin} zu durchdringen, ohne deren finale Ausrichtung zu beeinflussen.
+Wie dieser Parameter gesetzt werden muss, hängt von den Trainingsdaten und dem gewünschten Ergebnis ab
+und muss durch Ausprobieren ermittelt werden.
+Beim Setzen dieses Parameters muss zwischen Durchlässigkeit der \textit{Hyperplane} und der Breite der \textit{Margin} abgewägt werden.
+Durch diese 'weiche' \textit{Margin} werden vereinzelt Testobjekte mit anormalen Charakteristiken der falschen Klasse
+zugeordnet. Für die meisten Testobjekte steigt jedoch die Genauigkeit der Klassifizierung und aufgrund der 'weichen' \textit{Margin}
+ist es leichter eine \textit{separierende Hyperplane} zu finden.\cite[S. 1566]{noble_2006}
+
+Trotzdem gibt es immer noch Szenarien bei denen die Trainingsdaten nicht durch einen \textit{Support Vector Classifier} getrennt
+werden können. In manchen Fällen sind die Trainingsdaten nicht linear zu trennen.
+In diesen Fällen muss der \textit{Feature}-Raum erweitert werden. Hierfür wurde aus dem \textit{Support Vector Classifier}
+die \textit{Support Vector Machine} entwickelt. Dabei wurden sogenannte \textit{Kernel}-Funktionen hinzugefügt.
+Mit Hilfe von quadratischen, kubischen oder weiteren Polynomfunktionen höherer Grade wird der \textit{Feature}-Raum der
+Trainingsobjekte erweitert. Auf Basis der bisherigen \textit{Features} werden so mathematisch neue \textit{Features} berechnet, die
+dann womöglich durch eine \textit{Hyperplane} zu trennen sind, jedoch von den ursprünglichen \textit{Features} abhängig sind.
+Der \textit{Feature}-Raum wird so gesehen von den \textit{Kernel}-Funktionen um eine oder mehrere Dimensionen erweitert.
+Auch bei diesen \textit{Kernel}-Funktionen gibt es keine genaue Regel und die für die Trainingsdaten passende
+\textit{Kernel}-Funktion muss durch Ausprobieren gefunden werden. So können nun auch nicht-lineare Daten klassifiziert werden.
+\cite[S. 1566f.]{noble_2006}\cite[S. 224 - 227]{suthaharan_2015}
+
+Die nachfolgende Abbildung \ref{fig:non_linear_data} zeigt zwei Beispiele hypothetischer Trainingsdaten, die nicht linear zu trennen sind.
+Der \textit{Feature}-Raum wurde mit Hilfe einer \textit{Kernel}-Funktion erweitert und es konnte in einem höherdimensionalen Raum eine
+\textit{separierende Hyperplane} gefunden werden, die die Trainingsobjekte anhand ihrer Labels trennen kann.
+Die zwei Grafiken zeigen nun wie diese höherdimensionale \textit{Hyperplane} in einem $2$-dimensionalen Raum aussehen würde
+und wie sie die Daten anhand ihrer Klasse aufteilt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\imgMed]{images/theory/non_linear_data.jpg}
+    \caption{\textit{Hyperplanes} bei nicht-linearen Daten \cite[S. 353]{james_2013}}
+    \label{fig:non_linear_data}
+\end{figure}
+Mit Hilfe der \textit{Support Vector Machine} können wir nun einen Großteil an Datensätzen klassifizieren.
+Eine \textit{separierende Hyperplane} kann die Trainingsdaten jedoch immer nur in zwei Klassen einteilen.
+Wie können dann handgeschriebene Ziffern und Zahlen durch eine \textit{Support Vector Machine} erkannt werden?
+Es gibt zwei Möglichkeiten dies zu bewerkstelligen, wenn $K > 2$ Klassen existieren.
+Die erste Methode ist die 1-gegen-1-Klassifizierung. Hier wird für jede Paarung der Klassen $K \choose 2$ eine SVM erzeugt. Bei einer Klassifizierung eines neuen Testobjektes wird die Klasse ausgewählt, zu der das Objekt bei den
+$K \choose 2$ paarweisen Klassifizierern am häufigsten zugewiesen wurde.
+Die Alternative zu dieser Methode ist die 1-gegen-alle-Klassifizierung. Hier werden $K$ SVMs erstellt.
+Eine SVM für jede Klasse und die $K-1$ restlichen Klassen. Ein unbekanntes Testobjekt wird dann der Klasse zugeordnet,
+bei der die SVM sich am sichersten bei der Zuordnung ist.
+So kann die \textit{Support Vector Machine} auch Testobjekte verschiedener Klassen unterscheiden.\cite[S. 355f.]{james_2013}\cite[S.1567]{noble_2006}
+
+\subsubsection{Bewertung der \textit{Support Vector Machine}}
+Für einen fairen Vergleich zwischen den einzelnen \textit{Machine Learning}-Algorithmen muss die \textit{Support Vector Machine}
+nach den bereits festgelegten Bewertungskriterien: Komplexität, Genauigkeit, Präzision und Einfachheit der Umsetzung beurteilt werden.
+Die mathematische Komplexität des \textit{Support Vector Machine}-Algorithmus lässt sich nachschlagen.
+Das Trainieren einer SVM hat eine Komplexität von $O(n^2 p + n^3)$ mit $n$ als Anzahl der Traingsobjekte und $p$ als Anzahl der \textit{Features}.
+Bei dieser Komplexität wird angenommen, dass die \textit{Support Vector Machine} eine \textit{Kernel}-Funktion $K(x_i, x_j)$ besitzt.
+Davon ausgehend, dass die häufigsten \textit{Kernel}-Funktionen eine Komplexität von $O(p)$ besitzen, können wir auf die obige Komplexität
+für die SVM schließen. Das ist bei Gaußschen, Polynom- und Sigmoidfunktionen der Fall, muss jedoch nicht für jede \textit{Kernel}-Funktion gelten.
+Die Komplexität bei dem Klassifizieren der Testdaten entspricht dann $O(n_{sv} p)$. Hier ist $n_{sv}$ die Anzahl der Stützvektoren.\cite{complexity}
+
+Um die Genauigkeit und Präzision einer \textit{Support Vector Machine} bewerten zu können, soll ein kurzes Testprogramm geschrieben werden.
+Hierfür wurde die Programmiersprache \textbf{Python} verwendet, die mit \textbf{SciKit-learn} bereits eine Bibliothek für die Anwendung
+verschiedener \textit{Machine Learning}-Algorithmen besitzt. Das fertige Programm ist in \ref{lst:test_svm} zu sehen.
+Zuerst werden die benötigten Funktionen aus der \textbf{SciKit-learn}-Bibliothek importiert. Dann wird der 1797-große Datensatz geladen, der die
+geschriebenen Ziffern $0, \dots 9$ enthält und die Daten mit Hilfe eines \textbf{NumPy}-\textit{Arrays} vorbereitet. Danach werden die Daten halbiert und in einen
+Trainingsdatensatz, sowie in einen Testdatensatz aufgeteilt. Mit \textbf{SciKit-learn} lässt sich dann in zwei Zeilen ein SVM-Objekt erstellen und
+mit dem Trainingsdatensatz trainieren. Danach werden die Testdaten in die SVM gegeben und am Ende in einem Klassifizierungsbericht ausgewertet.
+
+\begin{minipage}{\textwidth}
+    \begin{lstlisting}[language=Python, caption=Pythoncode zum Testen der SVM, label=lst:test_svm]
+# Importieren relevanter Bibliotheken
+from sklearn import svm
+from sklearn import metrics
+from sklearn.datasets import load_digits
+from sklearn.model_selection import train_test_split
+
+# Laden des SciKit-learn-Datensatzes
+digits = load_digits()
+
+# Vorbereiten der Daten
+n_samples = len(digits.images)
+data = digits.images.reshape((n_samples, -1))
+
+# Aufteilen der Daten in Trainings- & Testdaten
+X_train, X_test, y_train, y_test = train_test_split(
+    data, digits.target, test_size=0.5, shuffle=False)
+
+# Trainieren der SVM mit den Trainigsdaten
+svm_classifier = svm.SVC(gamma=0.001)
+svm_classifier.fit(X_train, y_train)
+
+# Klassifizieren der Testdaten
+predicted = svm_classifier.predict(X_test)
+
+# Ausgeben der Ergebnisse
+print("\nKlassifizierungsbericht %s:\n%s\n" % (svm_classifier, metrics.classification_report(y_test, predicted)))
+print("\nGenauigkeit: ", svm_classifier.score(X_test, y_test))
+	\end{lstlisting}
+\end{minipage}
+
+Aus dem Klassifizierungsbericht in \ref{lst:testergebnis_svm} kann direkt die Präzision und Genauigkeit dieser \textit{Support Vector Machine}
+herausgelesen werden. Die \textit{Support Vector Machine} aus unserem Test hat eine durchschnittliche Präzision von $0.97$, sowie eine
+gerundete Genauigkeit von ebenfalls $0.97$.
+
+\begin{minipage}{\textwidth}
+    \begin{lstlisting}[language=Bash, caption=Testergebnisse der SVM, label=lst:testergebnis_svm]
+Klassifizierungsbericht SVC(gamma=0.001):
+			   precision    recall  f1-score   support
+
+		0         1.00      0.99      0.99        88
+		1         0.99      0.97      0.98        91
+		2         0.99      0.99      0.99        86
+		3         0.98      0.87      0.92        91
+		4         0.99      0.96      0.97        92
+		5         0.95      0.97      0.96        91
+		6         0.99      0.99      0.99        91
+		7         0.96      0.99      0.97        89
+		8         0.94      1.00      0.97        88
+		9         0.93      0.98      0.95        92
+
+accuracy                          0.97       899
+macro avg    	0.97      0.97      0.97       899
+weighted avg 	0.97      0.97      0.97       899
+
+Genauigkeit:  0.9688542825361512
+	\end{lstlisting}
+    \label{list:svm_ergebnis}
+\end{minipage}
+
+Damit ist bereits eine Mehrheit der Kriterien zur Bewertung der SVM abgedeckt. Als Letztes muss nun die Einfachheit der Umsetzung bewertet werden.
+Es spricht für die \textit{Support Vector Machine}, dass uns die gesamte Umsetzung des Algorithmus bereits abgenommen wurde und alle benötigten
+Funktionen durch die \textbf{Python}-Bibliothek \textbf{SciKit-learn} bereitgestellt wurden. Die \textit{Support Vector Machine} ist damit sehr einfach
+für unser Projekt zu verwenden.  Wie bereits im obigen Beispielcode \ref{lst:test_svm} zu sehen, braucht es nur drei Zeilen Code um eine SVM zu initialisieren,
+zu trainieren und neue Testdaten zu klassifizieren. Deshalb gebe ich der \textit{Support Vector Machine} eine Punktzahl von 5/5.
+Damit ist die Bewertung dieses \textit{Machine Learning}-Algorithmus abgeschlossen.
+Als Nächstes folgt eine Erläuterung der \textit{Convolutional Neural Networks} und deren Beurteilung.
+
+\newpage
