@@ -4,34 +4,35 @@
 In diesem Kapitel werden die verwendeten Technologien und Frameworks beschrieben, die für das Projekt benötigt werden.
 Für die Umsetzung des Projektes fiel die Wahl auf die Programmiersprache \textbf{Python}. Sie ist vielseitig einsetzbar und es existieren bereits Bibliotheken mit
 Funktionalitäten, die in diesem Projekt benötigt werden. Diese relevanten Bibliotheken werden in den nächsten Unterkapiteln näher beleuchtet.
-Da wäre zum einen, die freie Programmbibliothek \textbf{OpenCV}, die den Bereich Bildbearbeitung abdeckt. Ebenfalls relevant ist das \textbf{SciKit-learn}, das 
+Da wäre zum einen, die freie Programmbibliothek \textbf{OpenCV}, die den Bereich Bildbearbeitung abdeckt. Ebenfalls relevant ist das \textbf{SciKit-learn}, das
 bereits implementierte \textit{Machine Learning}-Algorithmen zur Benutzung anbietet. Außerdem werden für das Projekt das Webframework \textbf{Flask} sowie
-die Bibliothek \textbf{Dash} genutzt. Beschrieben werden nur die relevanten Informationen, die für das Verständnis dieser Arbeit wichtig sind. 
+die Bibliothek \textbf{Dash} genutzt. Beschrieben werden nur die relevanten Informationen, die für das Verständnis dieser Arbeit wichtig sind.
 Es besteht kein Anspruch auf Vollständigkeit in diesem Kapitel.
 
 \subsection{OpenCV}
 \textbf{OpenCV} ist eine plattformunabhängige Bibliothek im Bereich Computer Vision. Sie stellt Funktionen für verschiedenste Prozesse der Bildverarbeitung bereit.
 Dazu gehören unter anderem Bildanalyse und Objekterkennung, Kamerakalibrierung und Stereo-Vision sowie Ansätze für Machine Learning und Robotics.
-Die quelloffene Bibliothek wurde 1999 veröffentlicht und wird weltweit durch Entwickler in Forschungseinrichtungen und Unternehmen weiterentwickelt. 
-Eine kommerzielle Nutzung ist aufgrund der BSD-Lizenz möglich. Die Implementierungen in \textbf{OpenCV} sind für echtzeitfähige Anwendungen konzipiert 
-und dementsprechend optimiert. 
+Die quelloffene Bibliothek wurde 1999 veröffentlicht und wird weltweit durch Entwickler in Forschungseinrichtungen und Unternehmen weiterentwickelt.
+Eine kommerzielle Nutzung ist aufgrund der BSD-Lizenz möglich. Die Implementierungen in \textbf{OpenCV} sind für echtzeitfähige Anwendungen konzipiert
+und dementsprechend optimiert.
 Teilweise existieren zusätzliche Implementierungen die mit CUDA oder OpenCL unter Nutzung der GPU beschleunigt werden.
-Durch sein breites Anwendungsspektrum ist \textbf{OpenCV} weitverbreitet und repräsentiert für viele Bereiche den Stand der Technik. 
+Durch sein breites Anwendungsspektrum ist \textbf{OpenCV} weitverbreitet und repräsentiert für viele Bereiche den Stand der Technik.
 \textbf{OpenCV} beinhaltet einen ORB Feature Detector und Descriptor sowie eine Sammlung von Algorithmen zur Zuordnung von Features.
 Diese Funktionalität kann bei der Bildvorverarbeitung der eingescannten Spielergebnisse verwendet werden.
 
 \subsection{SciKit-learn}
-\textbf{SciKit-learn} ist eine freie Softwarebibliothek, die \textit{Machine Learning}-Algorithmen für die Programmiersprache Python bereitstellt. 
-Dazu gehören verschiedene Klassifikations-, Regressions- und Clustering-Algorithmen, wie zum Beispiel die \textit{Support Vektor Machine}, 
+\textbf{SciKit-learn} ist eine freie Softwarebibliothek, die \textit{Machine Learning}-Algorithmen für die Programmiersprache Python bereitstellt.
+Dazu gehören verschiedene Klassifikations-, Regressions- und Clustering-Algorithmen, wie zum Beispiel die \textit{Support Vektor Machine},
 Random Forest, Gradient Boosting, k-means oder DBSCAN. Sie basiert als SciKit (Kurzform für SciPy Toolkit)
 auf den numerischen und wissenschaftlichen Python-Bibliotheken \textbf{NumPy} und \textbf{SciPy}.
 Sie ist in verschiedenen Anwendungsbereichen einsetzbar und bietet effiziente Tools für maschinelles Lernen, Data Mining und Datenanalyse an.
 Weitere Funktionalitäten, die \textbf{SciKit-learn} für das maschinelle Lernen anbietet, sind Clustering, Cross Validation, Reduktion, Feature-Extraktion und Parameter-Tuning.
 Außerdem wird das Zusammenfassen und Darstellen der Daten vereinfacht.
 
-Durch \textbf{SciKit-learn} konnten sehr einfach die einzelnen \textit{Machine Learning}-Algorithmen \textit{K-Nearest Neighbors}, \textit{Support Vector Machine} und
-\textit{Convolutional Neural Networks} ausprobiert werden. Es brauchte somit keine eigene Implementierung der Algorithmen und sie konnten ohne großen Aufwand
-miteinander verglichen werden. Auch bei dir Implementierung der eigentlichen Ziffernerkennung kann das \textbf{SciKit-learn} eingesetzt werden.
+Durch \textbf{SciKit-learn} konnten sehr einfach die einzelnen \textit{Machine Learning}-Algorithmen \textit{K-Nearest Neighbors} und \textit{Support Vector Machine} ausprobiert werden. Es brauchte somit keine eigene Implementierung der Algorithmen und sie konnten ohne großen Aufwand miteinander verglichen werden. Auch bei der Implementierung der eigentlichen Ziffernerkennung kann das \textbf{SciKit-learn} eingesetzt werden.
+
+\subsection{Tensorflow}
+Ähnlich wie SciKit-learn ist auch \textbf{Tenosrflow} eine Softwarebibliothek die ebenfalls für \textit{Machine Learning} verwendet wird und ist für Python und JavaScript verfügbar. \textbf{Tensorflow} ermöglicht es Modelle für neuronale Netzwerke zu erstellen und zu trainieren. Somit lassen sich \textit{Convolutional Neural Networks}, Rekurrente neuronale Netze und viele weitere erstellen. Um die Nutzung von Tensorflow in Python zu vereinfachen wird noch die \acp{API} von \textbf{Keras} verwendet. Diese minimiert den Aufwand zum Erstellen eines Modells und bietet klarer Fehlermeldungen sowie Zugang zu weiteren Datensätzen für das Training.
 
 \subsection{Flask}
 \textbf{Flask} ist Webframework für \textbf{Python}, das vom österreichischen Programmierer Armin Ronacher entwickelt worden ist.
@@ -42,11 +43,11 @@ Um die Programmierung zu erleichtern, stellt \textbf{Flask} für Testzwecke eine
 im Vergleich zu den anderen \textbf{Python}-Webframework, wie Django oder Web2py, ist, dass keine eigenen Komponenten angeboten werden, sondern die Funktionalitäten können
 sehr einfach durch weitere bestehende Bibliotheken erweitert werden. Das trägt dazu bei, dass \textbf{Flask} sehr minimalistisch gehalten werden konnte.
 Für die wichtigsten Funktionalitäten existieren bereits Erweiterungen, wie zum Beispiel für das Handhaben von Authentifizierung, Cookies und Sessions, das Konfigurieren
-des Cachings oder die Kompatibilität zu vielen Datenbanksystemen, wie MySQL, PostgreSQL oder MongoDB. 
+des Cachings oder die Kompatibilität zu vielen Datenbanksystemen, wie MySQL, PostgreSQL oder MongoDB.
 Deshalb wird in diesem Projekt das Webframework \textbf{Flask} verwendet.
 
 \subsection{Dash} \label{sec:dash}
-Plotly ist ein Unternehmen für technische Datenverarbeitung mit Hauptsitz in Montreal, Kanada, das Online-Tools für Datenanalyse sowie Datenvisualisierung entwickelt. 
+Plotly ist ein Unternehmen für technische Datenverarbeitung mit Hauptsitz in Montreal, Kanada, das Online-Tools für Datenanalyse sowie Datenvisualisierung entwickelt.
 Plotly bietet Online-Grafik-, Analyse- und Statistik-Tools sowie wissenschaftliche Grafikbibliotheken für Python, Perl, Arduino und weitere an.
-\textbf{Dash} ist ein Open-Source Python-Framework für die Entwicklung webbasierter Analyseanwendungen und Dashboards. 
+\textbf{Dash} ist ein Open-Source Python-Framework für die Entwicklung webbasierter Analyseanwendungen und Dashboards.
 Außerdem gibt es viele spezialisierte Open-Source-Bibliotheken für \textbf{Dash}, die auf die Entwicklung spezifischer \textbf{Dash}-Komponenten und  Anwendungen zugeschnitten sind. Das \textbf{Dash}-Framework wird in diesem Projekt für die nachträgliche Analyse und Visualisierung der digitalisierten Spielergebnisse verwendet.
